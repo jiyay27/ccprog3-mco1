@@ -1,20 +1,19 @@
 package com.main;
 
+import com.vendingmachineinterface.VendingMachineInterface;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        VendingMachineInterface CVendingMachineInterface = new VendingMachineInterface();
 
         Scanner scan = new Scanner(System.in);
         int nChoice;
         boolean bStop = false;
 
         while (!bStop) {
-            System.out.println();
-            System.out.println("\t MAIN MENU \t\n" +
-                    "\n[1] Create a Vending Machine" +
-                    "\n[2] Test a Vending Machine" +
-                    "\n[3] Exit\n");
+            CVendingMachineInterface.displayMainMenu();
 
             System.out.print("Enter choice: ");
             nChoice = scan.nextInt();
@@ -22,7 +21,7 @@ public class Main {
 
             switch (nChoice) {
                 case 1:
-
+                    CVendingMachineInterface.selectVendingMachine(nChoice);
                     break;
                 case 2:
 
@@ -30,6 +29,14 @@ public class Main {
                 case 3:
                     bStop = true;
                     break;
+                default:
+                    System.out.println("!!! INVALID INPUT !!!\n\n");
+
+                    CVendingMachineInterface.displayMainMenu();
+
+                    System.out.print("Enter choice: ");
+                    nChoice = scan.nextInt();
+                    System.out.println();
             }
         }
 
