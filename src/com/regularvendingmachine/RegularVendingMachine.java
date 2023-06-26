@@ -12,10 +12,6 @@ public class RegularVendingMachine {
 
     }
 
-    public RegularVendingMachine() {
-
-    }
-
     public boolean purchaseItem() {
         return true;
     }
@@ -36,7 +32,7 @@ public class RegularVendingMachine {
 
     }
 
-    public int getItemQuantity() {
+    public void getItemQuantity() {
 
     }
 
