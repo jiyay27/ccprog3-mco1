@@ -16,8 +16,5 @@ public class Main {
          * }
          */
 
-        moneyBox.displayTotal();
-        System.out.println(moneyBox.isEmpty());
-
     }
 }
