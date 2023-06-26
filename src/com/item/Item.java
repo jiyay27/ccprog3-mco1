@@ -5,8 +5,10 @@ public class Item {
     private double dItemPrice;
     private double dItemCalories;
 
-    public Item(String strItemName, double dItemPrice, double dItemCalories){
-
+    public Item(String strItemName, double dItemPrice, double dItemCalories) {
+        this.strItemName = strItemName;
+        this.dItemPrice = dItemPrice;
+        this.dItemCalories = dItemCalories;
     }
 
     public void changeItemPrice() {

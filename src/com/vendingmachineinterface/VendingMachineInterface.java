@@ -1,6 +1,6 @@
 package com.vendingmachineinterface;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class VendingMachineInterface {
     Scanner scan = new Scanner(System.in);
@@ -8,37 +8,72 @@ public class VendingMachineInterface {
 
     public void displayMainMenu() {
         System.out.println();
-        System.out.println("\t MAIN MENU \t\n" +
-                "\n[1] Create a Vending Machine" +
-                "\n[2] Test a Vending Machine" +
-                "\n[3] Exit\n");
-    }
-
-    public void selectVendingMachine(int nChoice) {
-
+        System.out.println("\t  MAIN MENU\n");
+        System.out.println("[1] Create a Vending Machine");
+        System.out.println("[2] Test a Vending Machine");
+        System.out.println("[3] Exit");
         System.out.println();
-        System.out.println("\t CREATE A VENDING MACHINE\t\n" +
-                "\n[1] Regualar Vending Machine" +
-                "\n[2] Special Vending Machine\n");
 
         System.out.print("Enter choice: ");
         nChoice = scan.nextInt();
         System.out.println();
+        System.out.println();
 
-        switch (nChoice) {
+        switch (this.nChoice) {
             case 1:
-
+                selectVendingMachine();
                 break;
             case 2:
 
                 break;
             case 3:
+                System.exit(0);
+                break;
+            default:
+                System.out.println("\t!! INVALID INPUT !!");
+                displayMainMenu();
+        }
+        scan.close();
+    }
 
+    public void selectVendingMachine() {
+
+        System.out.println();
+        System.out.println("  CREATE A VENDING MACHINE\n");
+        System.out.println("[1] Regualar Vending Machine");
+        System.out.println("[2] Special Vending Machine");
+        System.out.println("[3] Return to Main Menu");
+        System.out.println();
+
+        System.out.print("Enter choice: ");
+        nChoice = scan.nextInt();
+        System.out.println();
+        System.out.println();
+
+        switch (this.nChoice) {
+            case 1:
+                System.out.println("------------------------------------------------------");
+                System.out.println("|    Regular Vending Machine successfully created!   |");
+                System.out.println("------------------------------------------------------");
+                displayMainMenu();
+                break;
+            case 2:
+                System.out.println("------------------------------------------------------");
+                System.out.println("| Special Vending Machine is currently not available |");
+                System.out.println("------------------------------------------------------");
+                selectVendingMachine();
+                break;
+            case 3:
+                displayMainMenu();
                 break;
             default:
 
         }
 
         scan.close();
+    }
+
+    public void testVendingMachine() {
+
     }
 }

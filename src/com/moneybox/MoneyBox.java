@@ -1,26 +1,49 @@
 package com.moneybox;
 
+import java.util.*;
+
+import com.money.Money;
+
 public class MoneyBox {
-    private int nOneThousand;
-    private int nFiveHundred;
-    private int nTwoHundred;
-    private int nOneHundred;
-    private int nFifty;
-    private int nTwenty;
-    private int nTen;
-    private int nFive;
-    private int nOne;
+    private ArrayList<Money> nDenominations;
+    private ArrayList<Money> nAddedMoney;
 
     public MoneyBox() {
-        this.nOneThousand = 1000;
-        this.nFiveHundred = 500;
-        this.nTwoHundred = 200;
-        this.nOneHundred = 100;
-        this.nFifty = 50;
-        this.nTwenty = 20;
-        this.nTen = 10;
-        this.nFive = 5;
-        this.nOne = 1;
+        this.nDenominations = new ArrayList<Money>();
+
+        for (int i = 0; i < 10; i++) {
+            this.nDenominations.add(new Money(200));
+            this.nDenominations.add(new Money(100));
+        }
+        for (int i = 0; i < 30; i++) {
+            this.nDenominations.add(new Money(50));
+            this.nDenominations.add(new Money(20));
+        }
+        for (int i = 0; i < 40; i++) {
+            this.nDenominations.add(new Money(10));
+            this.nDenominations.add(new Money(5));
+            this.nDenominations.add(new Money(1));
+        }
+    }
+
+    public boolean isEmpty() {
+        boolean isEmpty = true;
+        if (this.nDenominations.size() == 0)
+            return isEmpty;
+        else
+            return !isEmpty;
+    }
+
+    public void displayTotal() {
+        int nTotal = 0;
+        for (Money money : this.nDenominations) {
+            nTotal += money.getValue();
+        }
+        System.out.println(nTotal);
+    }
+
+    public void addMoney() {
+
     }
 
 }
