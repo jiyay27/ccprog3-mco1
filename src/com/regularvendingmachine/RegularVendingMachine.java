@@ -39,7 +39,7 @@ public class RegularVendingMachine {
 
     }
 
-    public void setItemPrice(ItemSlot[] item) {
+    public void setItemPrice(ArrayList<ItemSlot> item) {
 
     }
 }

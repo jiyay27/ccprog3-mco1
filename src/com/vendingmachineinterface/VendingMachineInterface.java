@@ -24,7 +24,7 @@ public class VendingMachineInterface {
                 selectVendingMachine();
                 break;
             case 2:
-
+                testVendingMachine();
                 break;
             case 3:
                 System.exit(0);
@@ -74,6 +74,6 @@ public class VendingMachineInterface {
     }
 
     public void testVendingMachine() {
-
+        System.out.println("Test");
     }
 }

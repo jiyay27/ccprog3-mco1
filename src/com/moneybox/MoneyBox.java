@@ -10,6 +10,7 @@ public class MoneyBox {
 
     public MoneyBox() {
         this.nDenominations = new ArrayList<Money>();
+        this.nAddedMoney = null;
 
         for (int i = 0; i < 10; i++) {
             this.nDenominations.add(new Money(200));
@@ -34,16 +35,29 @@ public class MoneyBox {
             return !isEmpty;
     }
 
-    public void displayTotal() {
+    public boolean isAllowed() {
+        boolean isAllowed = true;
+        if (this.nDenominations.isEmpty())
+            return !isAllowed;
+        else {
+            return isAllowed;
+        }
+
+    }
+
+    public void addMoney(int nValue) {
+        this.nDenominations.add(new Money(nValue));
+        this.nAddedMoney.add(new Money(nValue));
+    }
+
+    public void produceChange() {
+    }
+
+    public int getTotal() {
         int nTotal = 0;
         for (Money money : this.nDenominations) {
             nTotal += money.getValue();
         }
-        System.out.println(nTotal);
+        return nTotal;
     }
-
-    public void addMoney() {
-
-    }
-
 }
