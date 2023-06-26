@@ -3,7 +3,7 @@ package com.regularvendingmachine;
 import java.util.*;
 import com.moneybox.MoneyBox;
 import com.itemslot.ItemSlot;
-
+// hi
 public class RegularVendingMachine {
     private String strVendingMachine;
     private ArrayList<ItemSlot> vendingSlot;
