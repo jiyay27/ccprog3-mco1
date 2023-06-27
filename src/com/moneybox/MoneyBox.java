@@ -42,7 +42,6 @@ public class MoneyBox {
         else {
             return isAllowed;
         }
-
     }
 
     public void addMoney(int nValue) {
@@ -51,6 +50,7 @@ public class MoneyBox {
     }
 
     public void produceChange() {
+        if (isAllowed())
     }
 
     public int getTotal() {
