@@ -20,9 +20,9 @@ public class Main {
 
         ItemSlot FriedEgg = new ItemSlot("FriedEggSlot", new Item("Fried Egg", 15, 92), 10);
 
-        System.out.println(FriedEgg.getItem().get(0).getItemName());
-        System.out.println(FriedEgg.getItem().get(0).getItemCalories());
-        System.out.println(FriedEgg.getItem().get(0).getItemPrice());
-        System.out.println(FriedEgg.getItem().size());
+        System.out.println("Item: \t\t" + FriedEgg.getItem().getItemName());
+        System.out.println("Calories: \t" + FriedEgg.getItem().getItemCalories());
+        System.out.println("Price: \t\t" + FriedEgg.getItem().getItemPrice() + " Php");
+        System.out.println("Quantity: \t" + FriedEgg.getItemQuantity());
     }
 }

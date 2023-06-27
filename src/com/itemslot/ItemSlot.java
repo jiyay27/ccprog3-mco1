@@ -5,18 +5,15 @@ import java.util.*;
 
 public class ItemSlot {
     private String slotName;
-    private boolean bAvailable;
     private ArrayList<Item> itemOccupy;
 
     public ItemSlot(String slotName) {
         this.slotName = slotName;
-        this.bAvailable = true;
         this.itemOccupy = new ArrayList<Item>();
     }
 
     public ItemSlot(String slotName, Item itemOccupy, int nQuantity) {
         this.slotName = slotName;
-        this.bAvailable = true;
         this.itemOccupy = new ArrayList<Item>();
         for (int i = 0; i < nQuantity; i++) {
             this.itemOccupy.add(itemOccupy);
@@ -30,15 +27,23 @@ public class ItemSlot {
         }
     }
 
-    public boolean getAvailability() {
-        return this.bAvailable;
-    }
+    // public boolean getItemAvailability() {
+    // boolean bFlag = true;
+    // if (this.itemOccupy.size() != 0)
+    // return bFlag;
+    // else
+    // return !bFlag;
+    // }
 
-    public ArrayList<Item> getItem() {
-        return this.itemOccupy;
+    public Item getItem() {
+        return this.itemOccupy.get(this.itemOccupy.size() - 1);
     }
 
     public int getItemQuantity() {
         return this.itemOccupy.size();
+    }
+
+    public String getSlotName() {
+        return this.slotName;
     }
 }
