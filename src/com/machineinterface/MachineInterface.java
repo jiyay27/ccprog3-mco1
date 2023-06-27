@@ -1,14 +1,13 @@
-package com.vendingmachineinterface;
+package com.machineinterface;
 
 import java.util.*;
-
 import com.regularvendingmachine.RegularVendingMachine;
 
-public class VendingMachineInterface {
-    Scanner scan = new Scanner(System.in);
-    RegularVendingMachine CRegularVendingMachine = new RegularVendingMachine();
+public class MachineInterface {
     private RegularVendingMachine regularVendingMachine;
     private int nChoice;
+    Scanner scan = new Scanner(System.in);
+    RegularVendingMachine CRegularVendingMachine = new RegularVendingMachine();
 
     public void displayMainMenu() {
         System.out.println();

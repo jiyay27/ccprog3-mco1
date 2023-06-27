@@ -1,20 +1,21 @@
 package com.main;
 
-import com.vendingmachineinterface.VendingMachineInterface;
-import com.moneybox.MoneyBox;
+import com.machineinterface.MachineInterface;
 import com.regularvendingmachine.RegularVendingMachine;
 
 // import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        VendingMachineInterface CVendingMachineInterface = new VendingMachineInterface();
+        RegularVendingMachine CVending = new RegularVendingMachine("Maangas");
+        // MachineInterface CMachineInterface = new
+        // MachineInterface();
         // boolean bFlag = true;
-        /*
-         * while (bFlag) {
-         * CVendingMachineInterface.displayMainMenu();
-         * }
-         */
 
+        // while (bFlag) {
+        // CVendingMachineInterface.displayMainMenu();
+        // }
+
+        System.out.println();
     }
 }

@@ -10,7 +10,6 @@ public class RegularVendingMachine {
     private ArrayList<ItemSlot> vendingSlot;
     private MoneyBox vendingMoney;
 
-    // TODO: implement constructor
     public RegularVendingMachine() {
         this.strVendingName = null;
         this.vendingSlot = new ArrayList<ItemSlot>();
