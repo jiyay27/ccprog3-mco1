@@ -11,7 +11,7 @@ public class Item {
         this.nItemCalories = nItemCalories;
     }
 
-    public void changeItemPrice(int nItemPrice) {
+    public void setItemPrice(int nItemPrice) {
         this.nItemPrice = nItemPrice;
     }
 

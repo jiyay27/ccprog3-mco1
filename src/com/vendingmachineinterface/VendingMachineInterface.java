@@ -62,7 +62,7 @@ public class VendingMachineInterface {
                 System.out.println("------------------------------------------------------");
                 System.out.println("|    Regular Vending Machine successfully created!   |");
                 System.out.println("------------------------------------------------------");
-                
+
                 displayMainMenu();
                 break;
             case 2:
