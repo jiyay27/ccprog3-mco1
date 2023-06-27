@@ -50,19 +50,29 @@ public class MoneyBox {
     }
 
     public void insertMoney(int nInput) {
-        if (nInput == 500 || nInput == 200
-                || nInput == 100 || nInput == 50
-                || nInput == 20 || nInput == 10
-                || nInput == 5 || nInput == 1) {
+        if (nInput == 200 || nInput == 100 || nInput == 50
+                || nInput == 20 || nInput == 10 || nInput == 5
+                || nInput == 1) {
             addMoney(nInput);
         } else
             System.out.println("Money not accepted... \nPlease insert the right denomation...");
     }
 
+    // TODO: create logic for sukli
     public void produceChange() {
         if (isAllowed()) {
 
         }
+    }
+
+    // TODO: create logic for replenishing sukli
+    public void replenishChange() {
+
+    }
+
+    // TODO: collect money earned
+    public void collectEarnings() {
+
     }
 
     public int getTotal() {

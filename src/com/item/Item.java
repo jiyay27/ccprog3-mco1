@@ -13,16 +13,25 @@ public class Item {
         this.nItemQuantity = nItemQuantity;
     }
 
-    public boolean sellItem(int nItemQuantity) {
-        if (nItemQuantity <= this.nItemPrice) {
-            this.nItemQuantity -= nItemQuantity;
+    private boolean isAllowSell(int nItemSold) {
+        if (nItemSold <= this.nItemPrice)
             return true;
-        } else
+        else
             return false;
+    }
+
+    public int sellItem(int nItemSold) {
+        if (isAllowSell(nItemSold))
+            this.nItemQuantity -= nItemSold;
+        return nItemSold;
     }
 
     public void setItemPrice(int nItemPrice) {
         this.nItemPrice = nItemPrice;
+    }
+
+    public void setItemQuantity(int nItemQuantity) {
+        this.nItemQuantity = nItemQuantity;
     }
 
     public String getItemName() {
