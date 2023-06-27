@@ -2,13 +2,14 @@ package com.regularvendingmachine;
 
 import java.util.*;
 import com.moneybox.MoneyBox;
+import com.item.Item;
 import com.itemslot.ItemSlot;
-import com.money.Money;
 
 public class RegularVendingMachine {
     private String strVendingName;
     private ArrayList<ItemSlot> vendingSlot;
     private MoneyBox vendingMoney;
+    private int MAX_CAPACITY = 15;
 
     public RegularVendingMachine() {
         this.strVendingName = null;
@@ -28,9 +29,23 @@ public class RegularVendingMachine {
         return true;
     }
 
-    // TODO:
-    public void restockItem() {
+    public Item getItem(String name) {
+        Item theItem = null;
+        for (Item item : soemething something) {
+            if (item.getItemName().equals(name))
+                theItem = item;
+            break;
+        }
 
+        return theItem;
+    }
+
+    // TODO:
+    public void restockItem(int slotIndex, Item item) {
+        if (this.vendingSlot.get(slotIndex).getItemQuantity() < MAX_CAPACITY)
+            
+        else
+            System.out.println("ERROR: Item slot full!");
     }
 
     // TODO:
@@ -53,8 +68,4 @@ public class RegularVendingMachine {
 
     }
 
-    // TODO:
-    public void setItemPrice(ArrayList<ItemSlot> item) {
-
-    }
 }

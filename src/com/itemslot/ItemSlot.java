@@ -5,42 +5,23 @@ import java.util.*;
 
 public class ItemSlot {
     private String slotName;
-    private ArrayList<Item> itemOccupy;
+    private Item itemOccupy;
 
-    public ItemSlot(String slotName) {
+    public ItemSlot(String slotName, Item itemOccupy) {
         this.slotName = slotName;
-        this.itemOccupy = new ArrayList<Item>();
-    }
-
-    public ItemSlot(String slotName, Item itemOccupy, int nQuantity) {
-        this.slotName = slotName;
-        this.itemOccupy = new ArrayList<Item>();
-        for (int i = 0; i < nQuantity; i++) {
-            this.itemOccupy.add(itemOccupy);
-        }
+        this.itemOccupy = itemOccupy;
     }
 
     // TODO: SET ITEM
-    public void setItem(Item itemOccupy, int nQuantity) {
-        for (int i = 0; i < nQuantity; i++) {
-            this.itemOccupy.add(itemOccupy);
-        }
+    public void setItem(Item itemOccupy) {
+
     }
 
-    // public boolean getItemAvailability() {
-    // boolean bFlag = true;
-    // if (this.itemOccupy.size() != 0)
-    // return bFlag;
-    // else
-    // return !bFlag;
-    // }
-
-    public Item getItem() {
-        return this.itemOccupy.get(this.itemOccupy.size() - 1);
-    }
-
-    public int getItemQuantity() {
-        return this.itemOccupy.size();
+    public boolean getItemAvailability() {
+        if (this.itemOccupy.getItemQuantity() != 0)
+            return true;
+        else
+            return false;
     }
 
     public String getSlotName() {
