@@ -11,13 +11,15 @@ public class ItemSlot {
     public ItemSlot() {
         this.slotName = null;
         this.bAvailable = true;
-        this.itemsOccupy = null;
+        this.itemsOccupy = new ArrayList<Item>();
     }
 
-    public ItemSlot(String slotName) {
+    public ItemSlot(String slotName, Item itemsOccupy, int nQuantity) {
         this.slotName = slotName;
         this.bAvailable = true;
-        // this.itemsOccupy;
+        for (int i = 0; i < nQuantity; i++) {
+            this.itemsOccupy.add(itemsOccupy);
+        }
     }
 
     public boolean setItem(Item item) {
@@ -26,6 +28,6 @@ public class ItemSlot {
     }
 
     public boolean getAvailability() {
-        return true;
+        return this.bAvailable;
     }
 }
