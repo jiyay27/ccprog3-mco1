@@ -2,21 +2,14 @@ package com.regularvendingmachine;
 
 import java.util.*;
 import com.moneybox.MoneyBox;
+import com.item.Item;
 import com.itemslot.ItemSlot;
 
 public class RegularVendingMachine {
-    private String strVendingName;
     private ArrayList<ItemSlot> vendingSlot;
     private MoneyBox vendingMoney;
 
     public RegularVendingMachine() {
-        this.strVendingName = null;
-        this.vendingSlot = new ArrayList<ItemSlot>();
-        this.vendingMoney = new MoneyBox();
-    }
-
-    public RegularVendingMachine(String strVendingName) {
-        this.strVendingName = strVendingName;
         this.vendingSlot = new ArrayList<ItemSlot>();
         this.vendingMoney = new MoneyBox();
     }
@@ -43,8 +36,8 @@ public class RegularVendingMachine {
     }
 
     // TODO:
-    public void getItemQuantity() {
-
+    public ArrayList<ItemSlot> getVendingSlot() {
+        return this.vendingSlot;
     }
 
 }
