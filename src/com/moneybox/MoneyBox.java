@@ -16,11 +16,11 @@ public class MoneyBox {
             this.nDenominations.add(new Money(200));
             this.nDenominations.add(new Money(100));
         }
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 20; i++) {
             this.nDenominations.add(new Money(50));
             this.nDenominations.add(new Money(20));
         }
-        for (int i = 0; i < 40; i++) {
+        for (int i = 0; i < 30; i++) {
             this.nDenominations.add(new Money(10));
             this.nDenominations.add(new Money(5));
             this.nDenominations.add(new Money(1));
