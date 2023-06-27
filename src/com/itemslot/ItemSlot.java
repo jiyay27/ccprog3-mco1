@@ -17,6 +17,7 @@ public class ItemSlot {
     public ItemSlot(String slotName, Item itemOccupy, int nQuantity) {
         this.slotName = slotName;
         this.bAvailable = true;
+        this.itemOccupy = new ArrayList<Item>();
         for (int i = 0; i < nQuantity; i++) {
             this.itemOccupy.add(itemOccupy);
         }
@@ -31,5 +32,13 @@ public class ItemSlot {
 
     public boolean getAvailability() {
         return this.bAvailable;
+    }
+
+    public ArrayList<Item> getItem() {
+        return this.itemOccupy;
+    }
+
+    public int getItemQuantity() {
+        return this.itemOccupy.size();
     }
 }
