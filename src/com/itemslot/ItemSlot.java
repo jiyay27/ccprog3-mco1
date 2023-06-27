@@ -8,8 +8,8 @@ public class ItemSlot {
     private boolean bAvailable;
     private ArrayList<Item> itemsOccupy;
 
-    public ItemSlot() {
-        this.slotName = null;
+    public ItemSlot(String slotName) {
+        this.slotName = slotName;
         this.bAvailable = true;
         this.itemsOccupy = new ArrayList<Item>();
     }
@@ -22,9 +22,9 @@ public class ItemSlot {
         }
     }
 
-    public boolean setItem(Item item) {
+    // TODO: SET ITEM
+    public void setItem(Item item) {
 
-        return true;
     }
 
     public boolean getAvailability() {

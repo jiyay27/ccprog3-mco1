@@ -2,28 +2,28 @@ package com.item;
 
 public class Item {
     private String strItemName;
-    private double dItemPrice;
-    private double dItemCalories;
+    private int nItemPrice;
+    private int nItemCalories;
 
-    public Item(String strItemName, double dItemPrice, double dItemCalories) {
+    public Item(String strItemName, int nItemPrice, int nItemCalories) {
         this.strItemName = strItemName;
-        this.dItemPrice = dItemPrice;
-        this.dItemCalories = dItemCalories;
+        this.nItemPrice = nItemPrice;
+        this.nItemCalories = nItemCalories;
     }
 
-    public void changeItemPrice() {
-
+    public void changeItemPrice(int nItemPrice) {
+        this.nItemPrice = nItemPrice;
     }
 
     public String getItemName() {
         return this.strItemName;
     }
 
-    public double getItemPrice() {
-        return this.dItemPrice;
+    public int getItemPrice() {
+        return this.nItemPrice;
     }
 
-    public double getItemCalories() {
-        return this.dItemCalories;
+    public int getItemCalories() {
+        return this.nItemCalories;
     }
 }

@@ -5,31 +5,31 @@ import java.util.*;
 import com.money.Money;
 
 public class MoneyBox {
-    private ArrayList<Money> nDenominations;
+    private ArrayList<Money> nMoneyBox;
     private ArrayList<Money> nEarnings;
 
     public MoneyBox() {
-        this.nDenominations = new ArrayList<Money>();
+        this.nMoneyBox = new ArrayList<Money>();
         this.nEarnings = new ArrayList<Money>();
 
         for (int i = 0; i < 10; i++) {
-            this.nDenominations.add(new Money(200));
-            this.nDenominations.add(new Money(100));
-        }
-        for (int i = 0; i < 20; i++) {
-            this.nDenominations.add(new Money(50));
-            this.nDenominations.add(new Money(20));
+            this.nMoneyBox.add(new Money(200));
+            this.nMoneyBox.add(new Money(100));
         }
         for (int i = 0; i < 30; i++) {
-            this.nDenominations.add(new Money(10));
-            this.nDenominations.add(new Money(5));
-            this.nDenominations.add(new Money(1));
+            this.nMoneyBox.add(new Money(50));
+            this.nMoneyBox.add(new Money(20));
+        }
+        for (int i = 0; i < 30; i++) {
+            this.nMoneyBox.add(new Money(10));
+            this.nMoneyBox.add(new Money(5));
+            this.nMoneyBox.add(new Money(1));
         }
     }
 
     public boolean isEmpty() {
         boolean isEmpty = true;
-        if (this.nDenominations.size() == 0)
+        if (this.nMoneyBox.size() == 0)
             return isEmpty;
         else
             return !isEmpty;
@@ -37,7 +37,7 @@ public class MoneyBox {
 
     public boolean isAllowed() {
         boolean isAllowed = true;
-        if (this.nDenominations.isEmpty())
+        if (this.nMoneyBox.isEmpty())
             return !isAllowed;
         else {
             return isAllowed;
@@ -45,7 +45,7 @@ public class MoneyBox {
     }
 
     public void addMoney(int nValue) {
-        this.nDenominations.add(new Money(nValue));
+        this.nMoneyBox.add(new Money(nValue));
         this.nEarnings.add(new Money(nValue));
     }
 
@@ -67,7 +67,7 @@ public class MoneyBox {
 
     public int getTotal() {
         int nTotal = 0;
-        for (Money money : this.nDenominations) {
+        for (Money money : this.nMoneyBox) {
             nTotal += money.getValue();
         }
         return nTotal;
