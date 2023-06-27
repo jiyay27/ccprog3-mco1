@@ -50,7 +50,9 @@ public class MoneyBox {
     }
 
     public void produceChange() {
-        if (isAllowed())
+        if (isAllowed()) {
+
+        }
     }
 
     public int getTotal() {
