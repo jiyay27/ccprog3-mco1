@@ -2,6 +2,7 @@ package com.main;
 
 import com.vendingmachineinterface.VendingMachineInterface;
 import com.moneybox.MoneyBox;
+import com.regularvendingmachine.RegularVendingMachine;
 
 // import java.util.*;
 
