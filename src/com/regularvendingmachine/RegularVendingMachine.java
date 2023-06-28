@@ -37,17 +37,16 @@ public class RegularVendingMachine {
 
     // meow
 
-    public void purchaseItem(int itemIndex, int nItemQuantity) {
-        if (this.vendingSlot.get(itemIndex).getItemAvailability() == true)
-            if (nItemQuantity <= this.vendingSlot.get(itemIndex).getItem().getItemQuantity()) {
-                this.vendingSlot.get(itemIndex).getItem().buyItem(nItemQuantity);
+    public void purchaseItem(int nItemIndex, int nItemQuantity) {
+        if (this.vendingSlot.get(nItemIndex).getItemAvailability() == true)
+            if (nItemQuantity <= this.vendingSlot.get(nItemIndex).getItem().getItemQuantity()) {
+                this.vendingSlot.get(nItemIndex).getItem().buyItem(nItemQuantity);
 
-                this.transactions.add("Item: \t\t" + this.vendingSlot.get(itemIndex).getItem().getItemName()
+                this.transactions.add("Item: \t\t" + this.vendingSlot.get(nItemIndex).getItem().getItemName()
                         + "\nQuantity: \t" + nItemQuantity);
             } else
                 System.out.println("Item amount exceeded.");
     }
-
 
     public int insertPayment(int nAmount) {
         this.vendingMoney.insertMoney(nAmount);
@@ -63,7 +62,7 @@ public class RegularVendingMachine {
     }
 
     // TODO: create logic for sukli T_T
-    public void calculateChange(int payment, int itemIndex, int nItemQuantity) {
+    public void calculateChange(int nPayment, int nItemIndex, int nItemQuantity) {
         int changeHolder = 0;
         int change = 0;
         int change200 = 0;
@@ -76,9 +75,9 @@ public class RegularVendingMachine {
 
         if (vendingMoney.isEmpty()) {
             System.out.println("Order cancelled...\nNot enough change for transaction.");
-        } else if (nItemQuantity <= vendingSlot.get(itemIndex).getItem().getItemQuantity()) {
-            if (payment >= vendingSlot.get(itemIndex).getItem().getItemPrice() * nItemQuantity)
-                changeHolder = payment - vendingSlot.get(itemIndex).getItem().getItemPrice() * nItemQuantity;
+        } else if (nItemQuantity <= vendingSlot.get(nItemIndex).getItem().getItemQuantity()) {
+            if (nPayment >= vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity)
+                changeHolder = nPayment - vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity;
             System.out.println("Change: " + changeHolder);
             System.out.println("In these denominations:");
             System.out.println("200 x " + change200);
