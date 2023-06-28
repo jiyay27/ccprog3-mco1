@@ -3,11 +3,11 @@ package com.itemslot;
 import com.item.Item;
 
 public class ItemSlot {
-    private int slotIndex;
+    private int nSlotIndex;
     private Item itemOccupy;
 
-    public ItemSlot(int slotIndex, Item itemOccupy) {
-        this.slotIndex = slotIndex;
+    public ItemSlot(int nSlotIndex, Item itemOccupy) {
+        this.nSlotIndex = nSlotIndex;
         this.itemOccupy = itemOccupy;
     }
 
@@ -22,8 +22,8 @@ public class ItemSlot {
             return false;
     }
 
-    public int getslotIndex() {
-        return this.slotIndex;
+    public int getSlotIndex() {
+        return this.nSlotIndex;
     }
 
     public Item getItem() {
