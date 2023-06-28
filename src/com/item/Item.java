@@ -20,7 +20,7 @@ public class Item {
             return false;
     }
 
-    public int sellItem(int nItemSold) {
+    public int buyItem(int nItemSold) {
         if (isAllowSell(nItemSold))
             this.nItemQuantity -= nItemSold;
         return nItemSold;

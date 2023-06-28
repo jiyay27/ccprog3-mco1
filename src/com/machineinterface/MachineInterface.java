@@ -1,6 +1,9 @@
 package com.machineinterface;
 
 import java.util.*;
+
+import com.item.Item;
+import com.itemslot.ItemSlot;
 import com.regularvendingmachine.RegularVendingMachine;
 
 public class MachineInterface {
@@ -9,7 +12,7 @@ public class MachineInterface {
     Scanner scan = new Scanner(System.in);
     RegularVendingMachine CRegularVendingMachine = new RegularVendingMachine();
 
-    public void displayMainMenu() {
+    public int displayMainMenu() {
         System.out.println();
         System.out.println("\t  MAIN MENU\n");
         System.out.println("[1] Create a Vending Machine");
@@ -37,6 +40,7 @@ public class MachineInterface {
                 displayMainMenu();
         }
         scan.close();
+        return nChoice;
     }
 
     public void createVendingMachine() {
@@ -61,7 +65,24 @@ public class MachineInterface {
                 System.out.println("------------------------------------------------------");
                 System.out.println("|    Regular Vending Machine successfully created!   |");
                 System.out.println("------------------------------------------------------");
-
+                RegularVendingMachine cVendingMachine = new RegularVendingMachine();
+                cVendingMachine.getVendingSlot()
+                        .add(new ItemSlot("Garlic Rice Slot",
+                                new Item("Garlic Fried Rice", 25, 366, 15)));
+                cVendingMachine.getVendingSlot()
+                        .add(new ItemSlot("Fried Egg Slot", new Item("Fried Egg", 15, 92, 15)));
+                cVendingMachine.getVendingSlot()
+                        .add(new ItemSlot("Beef Tapa Slot", new Item("Beef Tapa", 40, 120, 10)));
+                cVendingMachine.getVendingSlot()
+                        .add(new ItemSlot("Longganisa Slot", new Item("Longganisa", 30, 136, 15)));
+                cVendingMachine.getVendingSlot()
+                        .add(new ItemSlot("Tocino Slot", new Item("Tocino", 30, 230, 15)));
+                cVendingMachine.getVendingSlot()
+                        .add(new ItemSlot("Hotdog Slot", new Item("Hotdog", 20, 247, 15)));
+                cVendingMachine.getVendingSlot()
+                        .add(new ItemSlot("Shanghai Slot", new Item("Lumpiang Shanghai", 35, 215, 15)));
+                cVendingMachine.getVendingSlot()
+                        .add(new ItemSlot("Bangus Slot", new Item("Bangus", 30, 178, 15)));
                 displayMainMenu();
                 break;
             case 2:
@@ -96,7 +117,7 @@ public class MachineInterface {
 
         switch (this.nChoice) {
             case 1:
-                createVendingMachine();
+                displayVendingFeatures();
                 break;
             case 2:
                 testVendingMachine();
@@ -126,7 +147,7 @@ public class MachineInterface {
 
         switch (this.nChoice) {
             case 1:
-                createVendingMachine();
+
                 break;
             case 2:
 

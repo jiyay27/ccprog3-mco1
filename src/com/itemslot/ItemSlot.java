@@ -12,7 +12,6 @@ public class ItemSlot {
         this.itemOccupy = itemOccupy;
     }
 
-    // TODO: SET ITEM
     public void setItem(Item itemOccupy) {
         this.itemOccupy = itemOccupy;
     }
@@ -46,4 +45,5 @@ public class ItemSlot {
         System.out.println("Calories: \t" + this.itemOccupy.getItemCalories());
         System.out.println("Quantity: \t" + this.itemOccupy.getItemQuantity());
     }
+
 }

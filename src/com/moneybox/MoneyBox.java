@@ -2,28 +2,26 @@ package com.moneybox;
 
 import java.util.*;
 
-import com.money.Money;
-
 public class MoneyBox {
-    private ArrayList<Money> nMoneyBox;
-    private ArrayList<Money> nEarnings;
+    private ArrayList<Integer> nMoneyBox;
+    private ArrayList<Integer> nEarnings;
 
     public MoneyBox() {
-        this.nMoneyBox = new ArrayList<Money>();
-        this.nEarnings = new ArrayList<Money>();
+        this.nMoneyBox = new ArrayList<Integer>();
+        this.nEarnings = new ArrayList<Integer>();
 
         for (int i = 0; i < 10; i++) {
-            this.nMoneyBox.add(new Money(200));
-            this.nMoneyBox.add(new Money(100));
+            this.nMoneyBox.add(200);
+            this.nMoneyBox.add(100);
         }
         for (int i = 0; i < 30; i++) {
-            this.nMoneyBox.add(new Money(50));
-            this.nMoneyBox.add(new Money(20));
+            this.nMoneyBox.add(50);
+            this.nMoneyBox.add(20);
         }
         for (int i = 0; i < 30; i++) {
-            this.nMoneyBox.add(new Money(10));
-            this.nMoneyBox.add(new Money(5));
-            this.nMoneyBox.add(new Money(1));
+            this.nMoneyBox.add(10);
+            this.nMoneyBox.add(5);
+            this.nMoneyBox.add(1);
         }
     }
 
@@ -35,18 +33,9 @@ public class MoneyBox {
             return !isEmpty;
     }
 
-    public boolean isAllowed() {
-        boolean isAllowed = true;
-        if (this.nMoneyBox.isEmpty())
-            return !isAllowed;
-        else {
-            return isAllowed;
-        }
-    }
-
-    public void addMoney(int nValue) {
-        this.nMoneyBox.add(new Money(nValue));
-        this.nEarnings.add(new Money(nValue));
+    private void addMoney(int nValue) {
+        this.nMoneyBox.add(nValue);
+        this.nEarnings.add(nValue);
     }
 
     public void insertMoney(int nInput) {
@@ -58,27 +47,17 @@ public class MoneyBox {
             System.out.println("Money not accepted... \nPlease insert the right denomation...");
     }
 
-    // TODO: create logic for sukli
-    public void produceChange() {
-        if (isAllowed()) {
-
-        }
+    // TODO:
+    public int collectEarnings() {
+        int temp = this.getTotalEarnings();
+        this.nEarnings.removeAll(this.nEarnings);
+        return temp;
     }
 
-    // TODO: create logic for replenishing sukli
-    public void replenishChange() {
-
-    }
-
-    // TODO: collect money earned
-    public void collectEarnings() {
-
-    }
-
-    public int getTotal() {
+    public int getTotalEarnings() {
         int nTotal = 0;
-        for (Money money : this.nMoneyBox) {
-            nTotal += money.getValue();
+        for (Integer money : this.nEarnings) {
+            nTotal += money;
         }
         return nTotal;
     }
