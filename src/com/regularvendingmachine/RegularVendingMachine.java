@@ -52,7 +52,7 @@ public class RegularVendingMachine {
         if (nAmount == 200 || nAmount == 100 || nAmount == 50
                 || nAmount == 20 || nAmount == 10 || nAmount == 5
                 || nAmount == 1 || nAmount == 0) {
-            this.vendingMoney.insertMoney(nAmount);
+            this.vendingMoney.addMoney(nAmount);
             return true;
         } else
             return false;
@@ -110,7 +110,7 @@ public class RegularVendingMachine {
     }
 
     public void replenishChange(int nAmount) {
-        this.vendingMoney.insertMoney(nAmount);
+        this.vendingMoney.addMoney(nAmount);
     }
 
     public void getEarnings() {

@@ -151,15 +151,15 @@ public class MachineInterface {
         switch (this.nChoice) {
             case 1:
                 System.out.println("--------------------------");
-                for (ItemSlot slot : regularVendingMachine.getVendingSlot()) {
+                // for (ItemSlot slot : regularVendingMachine.getVendingSlot()) {
 
-                    // System.out.println("Slot Name: " + slotName);
-                    // System.out.println("Item Name: " + item.getItemName());
-                    // System.out.println("Item Price: " + item.getItemPrice());
-                    // System.out.println("Item Calories: " + item.getItemCalories());
-                    // System.out.println("Item Quantity: " + item.getItemQuantity());
-                    System.out.println("--------------------------");
-                }
+                // System.out.println("Slot Name: " + slotName);
+                // System.out.println("Item Name: " + item.getItemName());
+                // System.out.println("Item Price: " + item.getItemPrice());
+                // System.out.println("Item Calories: " + item.getItemCalories());
+                // System.out.println("Item Quantity: " + item.getItemQuantity());
+                System.out.println("--------------------------");
+                // }
                 System.out.println();
                 displayVendingFeatures();
                 break;

@@ -17,13 +17,9 @@ public class MoneyBox {
             return !isEmpty;
     }
 
-    private void addMoney(int nInput) {
+    public void addMoney(int nInput) {
         this.nMoney = this.nMoney + nInput;
         this.nEarnings = this.nEarnings + nInput;
-    }
-
-    public void insertMoney(int nInput) {
-        this.addMoney(nInput);
     }
 
     private void setEarnings() {

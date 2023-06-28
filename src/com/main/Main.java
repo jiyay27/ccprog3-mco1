@@ -2,8 +2,6 @@ package com.main;
 
 import java.util.Scanner;
 
-import javax.print.attribute.standard.MediaSize.NA;
-
 import com.itemslot.ItemSlot;
 //import com.machineinterface.MachineInterface;
 import com.regularvendingmachine.RegularVendingMachine;
@@ -177,8 +175,12 @@ public class Main {
                                                             .getItem().getItemPrice() * nQuantity)) {
                                                         regularVendingMachine.purchaseItem(nChoice - 1, nQuantity);
                                                         System.out.println("Item successfully purchased.");
+
+                                                        regularVendingMachine.calculateChange(initialBalance,
+                                                                nChoice - 1, nQuantity);
                                                         initialBalance = 0;
                                                         invalidInput = false;
+
                                                     } else {
                                                         System.out.println(
                                                                 "\nTransaction Cancelled.");
