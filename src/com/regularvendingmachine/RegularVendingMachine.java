@@ -64,11 +64,11 @@ public class RegularVendingMachine {
 
     public void displayToPurchase(int nItemIndex, int nItemQuantity) {
         System.out.println("\n--------------------------");
-        System.out.println("Item Name: \t\t" + this.vendingSlot.get(nItemIndex).getItem().getItemName());
+        System.out.println("Item Name: \t" + this.vendingSlot.get(nItemIndex).getItem().getItemName());
         System.out
-                .println("Total Price: \t\t"
+                .println("Total Price: \t"
                         + this.vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
-        System.out.println("Total Quantity: \t" + nItemQuantity);
+        System.out.println("Total Quantity: " + nItemQuantity);
         System.out.println("--------------------------");
     }
 

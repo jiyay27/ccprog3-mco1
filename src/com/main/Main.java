@@ -19,7 +19,7 @@ public class Main {
         do {
             System.out.println();
             System.out.println("--------------------------------");
-            System.out.println("|\t    MAIN MENU          |");
+            System.out.println("|           MAIN MENU          |");
             System.out.println("|                              |");
             System.out.println("| [1] Create a Vending Machine |");
             System.out.println("| [2] Test a Vending Machine   |");
@@ -139,18 +139,20 @@ public class Main {
                                             System.out.println("--------------------------");
                                             System.out.println(
                                                     "\nMachine only accepts denominations of 200, 100, 50, 20, 10, 5, 1");
-                                            System.out.println("Enter [0] to finish inserting Money...");
+                                            System.out.println("Enter [0] to finish inserting Money...\n");
                                             int nAmount;
+
                                             // ! TAKE IN AMOUNT FOR PURCHASE
                                             do {
                                                 System.out.print("Insert Amount: ");
                                                 nAmount = scan.nextInt();
                                                 initialBalance += nAmount;
-                                                System.out.println();
+                                                // System.out.println();
                                             } while (nAmount != 0);
                                             regularVendingMachine.insertPayment(initialBalance);
+
                                             // ! TAKE IN ITEM FOR PURCHASE
-                                            System.out.print("Enter Item No. [1 - "
+                                            System.out.print("\nEnter Item No. [1 - "
                                                     + regularVendingMachine.getVendingSlot().size() + "]: ");
                                             nChoice = scan.nextInt();
                                             System.out.println();
@@ -158,6 +160,7 @@ public class Main {
                                             int nQuantity = scan.nextInt();
                                             regularVendingMachine.displayToPurchase(nChoice - 1, nQuantity);
                                             System.out.println("Balance: " + initialBalance);
+
                                             // ! CHECK IF TRANSACTION IS POSSIBLE
                                             int nConfirm;
                                             boolean invalidInput = true;
@@ -170,6 +173,7 @@ public class Main {
                                                             .getItem().getItemPrice() * nQuantity)) {
                                                         regularVendingMachine.purchaseItem(nChoice - 1, nQuantity);
                                                         System.out.println("Item successfully purchased.");
+                                                        initialBalance = 0;
                                                         invalidInput = false;
                                                     } else {
                                                         System.out.println(
@@ -177,6 +181,7 @@ public class Main {
                                                         System.out.println(
                                                                 "Not enough balance for purchase.\n");
                                                         invalidInput = false;
+                                                        initialBalance = 0;
                                                     }
                                                 } else if (nConfirm == 0) {
                                                     System.out.println(
@@ -185,8 +190,9 @@ public class Main {
                                                 } else
                                                     System.out.println("!! INVALID INPUT !!");
                                             } while (invalidInput);
-
-                                            // ! VENDING FEATURES SWITCH CASE
+                                            bFlag = 1;
+                                            break;
+                                        // ! VENDING FEATURES SWITCH CASE
                                         case 2:
                                             for (ItemSlot slot : regularVendingMachine.getVendingSlot()) {
                                                 System.out.println(
@@ -198,7 +204,7 @@ public class Main {
                                                 System.out.println(
                                                         "Item Quantity: \t" + slot.getItem().getItemQuantity());
                                             }
-                                            bFlag = 3;
+                                            bFlag = 1;
                                             break;
                                         // ! VENDING FEATURES SWITCH CASE
                                         case 3:
