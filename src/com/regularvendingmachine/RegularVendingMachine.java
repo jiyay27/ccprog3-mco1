@@ -59,6 +59,7 @@ public class RegularVendingMachine {
         for (String item : this.transactions) {
             System.out.println(item);
         }
+        System.out.println();
     }
 
     // TODO: create logic for sukli T_T
@@ -78,6 +79,8 @@ public class RegularVendingMachine {
         } else if (nItemQuantity <= vendingSlot.get(nItemIndex).getItem().getItemQuantity()) {
             if (nPayment >= vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity)
                 changeHolder = nPayment - vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity;
+
+            System.out.println();
             System.out.println("Change: " + changeHolder);
             System.out.println("In these denominations:");
             System.out.println("200 x " + change200);

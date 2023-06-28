@@ -1,34 +1,39 @@
 package com.main;
 
-import java.util.Scanner;
+// import java.util.Scanner;
 
-// import com.machineinterface.MachineInterface;
+import com.machineinterface.MachineInterface;
 import com.regularvendingmachine.RegularVendingMachine;
 
 public class Main {
     public static void main(String[] args) {
-        RegularVendingMachine vendingMachine = new RegularVendingMachine();
+        RegularVendingMachine CVendingMachine = new RegularVendingMachine();
+        MachineInterface CMachineInterface = new MachineInterface();
         int nBalance = 0;
-        vendingMachine.setupVendingMachine();
+        CVendingMachine.setupVendingMachine();
         // for (int i = 0; i < vendingMachine.getVendingSlot().size(); i++)
-        vendingMachine.getVendingSlot().get(1).listSlotInfo();
+        CVendingMachine.getVendingSlot().get(1).listSlotInfo();
+
+        System.out.println();
 
         System.out.println("Balance: " + nBalance);
 
-        System.out.println("Earnings: " + vendingMachine.getMoneyBox().getTotalEarnings());
+        System.out.println("Earnings: " + CVendingMachine.getMoneyBox().getTotalEarnings());
 
-        nBalance = nBalance + vendingMachine.insertPayment(200);
+        nBalance = nBalance + CVendingMachine.insertPayment(200);
 
         System.out.println("Balance: " + nBalance);
 
-        System.out.println("Earnings: " + vendingMachine.getMoneyBox().getTotalEarnings());
+        System.out.println("Earnings: " + CVendingMachine.getMoneyBox().getTotalEarnings());
 
-        vendingMachine.calculateChange(nBalance, 1, 5);
+        CVendingMachine.calculateChange(nBalance, 1, 5);
 
-        vendingMachine.purchaseItem(1, 5);
+        CVendingMachine.purchaseItem(1, 5);
 
-        vendingMachine.getVendingSlot().get(1).listSlotInfo();
+        CVendingMachine.getVendingSlot().get(1).listSlotInfo();
 
-        vendingMachine.displayTransactions();
+        CVendingMachine.displayTransactions();
+
+        CMachineInterface.displayMainMenu();
     }
 }

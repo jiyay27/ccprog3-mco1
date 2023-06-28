@@ -40,6 +40,7 @@ public class ItemSlot {
     }
 
     public void listSlotInfo() {
+        System.out.println();
         System.out.println("Item: \t\t" + this.itemOccupy.getItemName());
         System.out.println("Price: \t\t" + this.itemOccupy.getItemPrice());
         System.out.println("Calories: \t" + this.itemOccupy.getItemCalories());
