@@ -1,7 +1,5 @@
 package com.moneybox;
 
-import java.util.*;
-
 public class MoneyBox {
     private int nMoney;
     private int nEarnings;
@@ -33,14 +31,19 @@ public class MoneyBox {
             System.out.println("Money not accepted... \nPlease insert the right denomation...");
     }
 
+    private void setEarnings() {
+        this.nEarnings = 0;
+    }
+
     // TODO:
     public int collectEarnings() {
-        int temp = this.getTotalEarnings();
-        ;
+        int temp = this.nEarnings;
+        this.setEarnings();
         return temp;
     }
 
     public int getTotalEarnings() {
         return this.nEarnings;
     }
+
 }
