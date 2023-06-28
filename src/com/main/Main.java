@@ -2,14 +2,8 @@ package com.main;
 
 import java.util.Scanner;
 
-// import com.item.Item;
-// import com.itemslot.ItemSlot;
 // import com.machineinterface.MachineInterface;
 import com.regularvendingmachine.RegularVendingMachine;
-// import com.item.Item;
-// import com.itemslot.ItemSlot;
-
-import java.util.*;
 
 public class Main {
     public static void main(String[] args) {

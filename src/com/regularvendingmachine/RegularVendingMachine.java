@@ -48,17 +48,13 @@ public class RegularVendingMachine {
                 System.out.println("Item amount exceeded.");
     }
 
-    // public void updateVendingMachine(int itemIndex, int nItemQuantity) {
-    // if(this.vendingSlot.get(itemIndex).getItemAvailability()) {
-
-    // }
-    // }
 
     public int insertPayment(int nAmount) {
         this.vendingMoney.insertMoney(nAmount);
         return nAmount;
     }
 
+    // TODO: should also display inventory before and after transactions
     public void displayTransactions() {
         System.out.println("\nTotal Sold: ");
         for (String item : this.transactions) {
@@ -112,15 +108,5 @@ public class RegularVendingMachine {
     public MoneyBox getMoneyBox() {
         return this.vendingMoney;
     }
-
-    // public Item getItem(String name) {
-    // Item theItem = null;
-    // for (Item item : soemething something) {
-    // if (item.getItemName().equals(name))
-    // theItem = item;
-    // break;
-    // }
-    // return theItem;
-    // }
 
 }
