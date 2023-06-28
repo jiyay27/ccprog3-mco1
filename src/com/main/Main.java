@@ -7,6 +7,7 @@ import com.regularvendingmachine.RegularVendingMachine;
 
 public class Main {
     public static void main(String[] args) {
+
         RegularVendingMachine CVendingMachine = new RegularVendingMachine();
         MachineInterface CMachineInterface = new MachineInterface();
         int nBalance = 0;
