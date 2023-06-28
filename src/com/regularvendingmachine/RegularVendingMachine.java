@@ -49,7 +49,13 @@ public class RegularVendingMachine {
     }
 
     public boolean insertPayment(int nAmount) {
-        return this.vendingMoney.insertMoney(nAmount);
+        if (nAmount == 200 || nAmount == 100 || nAmount == 50
+                || nAmount == 20 || nAmount == 10 || nAmount == 5
+                || nAmount == 1 || nAmount == 0) {
+            this.vendingMoney.insertMoney(nAmount);
+            return true;
+        } else
+            return false;
     }
 
     // TODO: should also display inventory before and after transactions

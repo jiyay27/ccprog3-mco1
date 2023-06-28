@@ -22,15 +22,8 @@ public class MoneyBox {
         this.nEarnings = this.nEarnings + nInput;
     }
 
-    public boolean insertMoney(int nInput) {
-        if (nInput == 200 || nInput == 100 || nInput == 50
-                || nInput == 20 || nInput == 10 || nInput == 5
-                || nInput == 1 || nInput == 0) {
-            addMoney(nInput);
-            return true;
-        } else
-            System.out.println("Money not accepted... \nPlease insert the right denomation...");
-        return false;
+    public void insertMoney(int nInput) {
+        this.addMoney(nInput);
     }
 
     private void setEarnings() {

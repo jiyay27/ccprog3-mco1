@@ -2,6 +2,8 @@ package com.main;
 
 import java.util.Scanner;
 
+import javax.print.attribute.standard.MediaSize.NA;
+
 import com.itemslot.ItemSlot;
 //import com.machineinterface.MachineInterface;
 import com.regularvendingmachine.RegularVendingMachine;
@@ -148,6 +150,9 @@ public class Main {
                                                 nAmount = scan.nextInt();
                                                 if (regularVendingMachine.insertPayment(nAmount))
                                                     initialBalance += nAmount;
+                                                else
+                                                    System.out.println("INVALID BILL.");
+
                                             } while (nAmount != 0);
 
                                             // ! TAKE IN ITEM FOR PURCHASE
