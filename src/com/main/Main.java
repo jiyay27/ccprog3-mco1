@@ -19,18 +19,22 @@ public class Main {
         // for (int i = 0; i < vendingMachine.getVendingSlot().size(); i++)
         vendingMachine.getVendingSlot().get(1).listSlotInfo();
 
-        System.out.println("Balance: ");
+        System.out.println("Balance: " + nBalance);
 
-        System.out.println(vendingMachine.getMoneyBox().getTotalEarnings());
+        System.out.println("Earnings: " + vendingMachine.getMoneyBox().getTotalEarnings());
 
-        nBalance = vendingMachine.insertPayment(50);
+        nBalance = nBalance + vendingMachine.insertPayment(200);
 
-        System.out.println(vendingMachine.getMoneyBox().getTotalEarnings());
+        System.out.println("Balance: " + nBalance);
+
+        System.out.println("Earnings: " + vendingMachine.getMoneyBox().getTotalEarnings());
 
         vendingMachine.calculateChange(nBalance, 1, 5);
 
         vendingMachine.purchaseItem(1, 5);
 
         vendingMachine.getVendingSlot().get(1).listSlotInfo();
+
+        vendingMachine.displayTransactions();
     }
 }
