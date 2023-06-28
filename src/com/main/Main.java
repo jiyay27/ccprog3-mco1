@@ -194,7 +194,7 @@ public class Main {
                                                                     nChoice - 1, nQuantity);
 
                                                             regularVendingMachine.getMoneyBox()
-                                                                    .addEarnings(initialBalance, nChange);
+                                                                    .addEarnings(nChange);
                                                             initialBalance = 0;
                                                             invalidInput = false;
 
@@ -268,6 +268,7 @@ public class Main {
 
                                                 System.out.println("------- ADD NEW ITEM -------");
                                                 System.out.println();
+                                                System.out.println("\nEnter [0] to exit...");
                                                 System.out.print("Enter Name: ");
                                                 newItemName = scan.next();
                                                 if (newItemName == "0") {
@@ -393,7 +394,7 @@ public class Main {
                                                 System.out.println("Total Change: Php "
                                                         + regularVendingMachine.getMoneyBox().getTotalMoney());
                                                 System.out.println();
-                                                System.out.println("Replenish Change [1/0]: ");
+                                                System.out.print("Replenish Change [1/0]: ");
                                                 nChoice = scan.nextInt();
                                                 int nAmount;
                                                 if (nChoice == 1) {
@@ -405,8 +406,11 @@ public class Main {
 
                                             // ! MAINTENANCE SWITCH CASE
                                             case 6:
+                                                System.out.println("------- REPLENISH CHANGE -------");
                                                 System.out.println();
-                                                System.out.println("Total Change: Php ");
+                                                System.out.println("Change in Machine: "
+                                                        + regularVendingMachine.getMoneyBox().getTotalMoney());
+                                                System.out.println();
                                                 break;
 
                                             // ! MAINTENANCE SWITCH CASE

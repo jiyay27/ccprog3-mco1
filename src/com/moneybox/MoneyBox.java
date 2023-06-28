@@ -22,8 +22,8 @@ public class MoneyBox {
         this.nMoney += nInput;
     }
 
-    public void addEarnings(int nInput, int nChange) {
-        this.nEarnings += nInput - nChange;
+    public void addEarnings(int nInput) {
+        this.nEarnings += nInput;
     }
 
     private void resetEarnings() {
