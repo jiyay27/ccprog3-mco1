@@ -48,9 +48,8 @@ public class RegularVendingMachine {
                 System.out.println("Item amount exceeded.");
     }
 
-    public int insertPayment(int nAmount) {
-        this.vendingMoney.insertMoney(nAmount);
-        return nAmount;
+    public boolean insertPayment(int nAmount) {
+        return this.vendingMoney.insertMoney(nAmount);
     }
 
     // TODO: should also display inventory before and after transactions

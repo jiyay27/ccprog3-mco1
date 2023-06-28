@@ -146,10 +146,9 @@ public class Main {
                                             do {
                                                 System.out.print("Insert Amount: ");
                                                 nAmount = scan.nextInt();
-                                                initialBalance += nAmount;
-                                                // System.out.println();
+                                                if (regularVendingMachine.insertPayment(nAmount))
+                                                    initialBalance += nAmount;
                                             } while (nAmount != 0);
-                                            regularVendingMachine.insertPayment(initialBalance);
 
                                             // ! TAKE IN ITEM FOR PURCHASE
                                             System.out.print("\nEnter Item No. [1 - "
