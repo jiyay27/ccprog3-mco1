@@ -117,13 +117,6 @@ public class MachineInterface {
 
     public void testVendingMachine() {
         System.out.println();
-        System.out.println("  TEST A VENDING MACHINE\n");
-        System.out.println("[1] Vending Features");
-        System.out.println("[2] Maintenance Features");
-        System.out.println("[3] Return to Main Menu");
-        System.out.println();
-
-        System.out.println();
         System.out.println("--------------------------------");
         System.out.println("|    TEST A VENDING MACHINE    |");
         System.out.println("|                              |");
@@ -157,10 +150,13 @@ public class MachineInterface {
 
     public void displayVendingFeatures() {
         System.out.println();
-        System.out.println("  VENDING FEATURES\n");
-        System.out.println("[1] Show available items");
-        System.out.println("[2] Purchase an item");
-        System.out.println("[3] Exit Vending Features");
+        System.out.println("--------------------------------");
+        System.out.println("|       VENDING FEATURES       |");
+        System.out.println("|                              |");
+        System.out.println("| [1] Show available items     |");
+        System.out.println("| [2] Purchase an item         |");
+        System.out.println("| [3] Exit Vending Features    |");
+        System.out.println("--------------------------------");
         System.out.println();
 
         System.out.print("Enter choice: ");
@@ -210,13 +206,24 @@ public class MachineInterface {
 
                 System.out.println("Proceed to payment?");
                 System.out.println("[1] Yes");
-                System.out.println("[2] No"); // go back to displayVendingFeatures
+                System.out.println("[2] No\n"); // go back to displayVendingFeatures
 
-                switch (this.nChoice) {
+                System.out.print("Input choice: ");
+                int nProceed = scan.nextInt();
+                System.out.println();
+
+                switch (nProceed) {
                     case 1:
+                        System.out.println("Enter amount to pay (1, 5, 10, 20, 50, 100, 200):");
+                        int nPayment = scan.nextInt();
+                        System.out.println();
+                        regularVendingMachine.calculateChange(nPayment, nItemIndex,
+                                itemBeforePurchase.getItemQuantity());
+                        System.out.println();
                         break;
                     case 2:
                         displayVendingFeatures();
+                        break;
                 }
 
                 this.nChoice = scan.nextInt();
