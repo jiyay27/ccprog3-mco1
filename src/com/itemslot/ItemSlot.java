@@ -3,12 +3,12 @@ package com.itemslot;
 import com.item.Item;
 
 public class ItemSlot {
-    private String slotName;
+    private String strSlotName;
     private Item itemOccupy;
     private int MAX_CAPACITY = 15;
 
-    public ItemSlot(String slotName, Item itemOccupy) {
-        this.slotName = slotName;
+    public ItemSlot(String strSlotName, Item itemOccupy) {
+        this.strSlotName = strSlotName;
         this.itemOccupy = itemOccupy;
     }
 
@@ -32,7 +32,7 @@ public class ItemSlot {
     }
 
     public String getSlotName() {
-        return this.slotName;
+        return this.strSlotName;
     }
 
     public Item getItem() {
