@@ -74,7 +74,7 @@ public class RegularVendingMachine {
 
     // TODO: create logic for sukli T_T
     public void calculateChange(int nPayment, int nItemIndex, int nItemQuantity) {
-        int changeHolder = 0;
+        int nChangeHolder = 0;
         int change200 = 0;
         int change100 = 0;
         int change50 = 0;
@@ -87,18 +87,18 @@ public class RegularVendingMachine {
             System.out.println("Order cancelled...\nNot enough change for transaction.");
         } else if (nItemQuantity <= vendingSlot.get(nItemIndex).getItem().getItemQuantity()) {
             if (nPayment >= vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity)
-                changeHolder = nPayment - vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity;
+                nChangeHolder = nPayment - vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity;
 
-            System.out.println();
-            System.out.println("Change: " + changeHolder);
-            System.out.println("In these denominations:");
-            System.out.println("200 x " + change200);
-            System.out.println("100 x " + change100);
-            System.out.println(" 50 x " + change50);
-            System.out.println(" 20 x " + change20);
-            System.out.println(" 10 x " + change10);
-            System.out.println("  5 x " + change5);
-            System.out.println("  1 x " + change1);
+            // System.out.println();
+            // System.out.println("Change: " + nChangeHolder);
+            // System.out.println("In these denominations:");
+            // System.out.println("200 x " + nChange200);
+            // System.out.println("100 x " + nChange100);
+            // System.out.println(" 50 x " + nChange50);
+            // System.out.println(" 20 x " + nChange20);
+            // System.out.println(" 10 x " + nChange10);
+            // System.out.println(" 5 x " + nChange5);
+            // System.out.println(" 1 x " + nChange1);
         } else
             System.out.println("Payment not enough. Please insert the right amount.");
 

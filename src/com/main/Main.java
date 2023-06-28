@@ -2,7 +2,6 @@ package com.main;
 
 import java.util.Scanner;
 
-import com.item.Item;
 import com.itemslot.ItemSlot;
 //import com.machineinterface.MachineInterface;
 import com.regularvendingmachine.RegularVendingMachine;

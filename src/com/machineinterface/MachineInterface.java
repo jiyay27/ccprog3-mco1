@@ -14,6 +14,8 @@ public class MachineInterface {
     public int displayMainMenu() {
         System.out.println();
         System.out.println("--------------------------------");
+        System.out.println("|    VENDING MACHINE FACTORY   |");
+        System.out.println("--------------------------------");
         System.out.println("|\t    MAIN MENU          |");
         System.out.println("|                              |");
         System.out.println("| [1] Create a Vending Machine |");
@@ -74,7 +76,7 @@ public class MachineInterface {
                 System.out.println("------------------------------------------------------");
                 System.out.println("|    Regular Vending Machine successfully created!   |");
                 System.out.println("------------------------------------------------------");
-                regularVendingMachine = new RegularVendingMachine();
+                this.regularVendingMachine = new RegularVendingMachine();
 
                 System.out.println();
 
@@ -152,10 +154,10 @@ public class MachineInterface {
                 for (ItemSlot slot : regularVendingMachine.getVendingSlot()) {
 
                     // System.out.println("Slot Name: " + slotName);
-                    System.out.println("Item Name: " + item.getItemName());
-                    System.out.println("Item Price: " + item.getItemPrice());
-                    System.out.println("Item Calories: " + item.getItemCalories());
-                    System.out.println("Item Quantity: " + item.getItemQuantity());
+                    // System.out.println("Item Name: " + item.getItemName());
+                    // System.out.println("Item Price: " + item.getItemPrice());
+                    // System.out.println("Item Calories: " + item.getItemCalories());
+                    // System.out.println("Item Quantity: " + item.getItemQuantity());
                     System.out.println("--------------------------");
                 }
                 System.out.println();
@@ -176,11 +178,12 @@ public class MachineInterface {
 
                 Item itemAfterPurchase = regularVendingMachine.getVendingSlot().get(nItemIndex).getItem();
 
-                // print purchased item details
-                System.out.println("-------------------------------------");
-                System.out.println("Item Purchased: " + itemAfterPurchase.getItemName());
-                System.out.println("Quantity Before Purchase: " + itemBeforePurchase.getItemQuantity());
-                System.out.println("Quantity After Purchase: " + (itemAfterPurchase.getItemQuantity() - nItemQuantity));
+                // print selected item details
+                System.out.println("------------ITEM SUMMARY-------------");
+                System.out.println("Item: \t\t" + itemAfterPurchase.getItemName());
+                System.out.println("Price: \t\t" + itemAfterPurchase.getItemPrice());
+                System.out.println("Calories: \t" + itemAfterPurchase.getItemCalories());
+                System.out.println("Quantity: \t" + nItemQuantity);
                 System.out.println("-------------------------------------");
                 System.out.println();
 
@@ -196,10 +199,16 @@ public class MachineInterface {
                     case 1:
                         System.out.println("Enter amount to pay (1, 5, 10, 20, 50, 100, 200):");
                         int nPayment = scan.nextInt();
+                        scan.close();
                         System.out.println();
+                        regularVendingMachine.insertPayment(nPayment);
                         regularVendingMachine.calculateChange(nPayment, nItemIndex,
                                 itemBeforePurchase.getItemQuantity());
                         System.out.println();
+                        System.out.println("------------------------");
+                        System.out.println("|  Purchase Complete!  |");
+                        System.out.println("------------------------\n");
+                        System.exit(0);
                         break;
                     case 2:
                         displayVendingFeatures();
