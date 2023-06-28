@@ -127,7 +127,7 @@ public class Main {
                                         case 1:
                                             for (ItemSlot slot : regularVendingMachine.getVendingSlot()) {
                                                 System.out.println(
-                                                        "--------------- " + slot.getslotIndex()
+                                                        "--------------- " + slot.getSlotIndex()
                                                                 + " ---------------\n");
                                                 System.out.println("Item Name: \t" + slot.getItem().getItemName());
                                                 System.out.println("Item Price: \t" + slot.getItem().getItemPrice());
@@ -204,7 +204,7 @@ public class Main {
                                         case 2:
                                             for (ItemSlot slot : regularVendingMachine.getVendingSlot()) {
                                                 System.out.println(
-                                                        "----------------" + slot.getslotIndex() + "----------------");
+                                                        "----------------" + slot.getSlotIndex() + "----------------");
                                                 System.out.println("Item Name: \t" + slot.getItem().getItemName());
                                                 System.out.println("Item Price: \t" + slot.getItem().getItemPrice());
                                                 System.out.println(
