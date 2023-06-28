@@ -406,11 +406,9 @@ public class Main {
 
                                             // ! MAINTENANCE SWITCH CASE
                                             case 6:
-                                                System.out.println("------- REPLENISH CHANGE -------");
+                                                System.out.println("------- TRANSACTIONS -------");
                                                 System.out.println();
-                                                System.out.println("Change in Machine: "
-                                                        + regularVendingMachine.getMoneyBox().getTotalMoney());
-                                                System.out.println();
+                                                regularVendingMachine.displayTransactions();
                                                 break;
 
                                             // ! MAINTENANCE SWITCH CASE

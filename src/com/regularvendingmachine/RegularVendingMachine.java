@@ -67,7 +67,7 @@ public class RegularVendingMachine {
 
     // TODO: should also display inventory before and after transactions
     public void displayTransactions() {
-        System.out.println("\nTotal Sold: ");
+        System.out.println("\n\tTotal Sold");
         for (String item : this.transactions) {
             System.out.println(item);
         }
