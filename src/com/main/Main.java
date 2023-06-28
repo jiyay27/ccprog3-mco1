@@ -178,6 +178,7 @@ public class Main {
 
                                                         regularVendingMachine.calculateChange(initialBalance,
                                                                 nChoice - 1, nQuantity);
+
                                                         initialBalance = 0;
                                                         invalidInput = false;
 
@@ -214,24 +215,59 @@ public class Main {
                                             break;
                                         // ! VENDING FEATURES SWITCH CASE
                                         case 3:
-                                            bFlag = 3;
+                                            bFlag = 1;
                                             break;
                                         default:
                                             System.out.println("\t!! INVALID INPUT !!");
                                     }
-                                } while (bFlag != 3);
+                                } while (bFlag != 1);
                                 break;
                             // ! TEST VENDING MACHINE SWITCH CASE
                             case 2:
+                                do {
+                                    System.out.println();
+                                    System.out.println("--------------------------------");
+                                    System.out.println("|          MAINTENANCE         |");
+                                    System.out.println("|                              |");
+                                    System.out.println("| [1] Stock New Items          |");
+                                    System.out.println("| [2] Restock Items            |");
+                                    System.out.println("| [3] Set Item Prices          |");
+                                    System.out.println("| [4] Collect Earnings         |");
+                                    System.out.println("| [5] Replenish Change         |");
+                                    System.out.println("| [6] Exit Maintenance         |");
+                                    System.out.println("--------------------------------");
+                                    System.out.println();
+
+                                    System.out.print("Enter choice: ");
+                                    nChoice = scan.nextInt();
+                                    System.out.println();
+                                    System.out.println();
+                                    switch (nChoice) {
+                                        case 1:
+                                            break;
+                                        case 2:
+                                            break;
+                                        case 3:
+                                            break;
+                                        case 4:
+                                            break;
+                                        case 5:
+                                            break;
+                                        case 6:
+                                            break;
+                                        case 7:
+                                            break;
+                                    }
+                                } while (bFlag != 3);
                                 break;
                             // ! TEST VENDING MACHINE SWITCH CASE
                             case 3:
-                                bFlag = 3;
+                                bFlag = 1;
                                 break;
                             default:
                                 System.out.println("\t!! INVALID INPUT !!");
                         }
-                    } while (bFlag != 3);
+                    } while (bFlag != 1);
                     break;
                 // ! MAIN MENU SWITCH CASE
                 case 3:

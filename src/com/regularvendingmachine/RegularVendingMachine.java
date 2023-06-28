@@ -77,40 +77,27 @@ public class RegularVendingMachine {
         System.out.println("--------------------------");
     }
 
-    // TODO: create logic for sukli T_T
     public void calculateChange(int nPayment, int nItemIndex, int nItemQuantity) {
-        int nChangeHolder = 0;
-        int change200 = 0;
-        int change100 = 0;
-        int change50 = 0;
-        int change20 = 0;
-        int change10 = 0;
-        int change5 = 0;
-        int change1 = 0;
+        int nChange = nPayment - (this.vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
+        int nFullChange = nPayment - (this.vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
+        int[] arrDenominations = this.vendingMoney.getDenominations();
+        int[] arrCount = { 0, 0, 0, 0, 0, 0, 0 };
+        for (int i = 0; i < arrDenominations.length; i++) {
+            while (nChange >= arrDenominations[i]) {
+                arrCount[i]++;
+                nChange -= arrDenominations[i];
+            }
 
-        if (vendingMoney.isEmpty()) {
-            System.out.println("Order cancelled...\nNot enough change for transaction.");
-        } else if (nItemQuantity <= vendingSlot.get(nItemIndex).getItem().getItemQuantity()) {
-            if (nPayment >= vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity)
-                nChangeHolder = nPayment - vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity;
-
-            // System.out.println();
-            // System.out.println("Change: " + nChangeHolder);
-            // System.out.println("In these denominations:");
-            // System.out.println("200 x " + nChange200);
-            // System.out.println("100 x " + nChange100);
-            // System.out.println(" 50 x " + nChange50);
-            // System.out.println(" 20 x " + nChange20);
-            // System.out.println(" 10 x " + nChange10);
-            // System.out.println(" 5 x " + nChange5);
-            // System.out.println(" 1 x " + nChange1);
-        } else
-            System.out.println("Payment not enough. Please insert the right amount.");
-
+        }
+        System.out.println();
+        System.out.println("Change: " + nFullChange);
+        System.out.println("In these denominations:");
+        for (int i = 0; i < arrDenominations.length; i++)
+            System.out.println(arrDenominations[i] + " x " + arrCount[i]);
     }
 
     public void replenishChange(int nAmount) {
-        this.vendingMoney.addMoney(nAmount);
+        this.vendingMoney.addChange(nAmount);
     }
 
     public void getEarnings() {
