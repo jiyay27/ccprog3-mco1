@@ -13,10 +13,13 @@ public class MachineInterface {
 
     public int displayMainMenu() {
         System.out.println();
-        System.out.println("\t  MAIN MENU\n");
-        System.out.println("[1] Create a Vending Machine");
-        System.out.println("[2] Test a Vending Machine");
-        System.out.println("[3] Exit");
+        System.out.println("--------------------------------");
+        System.out.println("|\t    MAIN MENU          |");
+        System.out.println("|                              |");
+        System.out.println("| [1] Create a Vending Machine |");
+        System.out.println("| [2] Test a Vending Machine   |");
+        System.out.println("| [3] Exit                     |");
+        System.out.println("--------------------------------");
         System.out.println();
 
         System.out.print("Enter choice: ");
@@ -44,15 +47,21 @@ public class MachineInterface {
 
     public void createVendingMachine() {
         if (regularVendingMachine != null) {
-            System.out.println("A vending machine has been created already");
+            System.out.println("------------------------------------------------------");
+            System.out.println("| !!! A vending machine has been created already !!! |");
+            System.out.println("------------------------------------------------------");
+
             displayMainMenu();
         }
 
         System.out.println();
-        System.out.println("  CREATE A VENDING MACHINE\n");
-        System.out.println("[1] Regular Vending Machine");
-        System.out.println("[2] Special Vending Machine");
-        System.out.println("[3] Return to Main Menu");
+        System.out.println("--------------------------------");
+        System.out.println("|   CREATE A VENDING MACHINE   |");
+        System.out.println("|                              |");
+        System.out.println("| [1] Regular Vending Machine  |");
+        System.out.println("| [2] Special Vending Machine  |");
+        System.out.println("| [3] Return to Main Menu      |");
+        System.out.println("--------------------------------");
         System.out.println();
 
         System.out.print("Enter choice: ");
@@ -114,6 +123,16 @@ public class MachineInterface {
         System.out.println("[3] Return to Main Menu");
         System.out.println();
 
+        System.out.println();
+        System.out.println("--------------------------------");
+        System.out.println("|    TEST A VENDING MACHINE    |");
+        System.out.println("|                              |");
+        System.out.println("| [1] Vending Features         |");
+        System.out.println("| [2] Maintenance Features     |");
+        System.out.println("| [3] Return to Main Menu      |");
+        System.out.println("--------------------------------");
+        System.out.println();
+
         System.out.print("Enter choice: ");
         nChoice = scan.nextInt();
         System.out.println();
@@ -151,6 +170,7 @@ public class MachineInterface {
 
         switch (this.nChoice) {
             case 1:
+                System.out.println("--------------------------");
                 for (ItemSlot slot : regularVendingMachine.getVendingSlot()) {
                     Item item = slot.getItem();
                     String slotName = slot.getSlotName();
@@ -189,7 +209,17 @@ public class MachineInterface {
                 System.out.println();
 
                 System.out.println("Proceed to payment?");
-                
+                System.out.println("[1] Yes");
+                System.out.println("[2] No"); // go back to displayVendingFeatures
+
+                switch (this.nChoice) {
+                    case 1:
+                        break;
+                    case 2:
+                        displayVendingFeatures();
+                }
+
+                this.nChoice = scan.nextInt();
 
                 scan.close();
                 break;
