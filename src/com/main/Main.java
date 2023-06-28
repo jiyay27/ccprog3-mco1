@@ -13,17 +13,21 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        int nBalance = 0;
         RegularVendingMachine vendingMachine = new RegularVendingMachine();
-
+        int nBalance = 0;
         vendingMachine.setupVendingMachine();
+        // for (int i = 0; i < vendingMachine.getVendingSlot().size(); i++)
         vendingMachine.getVendingSlot().get(1).listSlotInfo();
 
-        System.out.println("Balance: " + nBalance);
+        System.out.println("Balance: ");
 
-        nBalance = vendingMachine.insertPayment(100);
+        System.out.println(vendingMachine.getMoneyBox().getTotalEarnings());
 
-        vendingMachine.calculateChange(nBalance);
+        nBalance = vendingMachine.insertPayment(50);
+
+        System.out.println(vendingMachine.getMoneyBox().getTotalEarnings());
+
+        vendingMachine.calculateChange(nBalance, 1, 5);
 
         vendingMachine.purchaseItem(1, 5);
 

@@ -61,12 +61,63 @@ public class RegularVendingMachine {
     }
 
     // TODO: create logic for sukli
-    public void calculateChange(int payment) {
+    public void calculateChange(int payment, int itemIndex, int nItemQuantity) {
+        int changeHolder = 0;
+        int change = 0;
+        int change200 = 0;
+        int change100 = 0;
+        int change50 = 0;
+        int change20 = 0;
+        int change10 = 0;
+        int change5 = 0;
+        int change1 = 0;
+
         if (vendingMoney.isEmpty()) {
             System.out.println("Order cancelled...\nNot enough change for transaction.");
-        } else {
-            // if ()
-        }
+        } else if (nItemQuantity <= vendingSlot.get(itemIndex).getItem().getItemQuantity()) {
+            if (payment >= vendingSlot.get(itemIndex).getItem().getItemPrice() * nItemQuantity)
+                changeHolder = payment - vendingSlot.get(itemIndex).getItem().getItemPrice() * nItemQuantity;
+            change = changeHolder;
+            if (change >= 200) {
+                change200 = changeHolder / 200;
+                change -= change200 * 200;
+            }
+            if (change >= 100) {
+                change100 = changeHolder / 100;
+                change -= change100 * 100;
+            }
+            if (change >= 50) {
+                change50 = changeHolder / 50;
+                change -= change50 * 50;
+            }
+            if (change >= 20) {
+                change20 = changeHolder / 20;
+                change -= change20 * 20;
+            }
+            if (change >= 10) {
+                change10 = changeHolder / 10;
+                change -= change10 * 10;
+            }
+            if (change >= 5) {
+                change5 = changeHolder / 5;
+                change -= change5 * 5;
+            }
+            if (change >= 1) {
+                change1 = changeHolder / 1;
+                change -= change1;
+            }
+            System.out.println("Change: " + changeHolder);
+            System.out.println("In these denominations:");
+            System.out.println("200 x " + change200);
+            System.out.println("100 x " + change100);
+            System.out.println("50 x " + change50);
+            System.out.println("20 x " + change20);
+            System.out.println("10 x " + change10);
+            System.out.println("5 x " + change5);
+            System.out.println("1 x " + change1);
+        } else
+            System.out.println("Payment not enough. Please insert the right amount.");
+
     }
 
     public void replenishChange(int nAmount) {
@@ -79,6 +130,10 @@ public class RegularVendingMachine {
 
     public ArrayList<ItemSlot> getVendingSlot() {
         return this.vendingSlot;
+    }
+
+    public MoneyBox getMoneyBox() {
+        return this.vendingMoney;
     }
 
     // public Item getItem(String name) {

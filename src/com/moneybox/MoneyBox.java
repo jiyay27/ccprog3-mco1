@@ -3,39 +3,25 @@ package com.moneybox;
 import java.util.*;
 
 public class MoneyBox {
-    private ArrayList<Integer> nMoneyBox;
-    private ArrayList<Integer> nEarnings;
+    private int nMoney;
+    private int nEarnings;
 
     public MoneyBox() {
-        this.nMoneyBox = new ArrayList<Integer>();
-        this.nEarnings = new ArrayList<Integer>();
-
-        for (int i = 0; i < 10; i++) {
-            this.nMoneyBox.add(200);
-            this.nMoneyBox.add(100);
-        }
-        for (int i = 0; i < 30; i++) {
-            this.nMoneyBox.add(50);
-            this.nMoneyBox.add(20);
-        }
-        for (int i = 0; i < 30; i++) {
-            this.nMoneyBox.add(10);
-            this.nMoneyBox.add(5);
-            this.nMoneyBox.add(1);
-        }
+        this.nMoney = 1000;
+        this.nEarnings = 0;
     }
 
     public boolean isEmpty() {
         boolean isEmpty = true;
-        if (this.nMoneyBox.size() == 0)
+        if (this.nMoney == 0)
             return isEmpty;
         else
             return !isEmpty;
     }
 
-    private void addMoney(int nValue) {
-        this.nMoneyBox.add(nValue);
-        this.nEarnings.add(nValue);
+    private void addMoney(int nInput) {
+        this.nMoney = this.nMoney + nInput;
+        this.nEarnings = this.nEarnings + nInput;
     }
 
     public void insertMoney(int nInput) {
@@ -50,15 +36,11 @@ public class MoneyBox {
     // TODO:
     public int collectEarnings() {
         int temp = this.getTotalEarnings();
-        this.nEarnings.removeAll(this.nEarnings);
+        ;
         return temp;
     }
 
     public int getTotalEarnings() {
-        int nTotal = 0;
-        for (Integer money : this.nEarnings) {
-            nTotal += money;
-        }
-        return nTotal;
+        return this.nEarnings;
     }
 }
