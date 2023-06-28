@@ -20,25 +20,28 @@ public class MoneyBox {
 
     public void addMoney(int nInput) {
         this.nMoney += nInput;
-        this.nEarnings += nInput;
     }
 
-    public void addChange(int nInput) {
-        this.nMoney += nInput;
+    public void addEarnings(int nInput, int nChange) {
+        this.nEarnings += nInput - nChange;
     }
 
-    private void setEarnings() {
+    private void resetEarnings() {
         this.nEarnings = 0;
     }
 
     public int collectEarnings() {
         int temp = this.nEarnings;
-        this.setEarnings();
+        this.resetEarnings();
         return temp;
     }
 
     public int getTotalEarnings() {
         return this.nEarnings;
+    }
+
+    public int getTotalMoney() {
+        return this.nMoney;
     }
 
     public int[] getDenominations() {

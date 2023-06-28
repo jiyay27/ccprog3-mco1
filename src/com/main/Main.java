@@ -189,9 +189,12 @@ public class Main {
                                                             regularVendingMachine.purchaseItem(nChoice - 1, nQuantity);
                                                             System.out.println("Item successfully purchased.");
 
-                                                            regularVendingMachine.calculateChange(initialBalance,
+                                                            int nChange = regularVendingMachine.calculateChange(
+                                                                    initialBalance,
                                                                     nChoice - 1, nQuantity);
 
+                                                            regularVendingMachine.getMoneyBox()
+                                                                    .addEarnings(initialBalance, nChange);
                                                             initialBalance = 0;
                                                             invalidInput = false;
 
@@ -246,7 +249,8 @@ public class Main {
                                         System.out.println("| [3] Set Item Prices          |");
                                         System.out.println("| [4] Collect Earnings         |");
                                         System.out.println("| [5] Replenish Change         |");
-                                        System.out.println("| [6] Exit Maintenance         |");
+                                        System.out.println("| [6] Display Transactions     |");
+                                        System.out.println("| [7] Exit Maintenance         |");
                                         System.out.println("--------------------------------");
                                         System.out.println();
 
@@ -266,29 +270,31 @@ public class Main {
                                                 System.out.println();
                                                 System.out.print("Enter Name: ");
                                                 newItemName = scan.next();
+                                                if (newItemName == "0") {
+                                                    System.out.print("Enter Price: ");
+                                                    newItemPrice = scan.nextInt();
 
-                                                System.out.print("Enter Price: ");
-                                                newItemPrice = scan.nextInt();
+                                                    System.out.print("Enter Calories: ");
+                                                    newItemCalories = scan.nextInt();
 
-                                                System.out.print("Enter Calories: ");
-                                                newItemCalories = scan.nextInt();
-
-                                                do {
-                                                    System.out.print("Enter Quantity: ");
-                                                    newItemQuantity = scan.nextInt();
-                                                    if (regularVendingMachine.findItem(newItemName) == false
-                                                            && newItemQuantity <= 15) {
-                                                        regularVendingMachine.getVendingSlot()
-                                                                .add(new ItemSlot(
-                                                                        regularVendingMachine.getVendingSlot().size(),
-                                                                        new Item(newItemName, newItemPrice,
-                                                                                newItemCalories,
-                                                                                newItemQuantity)));
-                                                        System.out.print("\nNew Item Added!");
-                                                    } else
-                                                        System.out.println(
-                                                                "\nItem Capacity Exceed.\nMAX CAPACITY - 15\n");
-                                                } while (newItemQuantity > 15);
+                                                    do {
+                                                        System.out.print("Enter Quantity: ");
+                                                        newItemQuantity = scan.nextInt();
+                                                        if (regularVendingMachine.findItem(newItemName) == false
+                                                                && newItemQuantity <= 15) {
+                                                            regularVendingMachine.getVendingSlot()
+                                                                    .add(new ItemSlot(
+                                                                            regularVendingMachine.getVendingSlot()
+                                                                                    .size(),
+                                                                            new Item(newItemName, newItemPrice,
+                                                                                    newItemCalories,
+                                                                                    newItemQuantity)));
+                                                            System.out.print("\nNew Item Added!");
+                                                        } else
+                                                            System.out.println(
+                                                                    "\nItem Capacity Exceed.\nMAX CAPACITY - 15\n");
+                                                    } while (newItemQuantity > 15);
+                                                }
                                                 break;
 
                                             // ! MAINTENANCE SWITCH CASE
@@ -364,6 +370,8 @@ public class Main {
                                                 System.out.println(
                                                         "Total: " + regularVendingMachine.getMoneyBox()
                                                                 .getTotalEarnings());
+                                                int initialEarnings = regularVendingMachine.getMoneyBox()
+                                                        .getTotalEarnings();
 
                                                 System.out.print("\n");
                                                 System.out.print("Collect Earnings [1/0]: ");
@@ -371,7 +379,7 @@ public class Main {
                                                 if (nChoice == 1) {
                                                     regularVendingMachine.getMoneyBox().collectEarnings();
                                                     System.out.println("\nPhp "
-                                                            + regularVendingMachine.getMoneyBox().getTotalEarnings()
+                                                            + initialEarnings
                                                             + " collected from earnings...");
                                                 } else
                                                     System.out.println("\nCollection cancelled...");
@@ -380,10 +388,31 @@ public class Main {
 
                                             // ! MAINTENANCE SWITCH CASE
                                             case 5:
+                                                System.out.println("------- REPLENISH CHANGE -------");
+                                                System.out.println();
+                                                System.out.println("Total Change: Php "
+                                                        + regularVendingMachine.getMoneyBox().getTotalMoney());
+                                                System.out.println();
+                                                System.out.println("Replenish Change [1/0]: ");
+                                                nChoice = scan.nextInt();
+                                                int nAmount;
+                                                if (nChoice == 1) {
+                                                    nAmount = scan.nextInt();
+                                                    regularVendingMachine.getMoneyBox().addMoney(nAmount);
+                                                } else
+                                                    System.out.println("\nReplenish cancelled...\n");
                                                 break;
 
                                             // ! MAINTENANCE SWITCH CASE
                                             case 6:
+                                                System.out.println("------- TRANSACTIONS -------");
+                                                System.out.println();
+                                                System.out.println();
+                                                regularVendingMachine.displayTransactions();
+                                                break;
+
+                                            // ! MAINTENANCE SWITCH CASE
+                                            case 7:
                                                 bFlag = 3;
                                                 break;
 

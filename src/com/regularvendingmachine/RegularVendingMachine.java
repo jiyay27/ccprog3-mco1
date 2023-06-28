@@ -84,7 +84,7 @@ public class RegularVendingMachine {
         System.out.println("--------------------------");
     }
 
-    public void calculateChange(int nPayment, int nItemIndex, int nItemQuantity) {
+    public int calculateChange(int nPayment, int nItemIndex, int nItemQuantity) {
         int nChange = nPayment - (this.vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
         int nFullChange = nPayment - (this.vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
         int[] arrDenominations = this.vendingMoney.getDenominations();
@@ -101,10 +101,12 @@ public class RegularVendingMachine {
         System.out.println("In these denominations:");
         for (int i = 0; i < arrDenominations.length; i++)
             System.out.println(arrDenominations[i] + " x " + arrCount[i]);
+
+        return nFullChange;
     }
 
     public void replenishChange(int nAmount) {
-        this.vendingMoney.addChange(nAmount);
+        this.vendingMoney.addMoney(nAmount);
     }
 
     public void getEarnings() {
