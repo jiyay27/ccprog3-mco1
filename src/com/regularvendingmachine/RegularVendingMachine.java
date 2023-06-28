@@ -17,22 +17,22 @@ public class RegularVendingMachine {
     }
 
     public void setupVendingMachine() {
-        vendingSlot.add(new ItemSlot("Garlic Rice Slot",
+        vendingSlot.add(new ItemSlot(1,
                 new Item("Garlic Fried Rice", 25, 366, 15)));
         vendingSlot
-                .add(new ItemSlot("Fried Egg Slot", new Item("Fried Egg", 15, 92, 15)));
+                .add(new ItemSlot(2, new Item("Fried Egg", 15, 92, 15)));
         vendingSlot
-                .add(new ItemSlot("Beef Tapa Slot", new Item("Beef Tapa", 40, 120, 10)));
+                .add(new ItemSlot(3, new Item("Beef Tapa", 40, 120, 10)));
         vendingSlot
-                .add(new ItemSlot("Longganisa Slot", new Item("Longganisa", 30, 136, 15)));
+                .add(new ItemSlot(4, new Item("Longganisa", 30, 136, 15)));
         vendingSlot
-                .add(new ItemSlot("Tocino Slot", new Item("Tocino", 30, 230, 15)));
+                .add(new ItemSlot(5, new Item("Tocino", 30, 230, 15)));
         vendingSlot
-                .add(new ItemSlot("Hotdog Slot", new Item("Hotdog", 20, 247, 15)));
+                .add(new ItemSlot(6, new Item("Hotdog", 20, 247, 15)));
         vendingSlot
-                .add(new ItemSlot("Shanghai Slot", new Item("Lumpiang Shanghai", 35, 215, 15)));
+                .add(new ItemSlot(7, new Item("Lumpiang Shanghai", 35, 215, 15)));
         vendingSlot
-                .add(new ItemSlot("Bangus Slot", new Item("Bangus", 30, 178, 15)));
+                .add(new ItemSlot(8, new Item("Bangus", 30, 178, 15)));
     }
 
     // meow
@@ -62,10 +62,19 @@ public class RegularVendingMachine {
         System.out.println();
     }
 
+    public void displayToPurchase(int nItemIndex, int nItemQuantity) {
+        System.out.println("\n--------------------------");
+        System.out.println("Item Name: \t\t" + this.vendingSlot.get(nItemIndex).getItem().getItemName());
+        System.out
+                .println("Total Price: \t\t"
+                        + this.vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
+        System.out.println("Total Quantity: \t" + nItemQuantity);
+        System.out.println("--------------------------");
+    }
+
     // TODO: create logic for sukli T_T
     public void calculateChange(int nPayment, int nItemIndex, int nItemQuantity) {
         int changeHolder = 0;
-        int change = 0;
         int change200 = 0;
         int change100 = 0;
         int change50 = 0;

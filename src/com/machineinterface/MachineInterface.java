@@ -76,24 +76,6 @@ public class MachineInterface {
                 System.out.println("------------------------------------------------------");
                 regularVendingMachine = new RegularVendingMachine();
 
-                regularVendingMachine.getVendingSlot()
-                        .add(new ItemSlot("Garlic Rice Slot",
-                                new Item("Garlic Fried Rice", 25, 366, 15)));
-                regularVendingMachine.getVendingSlot()
-                        .add(new ItemSlot("Fried Egg Slot", new Item("Fried Egg", 15, 92, 15)));
-                regularVendingMachine.getVendingSlot()
-                        .add(new ItemSlot("Beef Tapa Slot", new Item("Beef Tapa", 40, 120, 10)));
-                regularVendingMachine.getVendingSlot()
-                        .add(new ItemSlot("Longganisa Slot", new Item("Longganisa", 30, 136, 15)));
-                regularVendingMachine.getVendingSlot()
-                        .add(new ItemSlot("Tocino Slot", new Item("Tocino", 30, 230, 15)));
-                regularVendingMachine.getVendingSlot()
-                        .add(new ItemSlot("Hotdog Slot", new Item("Hotdog", 20, 247, 15)));
-                regularVendingMachine.getVendingSlot()
-                        .add(new ItemSlot("Shanghai Slot", new Item("Lumpiang Shanghai", 35, 215, 15)));
-                regularVendingMachine.getVendingSlot()
-                        .add(new ItemSlot("Bangus Slot", new Item("Bangus", 30, 178, 15)));
-
                 System.out.println();
 
                 displayMainMenu();
@@ -168,10 +150,8 @@ public class MachineInterface {
             case 1:
                 System.out.println("--------------------------");
                 for (ItemSlot slot : regularVendingMachine.getVendingSlot()) {
-                    Item item = slot.getItem();
-                    String slotName = slot.getSlotName();
 
-                    System.out.println("Slot Name: " + slotName);
+                    // System.out.println("Slot Name: " + slotName);
                     System.out.println("Item Name: " + item.getItemName());
                     System.out.println("Item Price: " + item.getItemPrice());
                     System.out.println("Item Calories: " + item.getItemCalories());
