@@ -48,6 +48,13 @@ public class RegularVendingMachine {
                 System.out.println("Item amount exceeded.");
     }
 
+    public boolean findItem(String name) {
+        for (int i = 0; i < this.vendingSlot.size(); i++)
+            if (name == this.vendingSlot.get(i).getItem().getItemName())
+                return true;
+        return false;
+    }
+
     public boolean insertPayment(int nAmount) {
         if (nAmount == 200 || nAmount == 100 || nAmount == 50
                 || nAmount == 20 || nAmount == 10 || nAmount == 5

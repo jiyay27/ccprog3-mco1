@@ -5,7 +5,6 @@ import com.item.Item;
 public class ItemSlot {
     private int slotIndex;
     private Item itemOccupy;
-    private int MAX_CAPACITY = 15;
 
     public ItemSlot(int slotIndex, Item itemOccupy) {
         this.slotIndex = slotIndex;
@@ -14,14 +13,6 @@ public class ItemSlot {
 
     public void setItem(Item itemOccupy) {
         this.itemOccupy = itemOccupy;
-    }
-
-    public void restockItem(int nQuantity) {
-        if (this.itemOccupy.getItemQuantity() < MAX_CAPACITY)
-            if (nQuantity <= MAX_CAPACITY - this.itemOccupy.getItemQuantity())
-                this.itemOccupy.setItemQuantity(this.itemOccupy.getItemQuantity() + nQuantity);
-            else
-                System.out.println("ERROR: Item slot full!");
     }
 
     public boolean getItemAvailability() {

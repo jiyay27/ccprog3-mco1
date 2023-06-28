@@ -34,6 +34,18 @@ public class Item {
         this.nItemQuantity = nItemQuantity;
     }
 
+    public boolean canRestock(int nQuantity) {
+        if (this.getItemQuantity() < 15)
+            if (nQuantity <= 15 - this.getItemQuantity()) {
+                return true;
+            }
+        return false;
+    }
+
+    public void restockItem(int nQuantity) {
+        this.setItemQuantity(this.getItemQuantity() + nQuantity);
+    }
+
     public String getItemName() {
         return this.strItemName;
     }
