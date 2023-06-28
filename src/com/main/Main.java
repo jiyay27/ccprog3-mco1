@@ -127,16 +127,17 @@ public class Main {
                                         case 1:
                                             for (ItemSlot slot : regularVendingMachine.getVendingSlot()) {
                                                 System.out.println(
-                                                        "-------------" + slot.getslotIndex() + "------------");
+                                                        "--------------- " + slot.getslotIndex()
+                                                                + " ---------------\n");
                                                 System.out.println("Item Name: \t" + slot.getItem().getItemName());
                                                 System.out.println("Item Price: \t" + slot.getItem().getItemPrice());
                                                 System.out.println(
                                                         "Item Calories: \t" + slot.getItem().getItemCalories());
                                                 System.out.println(
                                                         "Item Quantity: \t" + slot.getItem().getItemQuantity());
-
+                                                System.out.println();
                                             }
-                                            System.out.println("--------------------------");
+                                            System.out.println("---------------------------------");
                                             System.out.println(
                                                     "\nMachine only accepts denominations of 200, 100, 50, 20, 10, 5, 1");
                                             System.out.println("Enter [0] to finish inserting Money...\n");
@@ -203,7 +204,7 @@ public class Main {
                                         case 2:
                                             for (ItemSlot slot : regularVendingMachine.getVendingSlot()) {
                                                 System.out.println(
-                                                        "-------------" + slot.getslotIndex() + "------------");
+                                                        "----------------" + slot.getslotIndex() + "----------------");
                                                 System.out.println("Item Name: \t" + slot.getItem().getItemName());
                                                 System.out.println("Item Price: \t" + slot.getItem().getItemPrice());
                                                 System.out.println(
