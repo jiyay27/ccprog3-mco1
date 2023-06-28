@@ -19,7 +19,7 @@ public class ItemSlot {
     public void restockItem(int nQuantity) {
         if (this.itemOccupy.getItemQuantity() < MAX_CAPACITY)
             if (nQuantity <= MAX_CAPACITY - this.itemOccupy.getItemQuantity())
-                this.itemOccupy.setItemPrice(this.itemOccupy.getItemQuantity() + nQuantity);
+                this.itemOccupy.setItemQuantity(this.itemOccupy.getItemQuantity() + nQuantity);
             else
                 System.out.println("ERROR: Item slot full!");
     }
