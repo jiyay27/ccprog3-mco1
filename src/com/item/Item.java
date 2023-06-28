@@ -14,7 +14,7 @@ public class Item {
     }
 
     private boolean isAllowSell(int nItemSold) {
-        if (nItemSold <= this.nItemPrice)
+        if (nItemSold <= this.nItemQuantity)
             return true;
         else
             return false;
