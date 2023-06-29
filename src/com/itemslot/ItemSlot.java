@@ -6,6 +6,12 @@ public class ItemSlot {
     private int nSlotIndex;
     private Item itemOccupy;
 
+    /** 
+        checks if the item is still available to be sold
+        
+        @param nItemSold number of item/s to be checked
+        @return true if the item sold is less than the quantity provided and otherwise false
+    */
     public ItemSlot(int nSlotIndex, Item itemOccupy) {
         this.nSlotIndex = nSlotIndex;
         this.itemOccupy = itemOccupy;
