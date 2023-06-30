@@ -9,7 +9,7 @@ public class Item {
     private int nItemQuantity;
 
     /**
-     * This is the item constructor
+     * This is the Item constructor
      * 
      * @param strItemName name
      * @param nItemPrice price

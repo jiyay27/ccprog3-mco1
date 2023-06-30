@@ -24,7 +24,6 @@ public class Main {
         int initialBalance = 0;
         RegularVendingMachine regularVendingMachine = null;
         Scanner scan = new Scanner(System.in);
-        // MachineInterface CMachineInterface = new MachineInterface();
 
         // ! MAIN MENU LOOP
         do {
