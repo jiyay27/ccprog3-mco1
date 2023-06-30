@@ -6,7 +6,8 @@ import com.item.Item;
 import com.itemslot.ItemSlot;
 
 /**
- * This is <code>RegularVendingMachine</code> class which represents the regular vending machine object of the machine
+ * This is <code>RegularVendingMachine</code> class which represents the regular
+ * vending machine object of the machine
  */
 public class RegularVendingMachine {
     private ArrayList<ItemSlot> vendingSlot;
@@ -23,7 +24,7 @@ public class RegularVendingMachine {
     }
 
     /**
-     * Sets up the vending machine by adding item slots 
+     * Sets up the vending machine by adding item slots
      */
     public void setupVendingMachine() {
         vendingSlot
@@ -48,7 +49,7 @@ public class RegularVendingMachine {
      * Enables the user to purchase availabale items in the vending machine
      * as well as updates the nec
      * 
-     * @param nItemIndex represents the index of an item
+     * @param nItemIndex    represents the index of an item
      * @param nItemQuantity represents the quatity of an item
      */
     public void purchaseItem(int nItemIndex, int nItemQuantity) {
@@ -69,14 +70,15 @@ public class RegularVendingMachine {
      * @return true if the item was found and false otherwise
      */
     public boolean findItem(String name) {
-        for (int i = 0; i < this.vendingSlot.size(); i++)
-            if (name == this.vendingSlot.get(i).getItem().getItemName())
+        for (ItemSlot item : this.vendingSlot)
+            if (item.getItem().getItemName().equalsIgnoreCase(name))
                 return true;
         return false;
     }
 
     /**
-     * Receives money from the user by inserting the accepted amount/s(denominations) 
+     * Receives money from the user by inserting the accepted
+     * amount/s(denominations)
      * 
      * @param nAmount represents the money to be inserted by the user
      * @return true if the value inserted is equal to any of the following
@@ -91,7 +93,7 @@ public class RegularVendingMachine {
         } else
             return false;
     }
-    
+
     /**
      * Shows the transaction/s made by the user which includes
      * the item name and its quantity
@@ -108,7 +110,7 @@ public class RegularVendingMachine {
      * Displays the information of the item to be purchased which includes its
      * name, price, and quantity
      * 
-     * @param nItemIndex represents the index of an item
+     * @param nItemIndex    represents the index of an item
      * @param nItemQuantity represents the quantity of an item
      */
     public void displayToPurchase(int nItemIndex, int nItemQuantity) {
@@ -122,12 +124,12 @@ public class RegularVendingMachine {
     }
 
     /**
-     * Calculates the change to be returned to the user after a purchase, 
-     * keeps track of the number of each denomination used, and prints the breakdown 
+     * Calculates the change to be returned to the user after a purchase,
+     * keeps track of the number of each denomination used, and prints the breakdown
      * of the change. The method then returns the initial change amount
      * 
-     * @param nPayment represents the amount paid by the user
-     * @param nItemIndex represents the index of an item
+     * @param nPayment      represents the amount paid by the user
+     * @param nItemIndex    represents the index of an item
      * @param nItemQuantity represents the quantity of an item
      * @return nFullChange represents the amount of money left of the user
      */
@@ -153,8 +155,8 @@ public class RegularVendingMachine {
     }
 
     /**
-     * Replenishes the change in the vending machine by adding the 
-     * specified nAmount to the vendingMoney object, which manages 
+     * Replenishes the change in the vending machine by adding the
+     * specified nAmount to the vendingMoney object, which manages
      * the money in the machine
      * 
      * @param nAmount represents the value to be added to the vending money
@@ -164,7 +166,7 @@ public class RegularVendingMachine {
     }
 
     /**
-     * Returns the values stored which is the earnings accumulated 
+     * Returns the values stored which is the earnings accumulated
      * by the vending machine in the vendingSlot variable
      */
     public void getEarnings() {
