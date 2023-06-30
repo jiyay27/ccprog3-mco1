@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.item"},{"l":"com.itemslot"},{"l":"com.money"},{"l":"com.moneybox"},{"l":"com.regularvendingmachine"}];updateSearchResults();

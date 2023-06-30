@@ -9,10 +9,20 @@ public class MoneyBox {
     private int[] arrDenominations = { 200, 100, 50, 20, 10, 5, 1 };
 
     /**
-     * This is the MoneyBox constructor
+     * This is the MoneyBox constructor (without parameter)
      */
     public MoneyBox() {
         this.nMoney = 1000;
+        this.nEarnings = 0;
+    }
+
+    /**
+     * This is the MoneyBox constructor (with parameter)
+     * 
+     * @param nMoney money value
+     */
+    public MoneyBox(int nMoney) {
+        this.nMoney = nMoney;
         this.nEarnings = 0;
     }
 
