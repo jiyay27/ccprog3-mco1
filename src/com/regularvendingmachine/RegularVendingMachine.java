@@ -38,8 +38,6 @@ public class RegularVendingMachine {
                 .add(new ItemSlot(8, new Item("Bangus", 30, 178, 15)));
     }
 
-    // meow
-
     public void purchaseItem(int nItemIndex, int nItemQuantity) {
         if (this.vendingSlot.get(nItemIndex).getItemAvailability() == true)
             if (nItemQuantity <= this.vendingSlot.get(nItemIndex).getItem().getItemQuantity()) {
