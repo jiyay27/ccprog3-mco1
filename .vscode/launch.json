@@ -2,13 +2,6 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "java",
-      "name": "Main",
-      "request": "launch",
-      "mainClass": "com.main.Main",
-      "projectName": "ccprog3-mco1_576cb0a5"
-    },
-    {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
