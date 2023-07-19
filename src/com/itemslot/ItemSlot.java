@@ -7,26 +7,26 @@ import com.item.Item;
  */
 public class ItemSlot {
     private int nSlotIndex;
-    private Item itemOccupy;
+    private Item CItemOccupy;
 
     /**
      * This is the ItemSlot constructor
      * 
      * @param nSlotIndex slot index
-     * @param itemOccupy item occupied
+     * @param CItemOccupy item occupied
      */
-    public ItemSlot(int nSlotIndex, Item itemOccupy) {
+    public ItemSlot(int nSlotIndex, Item CItemOccupy) {
         this.nSlotIndex = nSlotIndex;
-        this.itemOccupy = itemOccupy;
+        this.CItemOccupy = CItemOccupy;
     }
 
     /**
      * Sets the item occupied
      * 
-     * @param itemOccupy represents the occupied item
+     * @param CItemOccupy represents the occupied item
      */
-    public void setItem(Item itemOccupy) {
-        this.itemOccupy = itemOccupy;
+    public void setItem(Item CItemOccupy) {
+        this.CItemOccupy = CItemOccupy;
     }
 
     /**
@@ -36,7 +36,7 @@ public class ItemSlot {
      *         is not equal to 0 and false otherwise
      */
     public boolean getItemAvailability() {
-        if (this.itemOccupy.getItemQuantity() != 0)
+        if (this.CItemOccupy.getItemQuantity() != 0)
             return true;
         else
             return false;
@@ -52,12 +52,12 @@ public class ItemSlot {
     }
 
     /**
-     * Returns the value stored in the itemOccupy variable
+     * Returns the value stored in the CItemOccupy variable
      * 
-     * @return this.itemOccupy represents the item name stored
+     * @return this.CItemOccupy represents the item name stored
      */
     public Item getItem() {
-        return this.itemOccupy;
+        return this.CItemOccupy;
     }
 
     /**
@@ -66,10 +66,10 @@ public class ItemSlot {
      */
     public void listSlotInfo() {
         System.out.println();
-        System.out.println("Item: \t\t" + this.itemOccupy.getItemName());
-        System.out.println("Price: \t\t" + this.itemOccupy.getItemPrice());
-        System.out.println("Calories: \t" + this.itemOccupy.getItemCalories());
-        System.out.println("Quantity: \t" + this.itemOccupy.getItemQuantity());
+        System.out.println("Item: \t\t" + this.CItemOccupy.getItemName());
+        System.out.println("Price: \t\t" + this.CItemOccupy.getItemPrice());
+        System.out.println("Calories: \t" + this.CItemOccupy.getItemCalories());
+        System.out.println("Quantity: \t" + this.CItemOccupy.getItemQuantity());
     }
 
 }
