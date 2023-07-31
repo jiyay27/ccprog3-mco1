@@ -1,9 +1,10 @@
-package com.regularvendingmachine;
+package com.vendingmodel.regularvendingmachine;
 
 import java.util.*;
-import com.moneybox.MoneyBox;
-import com.item.Item;
-import com.itemslot.ItemSlot;
+
+import com.vendingmodel.item.Item;
+import com.vendingmodel.itemslot.ItemSlot;
+import com.vendingmodel.moneybox.MoneyBox;
 
 /**
  * This is <code>RegularVendingMachine</code> class which represents the regular

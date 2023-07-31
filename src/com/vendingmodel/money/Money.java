@@ -1,4 +1,4 @@
-package com.money;
+package com.vendingmodel.money;
 
 /**
  * This is <code>Money</code> class which represents the money object of the machine

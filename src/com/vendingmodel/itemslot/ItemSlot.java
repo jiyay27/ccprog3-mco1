@@ -1,6 +1,6 @@
-package com.itemslot;
+package com.vendingmodel.itemslot;
 
-import com.item.Item;
+import com.vendingmodel.item.Item;
 
 /**
  * This is <code>ItemSlot</code> class which represents the item slot object of the machine

@@ -1,4 +1,4 @@
-package com.item;
+package com.vendingmodel.item;
 /**
  * This is <code>Item</code> class which represents the item object of the machine
  */

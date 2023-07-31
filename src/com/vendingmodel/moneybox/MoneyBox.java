@@ -1,4 +1,4 @@
-package com.moneybox;
+package com.vendingmodel.moneybox;
 
 /**
  * This is <code>MoneyBox</code> class which represents the item slot object of the machine

@@ -12,9 +12,9 @@ package com.main;
 
 import java.util.Scanner;
 
-import com.item.Item;
-import com.itemslot.ItemSlot;
-import com.regularvendingmachine.RegularVendingMachine;
+import com.vendingmodel.item.Item;
+import com.vendingmodel.itemslot.ItemSlot;
+import com.vendingmodel.regularvendingmachine.RegularVendingMachine;
 
 // serves as a driver for the whole program
 public class Main {
