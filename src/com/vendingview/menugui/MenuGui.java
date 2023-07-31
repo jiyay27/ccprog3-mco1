@@ -20,13 +20,14 @@ public class MenuGui {
         this.mainFrame = new JFrame("Vending Machine Factory");
         this.mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.mainFrame.setLayout(new FlowLayout(FlowLayout.CENTER));
-        this.mainFrame.getContentPane().setBackground(Color.BLUE);
+        this.mainFrame.getContentPane().setBackground(Color.LIGHT_GRAY);
         this.mainFrame.setSize(600, 800);
         this.mainFrame.setLocationRelativeTo(null);
         this.mainFrame.setResizable(false);
 
         this.mainPanel = new JPanel(new GridLayout(4, 1));
         this.mainPanel.setBackground(Color.getHSBColor(240, 234, 214));
+        this.mainPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
         this.mainPanel.setSize(600, 800);
 
         initializeGreetingElements();
@@ -38,7 +39,7 @@ public class MenuGui {
         menuName.setText("Vending Machine Factory");
 
         this.createVending = new JButton("Create a Vending Machine");
-        this.createVending.setMaximumSize(new Dimension(300, 100));
+        this.createVending.setMaximumSize(new Dimension(300, 100));    
 
         this.testVending = new JButton("Test a Vending Machine");
         this.testVending.setMaximumSize(new Dimension(300, 100));
@@ -49,6 +50,7 @@ public class MenuGui {
         createVending.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
                 // createVending.setText("Hello");
             }
         });
