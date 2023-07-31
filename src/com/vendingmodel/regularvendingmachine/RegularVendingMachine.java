@@ -11,7 +11,7 @@ import com.vendingmodel.moneybox.MoneyBox;
  * vending machine object of the machine
  */
 public class RegularVendingMachine {
-    private ArrayList<ItemSlot> vendingSlot;
+    private ArrayList<ItemSlot> CVendingSlot;
     private MoneyBox vendingMoney;
     private ArrayList<String> transactions;
 
@@ -19,7 +19,7 @@ public class RegularVendingMachine {
      * This is the RegularVendingMachine constructor
      */
     public RegularVendingMachine() {
-        this.vendingSlot = new ArrayList<ItemSlot>();
+        this.CVendingSlot = new ArrayList<ItemSlot>();
         this.vendingMoney = new MoneyBox();
         this.transactions = new ArrayList<String>();
     }
@@ -28,21 +28,21 @@ public class RegularVendingMachine {
      * Sets up the vending machine by adding item slots
      */
     public void setupVendingMachine() {
-        vendingSlot
+        CVendingSlot
                 .add(new ItemSlot(1, new Item("Garlic Fried Rice", 25, 366, 15)));
-        vendingSlot
+        CVendingSlot
                 .add(new ItemSlot(2, new Item("Fried Egg", 15, 92, 15)));
-        vendingSlot
+        CVendingSlot
                 .add(new ItemSlot(3, new Item("Beef Tapa", 40, 120, 10)));
-        vendingSlot
+        CVendingSlot
                 .add(new ItemSlot(4, new Item("Longganisa", 30, 136, 15)));
-        vendingSlot
+        CVendingSlot
                 .add(new ItemSlot(5, new Item("Tocino", 30, 230, 15)));
-        vendingSlot
+        CVendingSlot
                 .add(new ItemSlot(6, new Item("Hotdog", 20, 247, 15)));
-        vendingSlot
+        CVendingSlot
                 .add(new ItemSlot(7, new Item("Lumpiang Shanghai", 35, 215, 15)));
-        vendingSlot
+        CVendingSlot
                 .add(new ItemSlot(8, new Item("Bangus", 30, 178, 15)));
     }
 
@@ -54,24 +54,24 @@ public class RegularVendingMachine {
      * @param nItemQuantity represents the quatity of an item
      */
     public void purchaseItem(int nItemIndex, int nItemQuantity) {
-        if (this.vendingSlot.get(nItemIndex).getItemAvailability() == true)
-            if (nItemQuantity <= this.vendingSlot.get(nItemIndex).getItem().getItemQuantity()) {
-                this.vendingSlot.get(nItemIndex).getItem().buyItem(nItemQuantity);
+        if (this.CVendingSlot.get(nItemIndex).getItemAvailability() == true)
+            if (nItemQuantity <= this.CVendingSlot.get(nItemIndex).getItem().getItemQuantity()) {
+                this.CVendingSlot.get(nItemIndex).getItem().buyItem(nItemQuantity);
 
-                this.transactions.add("Item: \t\t" + this.vendingSlot.get(nItemIndex).getItem().getItemName()
+                this.transactions.add("Item: \t\t" + this.CVendingSlot.get(nItemIndex).getItem().getItemName()
                         + "\nQuantity: \t" + nItemQuantity);
             } else
                 System.out.println("Item amount exceeded.");
     }
 
     /**
-     * Finds an item within the vendingSlot
+     * Finds an item within the CVendingSlot
      * 
      * @param name represents the name of a new item
      * @return true if the item was found and false otherwise
      */
     public boolean findItem(String name) {
-        for (ItemSlot item : this.vendingSlot)
+        for (ItemSlot item : this.CVendingSlot)
             if (item.getItem().getItemName().equalsIgnoreCase(name))
                 return true;
         return false;
@@ -116,10 +116,10 @@ public class RegularVendingMachine {
      */
     public void displayToPurchase(int nItemIndex, int nItemQuantity) {
         System.out.println("\n--------------------------");
-        System.out.println("Item Name: \t" + this.vendingSlot.get(nItemIndex).getItem().getItemName());
+        System.out.println("Item Name: \t" + this.CVendingSlot.get(nItemIndex).getItem().getItemName());
         System.out
                 .println("Total Price: \t"
-                        + this.vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
+                        + this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
         System.out.println("Total Quantity: " + nItemQuantity);
         System.out.println("--------------------------");
     }
@@ -135,8 +135,8 @@ public class RegularVendingMachine {
      * @return nFullChange represents the amount of money left of the user
      */
     public int calculateChange(int nPayment, int nItemIndex, int nItemQuantity) {
-        int nChange = nPayment - (this.vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
-        int nFullChange = nPayment - (this.vendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
+        int nChange = nPayment - (this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
+        int nFullChange = nPayment - (this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
         int[] arrDenominations = this.vendingMoney.getDenominations();
         int[] arrCount = { 0, 0, 0, 0, 0, 0, 0 };
         for (int i = 0; i < arrDenominations.length; i++) {
@@ -168,19 +168,19 @@ public class RegularVendingMachine {
 
     /**
      * Returns the values stored which is the earnings accumulated
-     * by the vending machine in the vendingSlot variable
+     * by the vending machine in the CVendingSlot variable
      */
     public void getEarnings() {
         this.vendingMoney.collectEarnings();
     }
 
     /**
-     * Returns the values stored in the vendingSlot variable
+     * Returns the values stored in the CVendingSlot variable
      * 
-     * @return this.vendingSlot represents the arraylist of the vending slot stored
+     * @return this.CVendingSlot represents the arraylist of the vending slot stored
      */
     public ArrayList<ItemSlot> getVendingSlot() {
-        return this.vendingSlot;
+        return this.CVendingSlot;
     }
 
     /**
