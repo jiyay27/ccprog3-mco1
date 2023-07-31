@@ -1,6 +1,7 @@
 package com.vendingmodel.itemslot;
 
 import com.vendingmodel.item.Item;
+import java.util.ArrayList;
 
 /**
  * This is <code>ItemSlot</code> class which represents the item slot object of the machine
@@ -8,6 +9,7 @@ import com.vendingmodel.item.Item;
 public class ItemSlot {
     private int nSlotIndex;
     private Item CItemOccupy;
+    private ArrayList<Item> itemList;
 
     /**
      * This is the ItemSlot constructor
@@ -18,6 +20,7 @@ public class ItemSlot {
     public ItemSlot(int nSlotIndex, Item CItemOccupy) {
         this.nSlotIndex = nSlotIndex;
         this.CItemOccupy = CItemOccupy;
+        this.itemList = new ArrayList<Item>();
     }
 
     /**
@@ -30,13 +33,61 @@ public class ItemSlot {
     }
 
     /**
+     * Checks if restocking is possible for an item
+     * 
+     * @param nQuantity quantity of items to be restocked
+     * @return true if restocking is possible and false otherwise
+     */
+    public boolean canRestock(int nQuantity) {
+        if (this.getItemQuantity() < 15)
+            if (nQuantity <= 15 - this.getItemQuantity()) {
+                return true;
+            }
+        return false;
+    }
+
+    /**
+     * Used to increase item quantity in stock
+     * 
+     * @param nQuantity represents the number of items to be restocked
+     */
+    public void restockItem(int nQuantity) {
+        //TODO:
+    }
+
+    /** 
+        Checks if the item is still available to be sold
+        
+        @param nItemSold number of item/s to be checked
+        @return true if the item sold is less than the quantity provided and otherwise false
+    */
+    private boolean isAllowSell(int nItemSold) {
+        if (nItemSold <= this.itemList.size())
+            return true;
+        else
+            return false;
+    }
+
+    /**
+     * Handles item purchases wherein sold quantity will be deducted to the available one
+     * 
+     * @param nItemSold number of item/s to be checked
+     * @return the number of item/s sold
+     */
+    public int buyItem(int nItemSold) {
+        for (Item item : this.itemList) {
+            this.itemList.remove(item);
+        }
+    }
+
+    /**
      * Determines the availability of the item by its quantity
      * 
      * @return true if the quantity of the occupied item
      *         is not equal to 0 and false otherwise
      */
     public boolean getItemAvailability() {
-        if (this.CItemOccupy.getItemQuantity() != 0)
+        if (this.getItemQuantity() != 0)
             return true;
         else
             return false;
@@ -69,7 +120,16 @@ public class ItemSlot {
         System.out.println("Item: \t\t" + this.CItemOccupy.getItemName());
         System.out.println("Price: \t\t" + this.CItemOccupy.getItemPrice());
         System.out.println("Calories: \t" + this.CItemOccupy.getItemCalories());
-        System.out.println("Quantity: \t" + this.CItemOccupy.getItemQuantity());
+        System.out.println("Quantity: \t" + this.getItemQuantity());
+    }
+
+    /**
+     * Returns the value stored in the nItemQuantity variable
+     * 
+     * @return this.nItemQuantity represents the item quantity/ies stored
+     */
+    public int getItemQuantity() {
+        return this.itemList.size();
     }
 
 }

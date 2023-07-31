@@ -6,7 +6,6 @@ public class Item {
     private String strItemName;
     private int nItemPrice;
     private int nItemCalories;
-    private int nItemQuantity;
 
     /**
      * This is the Item constructor
@@ -16,36 +15,10 @@ public class Item {
      * @param nItemCalories calories
      * @param nItemQuantity quantity
      */
-    public Item(String strItemName, int nItemPrice, int nItemCalories, int nItemQuantity) {
+    public Item(String strItemName, int nItemPrice, int nItemCalories) {
         this.strItemName = strItemName;
         this.nItemPrice = nItemPrice;
         this.nItemCalories = nItemCalories;
-        this.nItemQuantity = nItemQuantity;
-    }
-
-    /** 
-        Checks if the item is still available to be sold
-        
-        @param nItemSold number of item/s to be checked
-        @return true if the item sold is less than the quantity provided and otherwise false
-    */
-    private boolean isAllowSell(int nItemSold) {
-        if (nItemSold <= this.nItemQuantity)
-            return true;
-        else
-            return false;
-    }
-
-    /**
-     * Handles item purchases wherein sold quantity will be deducted to the available one
-     * 
-     * @param nItemSold number of item/s to be checked
-     * @return the number of item/s sold
-     */
-    public int buyItem(int nItemSold) {
-        if (isAllowSell(nItemSold))
-            this.nItemQuantity -= nItemSold;
-        return nItemSold;
     }
 
     /**
@@ -57,37 +30,6 @@ public class Item {
         this.nItemPrice = nItemPrice;
     }
 
-    /**
-     * Sets the quantity of an item
-     * 
-     * @param nItemQuantity represents the new item quantity
-     */
-    public void setItemQuantity(int nItemQuantity) {
-        this.nItemQuantity = nItemQuantity;
-    }
-
-    /**
-     * Checks if restocking is possible for an item
-     * 
-     * @param nQuantity quantity of items to be restocked
-     * @return true if restocking is possible and false otherwise
-     */
-    public boolean canRestock(int nQuantity) {
-        if (this.getItemQuantity() < 15)
-            if (nQuantity <= 15 - this.getItemQuantity()) {
-                return true;
-            }
-        return false;
-    }
-
-    /**
-     * Used to increase item quantity in stock
-     * 
-     * @param nQuantity represents the number of items to be restocked
-     */
-    public void restockItem(int nQuantity) {
-        this.setItemQuantity(this.getItemQuantity() + nQuantity);
-    }
 
     /**
      * Returns the value stored in the strItemName variable
@@ -116,12 +58,4 @@ public class Item {
         return this.nItemCalories;
     }
 
-    /**
-     * Returns the value stored in the nItemQuantity variable
-     * 
-     * @return this.nItemQuantity represents the item quantity/ies stored
-     */
-    public int getItemQuantity() {
-        return this.nItemQuantity;
-    }
 }

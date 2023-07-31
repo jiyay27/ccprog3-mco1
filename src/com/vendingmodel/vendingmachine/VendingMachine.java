@@ -23,8 +23,8 @@ public class VendingMachine {
 
     public void purchaseItem(int nItemIndex, int nItemQuantity) {
         if (this.CVendingSlot.get(nItemIndex).getItemAvailability() == true)
-            if (nItemQuantity <= this.CVendingSlot.get(nItemIndex).getItem().getItemQuantity()) {
-                this.CVendingSlot.get(nItemIndex).getItem().buyItem(nItemQuantity);
+            if (nItemQuantity <= this.CVendingSlot.get(nItemIndex).getItemQuantity()) {
+                this.CVendingSlot.get(nItemIndex).buyItem(nItemQuantity);
 
                 this.transactions.add("Item: \t\t" + this.CVendingSlot.get(nItemIndex).getItem().getItemName()
                         + "\nQuantity: \t" + nItemQuantity);
