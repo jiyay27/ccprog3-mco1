@@ -248,6 +248,7 @@ public class Main {
                                                         System.out.println(
                                                                 "------------------------------------\n");
                                                         invalidInput = false;
+                                                        initialBalance = 0;
                                                     } else
                                                         System.out.println("!! INVALID INPUT !!");
                                                 } while (invalidInput);
@@ -319,7 +320,8 @@ public class Main {
                                                 System.out.print("Enter Name: ");
                                                 newItemName = scan.nextLine();
                                                 newItemName = scan.nextLine(); // to clear input buffer
-                                                if (Integer.valueOf(newItemName) == 0) {
+
+                                                if (newItemName == "0") {
                                                     System.out.println("\n---------------------------");
                                                     System.out.println("| Process cancelled...    |");
                                                     System.out.println("---------------------------\n");
@@ -350,18 +352,20 @@ public class Main {
                                                             System.out.println("\n-------------------");
                                                             System.out.println("| New Item Added. |");
                                                             System.out.println("-------------------\n");
-                                                        } else
+                                                        } else {
                                                             System.out.println("\n-----------------------------");
-                                                        System.out.println("| Item capacity exceeded... |");
-                                                        System.out.println("| MAX CAPACITY: 15          |");
-                                                        System.out.println("-----------------------------\n");
+                                                            System.out.println("| Item capacity exceeded... |");
+                                                            System.out.println("| MAX CAPACITY: 15          |");
+                                                            System.out.println("-----------------------------\n");
+                                                        }
                                                     } while (Integer.valueOf(newItemQuantity) > 15);
                                                 } else {
-                                                    System.out.println("\n---------------------------");
-                                                    System.out.println("| Item already exists...  |");
-                                                    System.out.println("| Process cancelled.      |");
-                                                    System.out.println("---------------------------\n");
+                                                    System.out.println("\n-----------------------------");
+                                                    System.out.println("| Item already exists...    |");
+                                                    System.out.println("| Process cancelled.        |");
+                                                    System.out.println("-----------------------------\n");
                                                 }
+
                                                 break;
 
                                             // ! MAINTENANCE SWITCH CASE
