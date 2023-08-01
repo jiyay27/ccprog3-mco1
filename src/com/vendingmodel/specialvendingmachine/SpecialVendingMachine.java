@@ -11,9 +11,8 @@ public class SpecialVendingMachine extends VendingMachine {
     protected ArrayList<Product> vendingOptions;
 
     public SpecialVendingMachine() {
+        super();
         this.vendingOptions = new ArrayList<Product>();
-        this.vendingMoney = new MoneyBox();
-        this.transactions = new ArrayList<String>();
     }
 
     public void setupVendingMachine() {

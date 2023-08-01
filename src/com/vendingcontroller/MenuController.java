@@ -6,8 +6,7 @@ import java.io.File;
 import com.vendingview.menugui.*;
 
 public class MenuController {
-    public static void main(String[] args) {
-        new MenuGui();
+    public void MenuController() {
 
     }
 }

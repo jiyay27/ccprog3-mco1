@@ -15,8 +15,8 @@ public class MenuGui {
     private JPanel buttonsPanel;
     private JLabel menuNameLabel;
     private JButton createVending,
-                    testVending,
-                    exitBtn;
+            testVending,
+            exitBtn;
 
     public MenuGui() {
         this.mainFrame = new JFrame("Arcega-Donato Vending Machine Factory");
@@ -28,7 +28,7 @@ public class MenuGui {
         this.mainFrame.setResizable(false);
 
         initializeGreetingElements();
-        
+
         this.mainFrame.setVisible(true);
     }
 
@@ -47,16 +47,16 @@ public class MenuGui {
         this.menuNamePanel.setBackground(Color.LIGHT_GRAY);
         this.mainFrame.add(menuNamePanel, BorderLayout.NORTH);
 
-        // BUTTONS 
+        // BUTTONS
         this.createVending = new JButton("Create a Vending Machine");
         // this.createVending.setMaximumSize(new Dimension(1000, 1000));
-        this.createVending.setBounds(10,10,250,100);
+        this.createVending.setBounds(10, 10, 250, 100);
         this.createVending.setBackground(Color.WHITE);
         this.createVending.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.createVending.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
                 // createVending.setText("Hello");
             }
         });
@@ -94,7 +94,6 @@ public class MenuGui {
 
         this.mainFrame.add(buttonsPanel, BorderLayout.CENTER);
 
-        
     }
 
 }

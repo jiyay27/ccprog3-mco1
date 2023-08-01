@@ -18,9 +18,7 @@ public class RegularVendingMachine extends VendingMachine {
      * This is the RegularVendingMachine constructor
      */
     public RegularVendingMachine() {
-        this.CVendingSlot = new ArrayList<ItemSlot>();
-        this.vendingMoney = new MoneyBox();
-        this.transactions = new ArrayList<String>();
+        super();
     }
 
     public void setupVendingMachine() {
