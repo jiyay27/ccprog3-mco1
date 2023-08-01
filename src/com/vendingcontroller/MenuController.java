@@ -43,19 +43,23 @@ public class MenuController {
 
         this.menu.setCreateSpecialButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // if (e == ) {
-                RegularVendingMachine regularMachine = new RegularVendingMachine();
-
-                regularMachine.setupVendingMachine();
+                specialMachine = new SpecialVendingMachine();
+                specialMachine.setupSpecialVendingMachine();
                 menu.getMainFrame();
+
                 JOptionPane.showMessageDialog(null, "Vending machine has been created.", null,
                         JOptionPane.INFORMATION_MESSAGE);
-                // }
 
             }
         });
         this.menu.setTestButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                if (regularMachine != null) {
+                    RegularGui regularMachineGui = new RegularGui();
+                    regularMachineGui.getRegularFrame();
+                } else if (specialMachine != null) {
+
+                }
 
             }
         });
