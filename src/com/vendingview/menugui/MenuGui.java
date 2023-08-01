@@ -53,47 +53,40 @@ public class MenuGui {
         this.createVending.setBounds(10, 10, 250, 100);
         this.createVending.setBackground(Color.WHITE);
         this.createVending.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.createVending.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                // createVending.setText("Hello");
-            }
-        });
 
         this.testVending = new JButton("Test a Vending Machine");
         this.testVending.setMaximumSize(new Dimension(300, 100));
         this.testVending.setBackground(Color.WHITE);
         this.testVending.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.testVending.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // testVending.setText("Hello");
-            }
-        });
 
         this.exitBtn = new JButton("Exit");
         this.exitBtn.setMaximumSize(new Dimension(300, 100));
         this.exitBtn.setBackground(Color.WHITE);
         this.exitBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.exitBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(1);
-            }
-        });
 
         // BUTTONS PANEL
         this.buttonsPanel = new JPanel();
         this.buttonsPanel.setLayout(new GridLayout(3, 1, 20, 20));
         this.buttonsPanel.setBackground(Color.LIGHT_GRAY);
-        
+
         this.buttonsPanel.add(createVending);
         this.buttonsPanel.add(testVending);
         this.buttonsPanel.add(exitBtn);
 
         this.mainFrame.add(buttonsPanel, BorderLayout.CENTER);
 
+    }
+
+    public void setCreateButtonListener(ActionListener action) {
+        this.createVending.addActionListener(action);
+    }
+
+    public void setTestButtonListener(ActionListener action) {
+        this.testVending.addActionListener(action);
+    }
+
+    public void setExitButtonListener(ActionListener action) {
+        this.exitBtn.addActionListener(action);
     }
 
 }
