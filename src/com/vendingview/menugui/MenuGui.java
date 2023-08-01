@@ -87,6 +87,7 @@ public class MenuGui {
         this.buttonsPanel = new JPanel();
         this.buttonsPanel.setLayout(new GridLayout(3, 1, 20, 20));
         this.buttonsPanel.setBackground(Color.LIGHT_GRAY);
+        
         this.buttonsPanel.add(createVending);
         this.buttonsPanel.add(testVending);
         this.buttonsPanel.add(exitBtn);
@@ -96,11 +97,4 @@ public class MenuGui {
         
     }
 
-    private void initializeAlignmentElements() {
-
-    }
-
-    private void initializeSwappingElements() {
-
-    }
 }
