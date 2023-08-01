@@ -57,6 +57,7 @@ public class MenuController {
                 if (regularMachine != null) {
                     RegularGui regularMachineGui = new RegularGui();
                     regularMachineGui.getRegularFrame();
+                    menu.getMainFrame().setVisible(false);
                 } else if (specialMachine != null) {
 
                 }

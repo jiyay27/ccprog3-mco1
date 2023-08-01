@@ -33,23 +33,23 @@ public class RegularGui {
     public RegularGui() {
         this.regularFrame = new JFrame("Regular Vending Feautres");
         this.regularFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.regularFrame.setLayout(new GridLayout(1, 2, 5, 5));
+        this.regularFrame.setLayout(new GridLayout(1, 2));
         this.regularFrame.getContentPane().setBackground(Color.LIGHT_GRAY);
         this.regularFrame.setSize(600, 800);
         this.regularFrame.setLocationRelativeTo(null);
         this.regularFrame.setResizable(false);
 
-        // FEATURES PANEL
-        this.featuresPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
-        this.featuresPanel.setBackground(Color.LIGHT_GRAY);
-        this.featuresPanel.setPreferredSize(new Dimension(590, 790));// (500, 700);
+        // ! FEATURES PANEL
+        this.featuresPanel = new JPanel(new GridLayout(0, 2));
+        this.featuresPanel.setBackground(Color.RED);
+        this.featuresPanel.setSize(590, 790);
 
-        // VIEWING PANEL
-        this.fViewingPanel = new JPanel(new GridLayout(2, 1, 5, 5));
-        this.fViewingPanel.setBackground(Color.LIGHT_GRAY);
+        // ! VIEWING PANEL
+        this.fViewingPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
+        this.fViewingPanel.setBackground(Color.BLUE);
         this.fViewingPanel.setPreferredSize(new Dimension(280, 700));
 
-        // TEXT AREA
+        // ! TEXT AREA
         this.displayItems = new JTextArea();
         this.displayItems.setBackground(Color.WHITE);
         this.displayItems.setBorder(BorderFactory.createLineBorder(Color.getColor("BLACK")));
@@ -59,28 +59,80 @@ public class RegularGui {
         this.showStatus = new JTextArea();
         this.showStatus.setBackground(Color.WHITE);
         this.showStatus.setBorder(BorderFactory.createLineBorder(Color.getColor("BLACK")));
-        this.showStatus.setMaximumSize(new Dimension(280, 100));
+        this.showStatus.setPreferredSize(new Dimension(280, 150));
         this.showStatus.setFocusable(false);
 
         this.fViewingPanel.add(displayItems);
         this.fViewingPanel.add(showStatus);
 
-        this.featuresPanel.add(fViewingPanel);
-
-        // USER INPUT PANEl
+        // ! USER INPUT PANEl
         this.fUserPanel = new JPanel(new GridLayout(10, 1));
-        this.fUserPanel.setBackground(Color.LIGHT_GRAY);
-        this.fUserPanel.setSize(295, 800);
+        this.fUserPanel.setBackground(Color.GREEN);
+        this.fUserPanel.setSize(280, 700);
 
+        // BUTTONS
+        // ! CONFIRM
+        this.confirm = new JButton("Confirm");
+        this.confirm.setMaximumSize(new Dimension(250, 100));
+        this.confirm.setMinimumSize(new Dimension(250, 100));
+        this.confirm.setPreferredSize(new Dimension(250, 100));
+        this.confirm.setBackground(Color.WHITE);
+
+        // ! BUTTONS PANEL
+        JPanel buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonsPanel.setPreferredSize(new Dimension(250, 100));
+        buttonsPanel.setBackground(Color.LIGHT_GRAY);
+        buttonsPanel.add(confirm);
+        this.fUserPanel.add(buttonsPanel);
+
+        // ! CANCEL
+        this.cancel = new JButton("Cancel");
+        this.cancel.setMaximumSize(new Dimension(250, 100));
+        this.cancel.setMinimumSize(new Dimension(250, 100));
+        this.cancel.setPreferredSize(new Dimension(250, 100));
+        this.cancel.setBackground(Color.WHITE);
+
+        // ! BUTTONS PANEL
+        buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonsPanel.setPreferredSize(new Dimension(250, 100));
+        buttonsPanel.setBackground(Color.LIGHT_GRAY);
+        buttonsPanel.add(cancel);
+        this.fUserPanel.add(buttonsPanel);
+
+        // ! MAINTENANCE
+        this.maintenance = new JButton("Maintenance Features");
+        this.maintenance.setMaximumSize(new Dimension(250, 100));
+        this.maintenance.setMinimumSize(new Dimension(250, 100));
+        this.maintenance.setPreferredSize(new Dimension(250, 100));
+        this.maintenance.setBackground(Color.WHITE);
+
+        buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonsPanel.setPreferredSize(new Dimension(250, 100));
+        buttonsPanel.setBackground(Color.LIGHT_GRAY);
+        buttonsPanel.add(maintenance);
+        this.fUserPanel.add(buttonsPanel);
+
+        this.featuresPanel.add(fViewingPanel);
         this.featuresPanel.add(fUserPanel);
 
-        this.regularFrame.add(fViewingPanel);
-        this.regularFrame.add(fUserPanel);
-        // this.regularFrame.pack();
+        this.regularFrame.add(featuresPanel);
+
         this.regularFrame.setVisible(true);
     }
 
     public JFrame getRegularFrame() {
         return this.regularFrame;
+    }
+
+    public void setConfirmButtonListener(ActionListener action) {
+        this.confirm.addActionListener(action);
+    }
+
+    public void setCancelButtonListener(ActionListener action) {
+        this.cancel.addActionListener(action);
+    }
+
+    public void setMaintenanceButtonListener(ActionListener action) {
+        this.maintenance.addActionListener(action);
     }
 }
