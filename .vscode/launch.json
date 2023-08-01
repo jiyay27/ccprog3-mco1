@@ -6,6 +6,13 @@
       "name": "MenuController",
       "request": "launch",
       "mainClass": "com.vendingcontroller.MenuController",
+      "projectName": "ccprog3-mco1_576cb0a5"
+    },
+    {
+      "type": "java",
+      "name": "MenuController",
+      "request": "launch",
+      "mainClass": "com.vendingcontroller.MenuController",
       "projectName": "ccprog3-mco1_b3ded73e"
     },
     {

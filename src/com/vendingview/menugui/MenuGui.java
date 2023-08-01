@@ -11,8 +11,9 @@ import java.awt.event.ActionListener;
 
 public class MenuGui {
     private JFrame mainFrame;
-    private JPanel mainPanel;
+    private JPanel menuNamePanel;
     private JPanel buttonsPanel;
+    private JLabel menuNameLabel;
     private JButton createVending,
                     testVending,
                     exitBtn;
@@ -26,22 +27,22 @@ public class MenuGui {
         this.mainFrame.setLocationRelativeTo(null);
         this.mainFrame.setResizable(false);
 
-        initializeGreetingElements(mainFrame);
+        initializeGreetingElements();
         
         this.mainFrame.setVisible(true);
     }
 
-    private void initializeGreetingElements(JFrame mainFrame) {
-        JPanel menuNamePanel = new JPanel();
-        menuNamePanel.setLayout(new FlowLayout());
-        JLabel menuNameLabel = new JLabel();
-        menuNameLabel.setText("Vending Machine Factory");
-        menuNameLabel.setBorder(BorderFactory.createEmptyBorder(200, 100, 100, 100));
-        menuNameLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
-        menuNameLabel.setForeground(Color.BLACK);
+    private void initializeGreetingElements() {
+        this.menuNamePanel = new JPanel();
+        this.menuNamePanel.setLayout(new FlowLayout());
+        this.menuNameLabel = new JLabel();
+        this.menuNameLabel.setText("Vending Machine Factory");
+        this.menuNameLabel.setBorder(BorderFactory.createEmptyBorder(200, 100, 100, 100));
+        this.menuNameLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
+        this.menuNameLabel.setForeground(Color.BLACK);
 
-        menuNamePanel.add(menuNameLabel);
-        menuNamePanel.setBackground(Color.LIGHT_GRAY);
+        this.menuNamePanel.add(menuNameLabel);
+        this.menuNamePanel.setBackground(Color.LIGHT_GRAY);
         this.mainFrame.add(menuNamePanel, BorderLayout.NORTH);
 
         // BUTTONS 
@@ -58,7 +59,7 @@ public class MenuGui {
 
         this.testVending = new JButton("Test a Vending Machine");
         this.testVending.setMaximumSize(new Dimension(300, 100));
-        testVending.addActionListener(new ActionListener() {
+        this.testVending.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // testVending.setText("Hello");
@@ -67,7 +68,7 @@ public class MenuGui {
 
         this.exitBtn = new JButton("Exit");
         this.exitBtn.setMaximumSize(new Dimension(300, 100));
-        exitBtn.addActionListener(new ActionListener() {
+        this.exitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(1);
