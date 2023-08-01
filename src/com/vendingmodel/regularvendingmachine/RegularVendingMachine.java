@@ -5,32 +5,28 @@ import java.util.*;
 import com.vendingmodel.item.Item;
 import com.vendingmodel.itemslot.ItemSlot;
 import com.vendingmodel.moneybox.MoneyBox;
-import com.vendingmodel.vendingmachine.VendingMachine;
 
 /**
  * This is <code>RegularVendingMachine</code> class which represents the regular
  * vending machine object of the machine
  */
-public class RegularVendingMachine extends VendingMachine {
-    /* private ArrayList<ItemSlot> CVendingSlot;
+public class RegularVendingMachine {
+    private ArrayList<ItemSlot> CVendingSlot;
     private MoneyBox vendingMoney;
-    private ArrayList<String> transactions; */
+    private ArrayList<String> transactions;
 
     /**
      * This is the RegularVendingMachine constructor
      */
     public RegularVendingMachine() {
-        /* this.CVendingSlot = new ArrayList<ItemSlot>();
+        this.CVendingSlot = new ArrayList<ItemSlot>();
         this.vendingMoney = new MoneyBox();
-        this.transactions = new ArrayList<String>(); */
-
-        super();
+        this.transactions = new ArrayList<String>();
     }
 
     /**
      * Sets up the vending machine by adding item slots
      */
-    /* 
     public void setupVendingMachine() {
         CVendingSlot
                 .add(new ItemSlot(1, new Item("Garlic Fried Rice", 25, 366, 15)));
@@ -50,8 +46,6 @@ public class RegularVendingMachine extends VendingMachine {
                 .add(new ItemSlot(8, new Item("Bangus", 30, 178, 15)));
     }
 
-    */
-
     /**
      * Enables the user to purchase availabale items in the vending machine
      * as well as updates the nec
@@ -59,7 +53,6 @@ public class RegularVendingMachine extends VendingMachine {
      * @param nItemIndex    represents the index of an item
      * @param nItemQuantity represents the quatity of an item
      */
-    /* 
     public void purchaseItem(int nItemIndex, int nItemQuantity) {
         if (this.CVendingSlot.get(nItemIndex).getItemAvailability() == true)
             if (nItemQuantity <= this.CVendingSlot.get(nItemIndex).getItem().getItemQuantity()) {
@@ -70,7 +63,6 @@ public class RegularVendingMachine extends VendingMachine {
             } else
                 System.out.println("Item amount exceeded.");
     }
-    */
 
     /**
      * Finds an item within the CVendingSlot
