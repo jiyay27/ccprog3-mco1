@@ -48,4 +48,59 @@ public class VendingMachine {
         } else
             return false;
     }
+
+    public void displayTransactions() {
+        System.out.println("\n\tTotal Sold");
+        for (String item : this.transactions) {
+            System.out.println(item);
+        }
+        System.out.println();
+    }
+
+    public void displayToPurchase(int nItemIndex, int nItemQuantity) {
+        System.out.println("\n--------------------------");
+        System.out.println("Item Name: \t" + this.CVendingSlot.get(nItemIndex).getItem().getItemName());
+        System.out
+                .println("Total Price: \t"
+                        + this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
+        System.out.println("Total Quantity: " + nItemQuantity);
+        System.out.println("--------------------------");
+    }
+
+    public int calculateChange(int nPayment, int nItemIndex, int nItemQuantity) {
+        int nChange = nPayment - (this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
+        int nFullChange = nPayment - (this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
+        int[] arrDenominations = this.vendingMoney.getDenominations();
+        int[] arrCount = { 0, 0, 0, 0, 0, 0, 0 };
+        for (int i = 0; i < arrDenominations.length; i++) {
+            while (nChange >= arrDenominations[i]) {
+                arrCount[i]++;
+                nChange -= arrDenominations[i];
+            }
+
+        }
+        System.out.println();
+        System.out.println("Change: " + nFullChange);
+        System.out.println("In these denominations:");
+        for (int i = 0; i < arrDenominations.length; i++)
+            System.out.println(arrDenominations[i] + " x " + arrCount[i]);
+
+        return nFullChange;
+    }
+
+    public void replenishChange(int nAmount) {
+        this.vendingMoney.addMoney(nAmount);
+    }
+
+    public void getEarnings() {
+        this.vendingMoney.collectEarnings();
+    }
+
+    public ArrayList<ItemSlot> getVendingSlot() {
+        return this.CVendingSlot;
+    }
+
+    public MoneyBox getMoneyBox() {
+        return this.vendingMoney;
+    }
 }
