@@ -18,25 +18,27 @@ public class RegularVendingMachine extends VendingMachine {
      * This is the RegularVendingMachine constructor
      */
     public RegularVendingMachine() {
-        super();
+        this.CVendingSlot = new ArrayList<ItemSlot>();
+        this.vendingMoney = new MoneyBox();
+        this.transactions = new ArrayList<String>();
     }
 
     public void setupVendingMachine() {
-        CVendingSlot
+        this.CVendingSlot
                 .add(new ItemSlot(1, new Item("Garlic Fried Rice", 25, 366, 15)));
-        CVendingSlot
+        this.CVendingSlot
                 .add(new ItemSlot(2, new Item("Fried Egg", 15, 92, 15)));
-        CVendingSlot
+        this.CVendingSlot
                 .add(new ItemSlot(3, new Item("Beef Tapa", 40, 120, 10)));
-        CVendingSlot
+        this.CVendingSlot
                 .add(new ItemSlot(4, new Item("Longganisa", 30, 136, 15)));
-        CVendingSlot
+        this.CVendingSlot
                 .add(new ItemSlot(5, new Item("Tocino", 30, 230, 15)));
-        CVendingSlot
+        this.CVendingSlot
                 .add(new ItemSlot(6, new Item("Hotdog", 20, 247, 15)));
-        CVendingSlot
+        this.CVendingSlot
                 .add(new ItemSlot(7, new Item("Lumpiang Shanghai", 35, 215, 15)));
-        CVendingSlot
+        this.CVendingSlot
                 .add(new ItemSlot(8, new Item("Bangus", 30, 178, 15)));
     }
 

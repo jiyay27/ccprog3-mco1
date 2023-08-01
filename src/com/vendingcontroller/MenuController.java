@@ -31,17 +31,12 @@ public class MenuController {
 
         this.menu.setCreateRegularButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // if (e == ) {
-
                 regularMachine = new RegularVendingMachine();
                 regularMachine.setupVendingMachine();
                 menu.getMainFrame();
 
-                menu.getMainFrame().setVisible(true);
-
                 JOptionPane.showMessageDialog(null, "Vending machine has been created.", null,
                         JOptionPane.INFORMATION_MESSAGE);
-                // }
 
             }
         });

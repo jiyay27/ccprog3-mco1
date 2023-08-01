@@ -13,7 +13,9 @@ public class VendingMachine {
     protected ArrayList<String> transactions;
 
     public VendingMachine() {
-
+        this.CVendingSlot = new ArrayList<ItemSlot>();
+        this.vendingMoney = new MoneyBox();
+        this.transactions = new ArrayList<String>();
     }
 
     /**

@@ -14,8 +14,8 @@ import com.vendingcontroller.MenuController;
 
 public class Main {
     public static void main(String[] args) {
-        // MenuGui menu = new MenuGui();
-        // MenuController mainMenuController = new MenuController(menu);
-        new MenuGui();
+        MenuGui menu = new MenuGui();
+        MenuController mainMenuController = new MenuController(menu);
+        // new MenuGui();
     }
 }
