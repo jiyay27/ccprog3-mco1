@@ -7,9 +7,9 @@ import com.vendingmodel.itemslot.ItemSlot;
 import com.vendingmodel.moneybox.MoneyBox;
 
 public class VendingMachine {
-    private ArrayList<ItemSlot> CVendingSlot;
-    private MoneyBox vendingMoney;
-    private ArrayList<String> transactions;
+    protected ArrayList<ItemSlot> CVendingSlot;
+    protected MoneyBox vendingMoney;
+    protected ArrayList<String> transactions;
 
     public VendingMachine() {
         this.CVendingSlot = new ArrayList<ItemSlot>();
@@ -24,7 +24,8 @@ public class VendingMachine {
     public void purchaseItem(int nItemIndex, int nItemQuantity) {
         if (this.CVendingSlot.get(nItemIndex).getItemAvailability() == true)
             if (nItemQuantity <= this.CVendingSlot.get(nItemIndex).getItemQuantity()) {
-                this.CVendingSlot.get(nItemIndex).buyItem(nItemQuantity);
+                // TODO: remove slash latur
+                // this.CVendingSlot.get(nItemIndex).buyItem(nItemQuantity);
 
                 this.transactions.add("Item: \t\t" + this.CVendingSlot.get(nItemIndex).getItem().getItemName()
                         + "\nQuantity: \t" + nItemQuantity);

@@ -74,11 +74,13 @@ public class ItemSlot {
      * @param nItemSold number of item/s to be checked
      * @return the number of item/s sold
      */
+    /*
     public int buyItem(int nItemSold) {
         for (Item item : this.itemList) {
             this.itemList.remove(item);
         }
     }
+    /* */
 
     /**
      * Determines the availability of the item by its quantity

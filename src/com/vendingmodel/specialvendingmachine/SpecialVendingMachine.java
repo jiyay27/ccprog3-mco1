@@ -1,5 +1,7 @@
 package com.vendingmodel.specialvendingmachine;
 
-public class SpecialVendingMachine {
+import com.vendingmodel.vendingmachine.VendingMachine;
+
+public class SpecialVendingMachine extends VendingMachine {
 
 }
