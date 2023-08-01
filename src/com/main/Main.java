@@ -11,11 +11,15 @@ package com.main;
 
 import com.vendingview.menugui.MenuGui;
 import com.vendingcontroller.MenuController;
+import com.vendingview.regulargui.RegularGui;
+import com.vendingcontroller.RegularController;
 
 public class Main {
     public static void main(String[] args) {
         MenuGui menu = new MenuGui();
         MenuController mainMenuController = new MenuController(menu);
+        // RegularGui regular = new RegularGui();
+        // RegularController regularVendingController = new RegularController(regular);
         // new MenuGui();
     }
 }

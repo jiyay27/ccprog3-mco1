@@ -56,12 +56,13 @@ public class MenuController {
             public void actionPerformed(ActionEvent e) {
                 if (regularMachine != null) {
                     RegularGui regularMachineGui = new RegularGui();
-                    regularMachineGui.getRegularFrame();
+                    regularMachineGui.initializeFeatures();
                     menu.getMainFrame().setVisible(false);
                 } else if (specialMachine != null) {
-
+                    SpecialGui specialMacSpecialGui = new SpecialGui();
+                    // specialMacSpecialGui
+                    menu.getMainFrame().setVisible(false);
                 }
-
             }
         });
 
