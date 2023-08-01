@@ -8,14 +8,11 @@ import com.vendingmodel.itemslot.ItemSlot;
 import com.vendingmodel.moneybox.MoneyBox;
 
 public class VendingMachine {
+    protected ArrayList<ItemSlot> CVendingSlot;
     protected MoneyBox vendingMoney;
     protected ArrayList<String> transactions;
 
     public VendingMachine() {
-
-    }
-
-    public void setupVendingMachine() {
 
     }
 

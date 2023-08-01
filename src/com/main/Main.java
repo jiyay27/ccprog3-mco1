@@ -9,9 +9,6 @@ part or whole or otherwise plagiarized the work of other students and/or persons
 **********************************************************************************************************************/
 package com.main;
 
-import com.vendingcontroller.*;
-import com.vendingview.*;
-
 import com.vendingview.menugui.MenuGui;
 
 public class Main {

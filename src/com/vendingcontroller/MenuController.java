@@ -34,7 +34,7 @@ public class MenuController {
                 RegularVendingMachine regularMachine = new RegularVendingMachine();
 
                 regularMachine.setupVendingMachine();
-
+                menu.initializeCreateVendingElements();
             }
         });
 
