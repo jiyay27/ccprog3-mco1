@@ -29,15 +29,36 @@ public class MenuController {
     public MenuController(MenuGui menu) {
         this.menu = menu;
 
-        this.menu.setCreateButtonListener(new ActionListener() {
+        this.menu.setCreateRegularButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                RegularVendingMachine regularMachine = new RegularVendingMachine();
+                // if (e == ) {
 
+                regularMachine = new RegularVendingMachine();
                 regularMachine.setupVendingMachine();
-                menu.initializeCreateVendingElements();
+                menu.getMainFrame();
+
+                menu.getMainFrame().setVisible(true);
+
+                JOptionPane.showMessageDialog(null, "Vending machine has been created.", null,
+                        JOptionPane.INFORMATION_MESSAGE);
+                // }
+
             }
         });
 
+        this.menu.setCreateSpecialButtonListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // if (e == ) {
+                RegularVendingMachine regularMachine = new RegularVendingMachine();
+
+                regularMachine.setupVendingMachine();
+                menu.getMainFrame();
+                JOptionPane.showMessageDialog(null, "Vending machine has been created.", null,
+                        JOptionPane.INFORMATION_MESSAGE);
+                // }
+
+            }
+        });
         this.menu.setTestButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
@@ -46,7 +67,9 @@ public class MenuController {
 
         this.menu.setExitButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.exit(1);
+                JOptionPane.showMessageDialog(null, "Program has succesfully terminated.",
+                        null, JOptionPane.INFORMATION_MESSAGE);
+                System.exit(0);
             }
         });
 

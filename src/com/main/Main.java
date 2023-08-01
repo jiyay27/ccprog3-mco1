@@ -10,10 +10,12 @@ part or whole or otherwise plagiarized the work of other students and/or persons
 package com.main;
 
 import com.vendingview.menugui.MenuGui;
+import com.vendingcontroller.MenuController;
 
 public class Main {
     public static void main(String[] args) {
+        // MenuGui menu = new MenuGui();
+        // MenuController mainMenuController = new MenuController(menu);
         new MenuGui();
     }
-
 }

@@ -11,20 +11,13 @@ import java.awt.event.ActionListener;
 
 public class MenuGui {
     private JFrame mainFrame;
-    private JPanel menuNamePanel;
-    private JPanel buttonsPanel;
+    private JPanel mainPanel;
+
     private JLabel menuNameLabel;
-    private JButton createVending,
-            testVending,
-            exitBtn;
-
-    private JPanel createVendingPanel;
-    private JLabel createVendingLabel;
-
     private JButton regularVending,
             specialVending,
-            returnToMainMenu;
-    private JPanel buttonsPanel2;
+            testVending,
+            exitBtn;
 
     public MenuGui() {
         this.mainFrame = new JFrame("Arcega-Donato Vending Machine Factory");
@@ -35,101 +28,88 @@ public class MenuGui {
         this.mainFrame.setLocationRelativeTo(null);
         this.mainFrame.setResizable(false);
 
-        initializeGreetingElements();
+        // MENU NAME PANEL
+        this.mainPanel = new JPanel(new GridLayout(6, 1));
+        this.mainPanel.setBackground(Color.LIGHT_GRAY);
+        this.mainPanel.setSize(600, 800);
 
-        this.mainFrame.setVisible(true);
-    }
-
-    private void initializeGreetingElements() {
         // MENU NAME LABEL
-        this.menuNameLabel = new JLabel();
-        this.menuNameLabel.setText("Vending Machine Factory");
-        this.menuNameLabel.setBorder(BorderFactory.createEmptyBorder(200, 100, 100, 100));
-        this.menuNameLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
+        this.menuNameLabel = new JLabel("Vending Machine Factory", SwingConstants.CENTER);
+        // this.menuNameLabel.setFont(new Font("Nirmala", Font.BOLD, 30));
         this.menuNameLabel.setForeground(Color.BLACK);
-        // MENU NAME PANEL
-        this.menuNamePanel = new JPanel();
-        this.menuNamePanel.setLayout(new FlowLayout());
 
-        this.menuNamePanel.add(menuNameLabel);
-        this.menuNamePanel.setBackground(Color.LIGHT_GRAY);
-        this.mainFrame.add(menuNamePanel, BorderLayout.NORTH);
+        this.mainPanel.add(menuNameLabel);
 
         // BUTTONS
-        this.createVending = new JButton("Create a Vending Machine");
-        this.createVending.setBounds(10, 10, 250, 100);
-        this.createVending.setBackground(Color.WHITE);
-        this.createVending.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        this.testVending = new JButton("Test a Vending Machine");
-        // this.testVending.setMaximumSize(new Dimension(300, 100));
-        this.testVending.setBackground(Color.WHITE);
-        this.testVending.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        this.exitBtn = new JButton("Exit");
-        // this.exitBtn.setMaximumSize(new Dimension(300, 100));
-        this.exitBtn.setBackground(Color.WHITE);
-        this.exitBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        // BUTTONS PANEL
-        this.buttonsPanel = new JPanel();
-        this.buttonsPanel.setLayout(new GridLayout(3, 1, 20, 20));
-        this.buttonsPanel.setBackground(Color.LIGHT_GRAY);
-
-        this.buttonsPanel.add(createVending);
-        this.buttonsPanel.add(testVending);
-        this.buttonsPanel.add(exitBtn);
-
-        this.mainFrame.setContentPane(buttonsPanel);
-    }
-
-    public void initializeCreateVendingElements() {
-        // REGULAR VENDING LABEL
-        this.createVendingLabel = new JLabel();
-        this.createVendingLabel.setText("Create Vending Machine");
-        this.createVendingLabel.setBorder(BorderFactory.createEmptyBorder(200, 100, 100, 100));
-        this.createVendingLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
-        this.createVendingLabel.setForeground(Color.BLACK);
-        // MENU NAME PANEL
-        this.createVendingPanel = new JPanel();
-        this.createVendingPanel.setLayout(new FlowLayout());
-
-        this.createVendingPanel.add(menuNameLabel);
-        this.createVendingPanel.setBackground(Color.LIGHT_GRAY);
-        this.mainFrame.add(createVendingPanel, BorderLayout.NORTH);
-
-        // BUTTONS
-        this.regularVending = new JButton("Create a Vending Machine");
-        this.regularVending.setBounds(10, 10, 250, 100);
+        // CREATE REGULAR VENDING MACHINE
+        this.regularVending = new JButton("Create a Regular Vending Machine");
+        this.regularVending.setMaximumSize(new Dimension(250, 100));
+        this.regularVending.setMinimumSize(new Dimension(250, 100));
+        this.regularVending.setPreferredSize(new Dimension(250, 100));
         this.regularVending.setBackground(Color.WHITE);
         this.regularVending.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        this.specialVending = new JButton("Test a Vending Machine");
-        // this.testVending.setMaximumSize(new Dimension(300, 100));
+        // BUTTONS PANEL
+        JPanel buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonsPanel.setPreferredSize(new Dimension(250, 100));
+        buttonsPanel.setBackground(Color.LIGHT_GRAY);
+        buttonsPanel.add(regularVending);
+        this.mainPanel.add(buttonsPanel);
+
+        // CREATE SPECIAL VENDING MACHINE
+        this.specialVending = new JButton("Create a Special Vending Machine");
+        this.specialVending.setMaximumSize(new Dimension(250, 100));
+        this.specialVending.setMinimumSize(new Dimension(250, 100));
+        this.specialVending.setPreferredSize(new Dimension(250, 100));
         this.specialVending.setBackground(Color.WHITE);
         this.specialVending.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        this.returnToMainMenu = new JButton("Exit");
-        // this.exitBtn.setMaximumSize(new Dimension(300, 100));
-        this.returnToMainMenu.setBackground(Color.WHITE);
-        this.returnToMainMenu.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         // BUTTONS PANEL
-        this.buttonsPanel2 = new JPanel();
-        this.buttonsPanel2.setLayout(new GridLayout(3, 1, 20, 20));
-        this.buttonsPanel2.setBackground(Color.LIGHT_GRAY);
+        buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonsPanel.setPreferredSize(new Dimension(250, 100));
+        buttonsPanel.setBackground(Color.LIGHT_GRAY);
+        buttonsPanel.add(specialVending);
+        this.mainPanel.add(buttonsPanel);
 
-        this.buttonsPanel2.add(regularVending);
-        this.buttonsPanel2.add(specialVending);
-        this.buttonsPanel2.add(returnToMainMenu);
+        // TEST VENDING MACHINE
+        this.testVending = new JButton("Test a Vending Machine");
+        this.testVending.setMaximumSize(new Dimension(250, 100));
+        this.testVending.setMinimumSize(new Dimension(250, 100));
+        this.testVending.setPreferredSize(new Dimension(250, 100));
+        this.testVending.setBackground(Color.WHITE);
+        this.testVending.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        this.mainFrame.setContentPane(buttonsPanel);
+        buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonsPanel.setPreferredSize(new Dimension(250, 100));
+        buttonsPanel.setBackground(Color.LIGHT_GRAY);
+        buttonsPanel.add(testVending);
+        this.mainPanel.add(buttonsPanel);
+
+        // EXIT PROGRAM
+        this.exitBtn = new JButton("Exit");
+        this.exitBtn.setMaximumSize(new Dimension(250, 100));
+        this.exitBtn.setMinimumSize(new Dimension(250, 100));
+        this.exitBtn.setPreferredSize(new Dimension(250, 100));
+        this.exitBtn.setBackground(Color.WHITE);
+        this.exitBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonsPanel.setPreferredSize(new Dimension(250, 100));
+        buttonsPanel.setBackground(Color.LIGHT_GRAY);
+        buttonsPanel.add(exitBtn);
+        this.mainPanel.add(buttonsPanel);
+
+        this.mainFrame.setContentPane(mainPanel);
 
         this.mainFrame.setVisible(true);
     }
 
-    public void setCreateButtonListener(ActionListener action) {
-        this.createVending.addActionListener(action);
+    public void setCreateRegularButtonListener(ActionListener action) {
+        this.regularVending.addActionListener(action);
+    }
+
+    public void setCreateSpecialButtonListener(ActionListener action) {
+        this.specialVending.addActionListener(action);
     }
 
     public void setTestButtonListener(ActionListener action) {
@@ -138,6 +118,10 @@ public class MenuGui {
 
     public void setExitButtonListener(ActionListener action) {
         this.exitBtn.addActionListener(action);
+    }
+
+    public JFrame getMainFrame() {
+        return this.mainFrame;
     }
 
 }
