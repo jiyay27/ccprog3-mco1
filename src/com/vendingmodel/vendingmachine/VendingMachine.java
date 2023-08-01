@@ -2,44 +2,31 @@ package com.vendingmodel.vendingmachine;
 
 import java.util.*;
 
+import com.vendingmodel.product.Product;
 import com.vendingmodel.item.Item;
 import com.vendingmodel.itemslot.ItemSlot;
 import com.vendingmodel.moneybox.MoneyBox;
 
 public class VendingMachine {
-    protected ArrayList<ItemSlot> CVendingSlot;
     protected MoneyBox vendingMoney;
     protected ArrayList<String> transactions;
 
     public VendingMachine() {
-        this.CVendingSlot = new ArrayList<ItemSlot>();
-        this.vendingMoney = new MoneyBox();
-        this.transactions = new ArrayList<String>();
+
     }
 
     public void setupVendingMachine() {
 
     }
 
-    public void purchaseItem(int nItemIndex, int nItemQuantity) {
-        if (this.CVendingSlot.get(nItemIndex).getItemAvailability() == true)
-            if (nItemQuantity <= this.CVendingSlot.get(nItemIndex).getItemQuantity()) {
-                // TODO: remove slash latur
-                // this.CVendingSlot.get(nItemIndex).buyItem(nItemQuantity);
-
-                this.transactions.add("Item: \t\t" + this.CVendingSlot.get(nItemIndex).getItem().getItemName()
-                        + "\nQuantity: \t" + nItemQuantity);
-            } else
-                System.out.println("Item amount exceeded.");
-    }
-
-    public boolean findItem(String name) {
-        for (ItemSlot item : this.CVendingSlot)
-            if (item.getItem().getItemName().equalsIgnoreCase(name))
-                return true;
-        return false;
-    }
-
+    /**
+     * Receives money from the user by inserting the accepted
+     * amount/s(denominations)
+     * 
+     * @param nAmount represents the money to be inserted by the user
+     * @return true if the value inserted is equal to any of the following
+     *         amount: 0, 1, 5, 10, 20, 50, 100, and 200 and false otherwise
+     */
     public boolean insertPayment(int nAmount) {
         if (nAmount == 200 || nAmount == 100 || nAmount == 50
                 || nAmount == 20 || nAmount == 10 || nAmount == 5
@@ -50,6 +37,10 @@ public class VendingMachine {
             return false;
     }
 
+    /**
+     * Shows the transaction/s made by the user which includes
+     * the item name and its quantity
+     */
     public void displayTransactions() {
         System.out.println("\n\tTotal Sold");
         for (String item : this.transactions) {
@@ -58,50 +49,32 @@ public class VendingMachine {
         System.out.println();
     }
 
-    public void displayToPurchase(int nItemIndex, int nItemQuantity) {
-        System.out.println("\n--------------------------");
-        System.out.println("Item Name: \t" + this.CVendingSlot.get(nItemIndex).getItem().getItemName());
-        System.out
-                .println("Total Price: \t"
-                        + this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
-        System.out.println("Total Quantity: " + nItemQuantity);
-        System.out.println("--------------------------");
-    }
-
-    public int calculateChange(int nPayment, int nItemIndex, int nItemQuantity) {
-        int nChange = nPayment - (this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
-        int nFullChange = nPayment - (this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
-        int[] arrDenominations = this.vendingMoney.getDenominations();
-        int[] arrCount = { 0, 0, 0, 0, 0, 0, 0 };
-        for (int i = 0; i < arrDenominations.length; i++) {
-            while (nChange >= arrDenominations[i]) {
-                arrCount[i]++;
-                nChange -= arrDenominations[i];
-            }
-
-        }
-        System.out.println();
-        System.out.println("Change: " + nFullChange);
-        System.out.println("In these denominations:");
-        for (int i = 0; i < arrDenominations.length; i++)
-            System.out.println(arrDenominations[i] + " x " + arrCount[i]);
-
-        return nFullChange;
-    }
-
+    /**
+     * Replenishes the change in the vending machine by adding the
+     * specified nAmount to the vendingMoney object, which manages
+     * the money in the machine
+     * 
+     * @param nAmount represents the value to be added to the vending money
+     */
     public void replenishChange(int nAmount) {
         this.vendingMoney.addMoney(nAmount);
     }
 
+    /**
+     * Returns the values stored which is the earnings accumulated
+     * by the vending machine in the CVendingSlot variable
+     */
     public void getEarnings() {
         this.vendingMoney.collectEarnings();
     }
 
-    public ArrayList<ItemSlot> getVendingSlot() {
-        return this.CVendingSlot;
-    }
-
+    /**
+     * Returns the values stored in the vendingMoney variable
+     * 
+     * @return this.vendingMoney represents the vending money stored
+     */
     public MoneyBox getMoneyBox() {
         return this.vendingMoney;
     }
+
 }
