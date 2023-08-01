@@ -1,7 +1,8 @@
 package com.vendingmodel.moneybox;
 
 /**
- * This is <code>MoneyBox</code> class which represents the item slot object of the machine
+ * This is <code>MoneyBox</code> class which represents the item slot object of
+ * the machine
  */
 public class MoneyBox {
     private int nMoney;

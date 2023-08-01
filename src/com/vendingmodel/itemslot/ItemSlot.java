@@ -3,7 +3,8 @@ package com.vendingmodel.itemslot;
 import com.vendingmodel.item.Item;
 
 /**
- * This is <code>ItemSlot</code> class which represents the item slot object of the machine
+ * This is <code>ItemSlot</code> class which represents the item slot object of
+ * the machine
  */
 public class ItemSlot {
     private int nSlotIndex;
@@ -12,7 +13,7 @@ public class ItemSlot {
     /**
      * This is the ItemSlot constructor
      * 
-     * @param nSlotIndex slot index
+     * @param nSlotIndex  slot index
      * @param CItemOccupy item occupied
      */
     public ItemSlot(int nSlotIndex, Item CItemOccupy) {
