@@ -19,7 +19,7 @@ public class MenuGui {
                     exitBtn;
 
     public MenuGui() {
-        this.mainFrame = new JFrame("Vending Machine Factory");
+        this.mainFrame = new JFrame("Arcega-Donato Vending Machine Factory");
         this.mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.mainFrame.setLayout(new FlowLayout(FlowLayout.CENTER));
         this.mainFrame.getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -33,13 +33,15 @@ public class MenuGui {
     }
 
     private void initializeGreetingElements() {
-        this.menuNamePanel = new JPanel();
-        this.menuNamePanel.setLayout(new FlowLayout());
+        // MENU NAME LABEL
         this.menuNameLabel = new JLabel();
         this.menuNameLabel.setText("Vending Machine Factory");
         this.menuNameLabel.setBorder(BorderFactory.createEmptyBorder(200, 100, 100, 100));
         this.menuNameLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
         this.menuNameLabel.setForeground(Color.BLACK);
+        // MENU NAME PANEL
+        this.menuNamePanel = new JPanel();
+        this.menuNamePanel.setLayout(new FlowLayout());
 
         this.menuNamePanel.add(menuNameLabel);
         this.menuNamePanel.setBackground(Color.LIGHT_GRAY);
@@ -47,7 +49,9 @@ public class MenuGui {
 
         // BUTTONS 
         this.createVending = new JButton("Create a Vending Machine");
-        this.createVending.setMaximumSize(new Dimension(300, 100));
+        // this.createVending.setMaximumSize(new Dimension(1000, 1000));
+        this.createVending.setBounds(10,10,250,100);
+        this.createVending.setBackground(Color.WHITE);
         this.createVending.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.createVending.addActionListener(new ActionListener() {
             @Override
@@ -59,6 +63,8 @@ public class MenuGui {
 
         this.testVending = new JButton("Test a Vending Machine");
         this.testVending.setMaximumSize(new Dimension(300, 100));
+        this.testVending.setBackground(Color.WHITE);
+        this.testVending.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.testVending.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -68,6 +74,8 @@ public class MenuGui {
 
         this.exitBtn = new JButton("Exit");
         this.exitBtn.setMaximumSize(new Dimension(300, 100));
+        this.exitBtn.setBackground(Color.WHITE);
+        this.exitBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.exitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -77,12 +85,15 @@ public class MenuGui {
 
         // BUTTONS PANEL
         this.buttonsPanel = new JPanel();
-        this.buttonsPanel.setLayout(new GridLayout(3, 1, 5, 5));
+        this.buttonsPanel.setLayout(new GridLayout(3, 1, 20, 20));
+        this.buttonsPanel.setBackground(Color.LIGHT_GRAY);
         this.buttonsPanel.add(createVending);
         this.buttonsPanel.add(testVending);
         this.buttonsPanel.add(exitBtn);
 
-        this.mainFrame.add(buttonsPanel);
+        this.mainFrame.add(buttonsPanel, BorderLayout.CENTER);
+
+        
     }
 
     private void initializeAlignmentElements() {
