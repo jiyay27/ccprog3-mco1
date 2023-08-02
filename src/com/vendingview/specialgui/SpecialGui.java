@@ -9,6 +9,10 @@ import java.util.concurrent.Flow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This is <code>SpecialGui</code> class which represents the
+ * regular vending machine's gui object of the machine
+ */
 public class SpecialGui {
     private JFrame specialFrame,
             specialMaintenanceFrame;
@@ -19,12 +23,12 @@ public class SpecialGui {
 
             mSpecialViewingPanel,
             mSpecialUserPanel,
-            specialmaintenancePanel; // FOR MAINTENANCE (edited alr)
+            specialmaintenancePanel;
 
     private JLabel sProductLabel,
             sTotalLabel,
             sPaymentLabel,
-            sSelectLabel; // FOR MAINTENANCE (edited alr)
+            sSelectLabel;
 
     private JButton sConfirm,
             sCancel,
@@ -36,20 +40,23 @@ public class SpecialGui {
             sSetPrice,
             sEarnings,
             sChange,
-            sGoback; // FOR MAINTENANCE. (edited alr)
+            sGoback;
 
     private JTextArea sDisplayProducts,
             sShowStatus,
 
             specialMaintenanceDisplay,
-            specialMaintenanceStatus; // FOR MAINTENANCE. (edited alr)
+            specialMaintenanceStatus;
 
     private JTextField sProductTxtField,
             sTotalTxtField,
             sPaymentTxtField,
 
-            sSelectTxtField; // FOR MAINTENANCE. (edited alr)
+            sSelectTxtField;
 
+    /**
+     * This is the SpecialGui constructor
+     */
     public SpecialGui() {
         this.specialFrame = new JFrame("Special Vending Features");
         this.specialFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -70,6 +77,10 @@ public class SpecialGui {
         // TODO:
     }
 
+    /**
+     * Initializes the contents included in the vending features part of the
+     * special vending machine interface
+     */
     public void initializeSpecialFeatures() {
         // ! FEATURES PANEL
         this.specialfeaturesPanel = new JPanel(new GridLayout(0, 2));
@@ -207,6 +218,10 @@ public class SpecialGui {
         this.specialMaintenanceFrame.setVisible(false);
     }
 
+    /**
+     * Initializes the contents included in the maintenance part of the
+     * special vending machine interface
+     */
     public void initializeSpecialMaintenance() {
         // ! MAINTENANCE PANEL
         this.specialmaintenancePanel = new JPanel(new GridLayout(0, 2));
@@ -347,50 +362,132 @@ public class SpecialGui {
         this.specialMaintenanceFrame.setVisible(true);
     }
 
+    /**
+     * Returns the values stored in the specialFrame variable
+     * 
+     * @return this.specialFrame represents the specialFrame stored with the
+     *         datatype JFrame
+     */
     public JFrame getSpecialFrame() {
         return this.specialFrame;
     }
 
+    /**
+     * Returns the values stored in the specialMaintenanceFrame variable
+     * 
+     * @return this.specialMaintenanceFrame represents the specialMaintenanceFrame
+     *         stored with the datatype JFrame
+     */
     public JFrame getSpecialMaintenanceFrame() {
         return this.specialMaintenanceFrame;
     }
 
+    /**
+     * Adds functionality to the ConfirmButton in response to
+     * the user's interactions
+     * 
+     * @param action listens to the event(button click) and performs
+     *               action/s when that event occurs
+     */
     public void setSpecialConfirmButtonListener(ActionListener action) {
         this.sConfirm.addActionListener(action);
     }
 
+    /**
+     * Adds functionality to the CancelButton in response to
+     * the user's interactions
+     * 
+     * @param action listens to the event(button click) and performs
+     *               action/s when that event occurs
+     */
     public void setSpecialCancelButtonListener(ActionListener action) {
         this.sCancel.addActionListener(action);
     }
 
+    /**
+     * Adds functionality to the SpecialMaintenanceButton in response to
+     * the user's interactions
+     * 
+     * @param action listens to the event(button click) and performs
+     *               action/s when that event occurs
+     */
     public void setSpecialMaintenanceButtonListener(ActionListener action) {
         this.sMaintenance.addActionListener(action);
     }
 
+    /**
+     * Adds functionality to the SpecialReturnToMainMenuButton in response to
+     * the user's interactions
+     * 
+     * @param action listens to the event(button click) and performs
+     *               action/s when that event occurs
+     */
     public void setSpecialReturnToMainMenuButtonListener(ActionListener action) {
         this.sBackToMain.addActionListener(action);
     }
 
+    /**
+     * Adds functionality to the SpecialStockButton in response to
+     * the user's interactions
+     * 
+     * @param action listens to the event(button click) and performs
+     *               action/s when that event occurs
+     */
     public void setSpecialStockButtonListener(ActionListener action) {
         this.sStock.addActionListener(action);
     }
 
+    /**
+     * Adds functionality to the SpecialRestockButton in response to
+     * the user's interactions
+     * 
+     * @param action listens to the event(button click) and performs
+     *               action/s when that event occurs
+     */
     public void setSpecialRestockButtonListener(ActionListener action) {
         this.sRestock.addActionListener(action);
     }
 
+    /**
+     * Adds functionality to the SpecialItemPriceButton in response to
+     * the user's interactions
+     * 
+     * @param action listens to the event(button click) and performs
+     *               action/s when that event occurs
+     */
     public void setSpecialItemPriceButtonListener(ActionListener action) {
         this.sSetPrice.addActionListener(action);
     }
 
+    /**
+     * Adds functionality to the SpecialEarningsButton in response to
+     * the user's interactions
+     * 
+     * @param action listens to the event(button click) and performs
+     *               action/s when that event occurs
+     */
     public void setSpecialEarningsButtonListener(ActionListener action) {
         this.sEarnings.addActionListener(action);
     }
 
+    /**
+     * Adds functionality to the SpecialChangeButton in response to
+     * the user's interactions
+     * 
+     * @param action listens to the event(button click) and performs
+     *               action/s when that event occurs
+     */
     public void setSpecialChangeButtonListener(ActionListener action) {
         this.sChange.addActionListener(action);
     }
 
+    /**
+     * Adds functionality to the SpecialGobackButton in response to
+     * the user's interactions
+     * 
+     * @param action listens to the event(button click) and performs
+     *               action/s when that event occurs
+     */
     public void setSpecialGobackButtonListener(ActionListener action) {
         this.sGoback.addActionListener(action);
     }

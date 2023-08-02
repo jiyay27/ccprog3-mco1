@@ -33,38 +33,67 @@ public class MenuController {
     /**
      * This is the MenuController constructor
      * 
-     * @param menu   main menu
-     */ 
+     * @param menu main menu
+     */
     public MenuController(MenuGui menu) {
         this.menu = menu;
 
         this.menu.setCreateRegularButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                regularMachine = new RegularVendingMachine();
-                regularMachine.setupVendingMachine();
-                menu.getMainFrame();
+                if (regularMachine != null) {
+                    JOptionPane.showMessageDialog(null,
+                            "<html>Regular vending macine has already been created.</html>", "ERROR",
+                            JOptionPane.WARNING_MESSAGE, null);
+                } else if (specialMachine != null) {
+                    JOptionPane.showMessageDialog(null,
+                            "<html>Special vpending macine already exists.</html>", "ERROR",
+                            JOptionPane.WARNING_MESSAGE, null);
+                } else {
+                    regularMachine = new RegularVendingMachine();
+                    regularMachine.setupVendingMachine();
+                    menu.getMainFrame();
 
-                JOptionPane.showMessageDialog(null, "Vending machine has been created.", null,
-                        JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Regular vending machine has been created.", null,
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         });
 
         this.menu.setCreateSpecialButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                specialMachine = new SpecialVendingMachine();
-                specialMachine.setupSpecialVendingMachine();
-                menu.getMainFrame();
+                if (specialMachine != null) {
+                    JOptionPane.showMessageDialog(null,
+                            "<html>Special vending macine has already been created.</html>", "ERROR",
+                            JOptionPane.WARNING_MESSAGE, null);
+                } else if (regularMachine != null) {
+                    JOptionPane.showMessageDialog(null,
+                            "<html>Regular vending macine already exists.</html>", "ERROR",
+                            JOptionPane.WARNING_MESSAGE, null);
+                } else {
+                    specialMachine = new SpecialVendingMachine();
+                    specialMachine.setupSpecialVendingStock();
+                    menu.getMainFrame();
 
-                JOptionPane.showMessageDialog(null, "Vending machine has been created.", null,
-                        JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Special vending machine has been created.", null,
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         });
 
         this.menu.setTestButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (regularMachine != null) {
+
+                if (regularMachine == null && specialMachine == null) {
+                    JOptionPane.showMessageDialog(null,
+
+                            "<html>Vending machine does not extist. <br>Please create a vending machine.</html>",
+                            "ERROR",
+                            JOptionPane.WARNING_MESSAGE, null);
+                } else if (regularMachine != null) {
                     RegularGui regularMachineGui = new RegularGui();
                     regularMachineGui.initializeFeatures();
+                    regularMachineGui.setDisplayItemText(regularMachine.listSlotInfo());
+
                     regularMachineGui.initializeMaintenance();
                     regularMachineGui.getRegularMaintenanceFrame().setVisible(false);
 
@@ -73,13 +102,21 @@ public class MenuController {
                     RegularController regularController = new RegularController(regularMachineGui, regularMachine,
                             menu);
 
+                    specialMachineGui.getSpecialMaintenanceFrame().setVisible(false);
 
+                } else if (specialMachine != null) {
+                    SpecialGui specialMachineGui = new SpecialGui();
+                    specialMachineGui.initializeSpecialFeatures();
                     specialMachineGui.initializeSpecialMaintenance();
                     specialMachineGui.getSpecialMaintenanceFrame().setVisible(false);
-                    
 
-                    
+                    menu.getMainFrame().setVisible(false);
+
+                    SpecialController specialController = new SpecialController(specialMachineGui, specialMachine,
+                            menu);
+                }
             }
+
         });
 
         this.menu.setExitButtonListener(new ActionListener() {
@@ -88,6 +125,5 @@ public class MenuController {
                 System.exit(0);
             }
         });
-
     }
 }

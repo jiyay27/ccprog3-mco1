@@ -2,16 +2,22 @@ package com.vendingmodel.vendingmachine;
 
 import java.util.*;
 
-import com.vendingmodel.product.Product;
 import com.vendingmodel.item.Item;
 import com.vendingmodel.itemslot.ItemSlot;
 import com.vendingmodel.moneybox.MoneyBox;
 
+/**
+ * This is <code>VendingMachine</code> class which represents the
+ * vending machine object of the machine
+ */
 public class VendingMachine {
     protected ArrayList<ItemSlot> CVendingSlot;
     protected MoneyBox vendingMoney;
     protected ArrayList<String> transactions;
 
+    /**
+     * This is the VendingMachine constructor
+     */
     public VendingMachine() {
         this.CVendingSlot = new ArrayList<ItemSlot>();
         this.vendingMoney = new MoneyBox();
@@ -43,15 +49,20 @@ public class VendingMachine {
      * @param nItemIndex    represents the index of an item
      * @param nItemQuantity represents the quatity of an item
      */
-    public void purchaseItem(int nItemIndex, int nItemQuantity) {
+    public String purchaseItem(int nItemIndex, int nItemQuantity) {
+        StringBuilder display = new StringBuilder();
         if (this.CVendingSlot.get(nItemIndex).getItemAvailability() == true)
             if (nItemQuantity <= this.CVendingSlot.get(nItemIndex).getItem().getItemQuantity()) {
                 this.CVendingSlot.get(nItemIndex).getItem().buyItem(nItemQuantity);
 
                 this.transactions.add("Item: \t\t" + this.CVendingSlot.get(nItemIndex).getItem().getItemName()
                         + "\nQuantity: \t" + nItemQuantity);
+                display.append("Item bought.");
+                return display.toString();
             } else
-                System.out.println("Item amount exceeded.");
+                display.append("Item amount exceeded.");
+
+        return display.toString();
     }
 
     /**
@@ -87,14 +98,16 @@ public class VendingMachine {
      * @param nItemIndex    represents the index of an item
      * @param nItemQuantity represents the quantity of an item
      */
-    public void displayToPurchase(int nItemIndex, int nItemQuantity) {
-        System.out.println("\n--------------------------");
-        System.out.println("Item Name: \t" + this.CVendingSlot.get(nItemIndex).getItem().getItemName());
-        System.out
-                .println("Total Price: \t"
-                        + this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
-        System.out.println("Total Quantity: " + nItemQuantity);
-        System.out.println("--------------------------");
+    public String displayToPurchase(int nItemIndex, int nItemQuantity) {
+        StringBuilder display = new StringBuilder();
+        display.append("\n--------------------------\n");
+        display.append("Item Name: \t" + this.CVendingSlot.get(nItemIndex).getItem().getItemName());
+        display.append("Total Price: \t"
+                + this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity + "\n");
+        display.append("Total Quantity: " + nItemQuantity + "\n");
+        display.append("--------------------------\n");
+
+        return display.toString();
     }
 
     /**
@@ -107,7 +120,8 @@ public class VendingMachine {
      * @param nItemQuantity represents the quantity of an item
      * @return nFullChange represents the amount of money left of the user
      */
-    public int calculateChange(int nPayment, int nItemIndex, int nItemQuantity) {
+    public String calculateChange(int nPayment, int nItemIndex, int nItemQuantity) {
+        StringBuilder display = new StringBuilder();
         int nChange = nPayment - (this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
         int nFullChange = nPayment - (this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
         int[] arrDenominations = this.vendingMoney.getDenominations();
@@ -117,15 +131,16 @@ public class VendingMachine {
                 arrCount[i]++;
                 nChange -= arrDenominations[i];
             }
-
         }
-        System.out.println();
-        System.out.println("Change: " + nFullChange);
-        System.out.println("In these denominations:");
-        for (int i = 0; i < arrDenominations.length; i++)
-            System.out.println(arrDenominations[i] + " x " + arrCount[i]);
+        this.getMoneyBox().negateMoney(nFullChange);
 
-        return nFullChange;
+        display.append("\n");
+        display.append("       Change: " + nFullChange + "\n");
+        display.append("       In these denominations: \n");
+        for (int i = 0; i < arrDenominations.length; i++)
+            display.append("       " + arrDenominations[i] + " x " + arrCount[i] + "\n");
+
+        return display.toString();
     }
 
     /**
@@ -141,12 +156,17 @@ public class VendingMachine {
      * Shows the transaction/s made by the user which includes
      * the item name and its quantity
      */
-    public void displayTransactions() {
-        System.out.println("\n\tTotal Sold");
+    public String displayTransactions() {
+        StringBuilder display = new StringBuilder();
+
+        display.append("Earnings: " + this.getEarnings() + "\n");
+        display.append("Change: " + this.getMoneyBox().getTotalMoney());
+        display.append("\n\tTotal Sold\n");
         for (String item : this.transactions) {
-            System.out.println(item);
+            display.append(item + "\n");
         }
-        System.out.println();
+
+        return display.toString();
     }
 
     /**
@@ -164,8 +184,8 @@ public class VendingMachine {
      * Returns the values stored which is the earnings accumulated
      * by the vending machine in the CVendingSlot variable
      */
-    public void getEarnings() {
-        this.vendingMoney.collectEarnings();
+    public int getEarnings() {
+        return this.vendingMoney.collectEarnings();
     }
 
     /**

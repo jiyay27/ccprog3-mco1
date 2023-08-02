@@ -9,6 +9,10 @@ import java.util.concurrent.Flow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This is <code>MenuGui</code> class which represents the
+ * menu' gui object of the machine
+ */
 public class MenuGui {
     private JFrame mainFrame;
     private JPanel mainPanel;
@@ -19,18 +23,21 @@ public class MenuGui {
             testVending,
             exitBtn;
 
+    /**
+     * This is the MenuGui constructor
+     */
     public MenuGui() {
         this.mainFrame = new JFrame("Arcega-Donato Vending Machine Factory");
         this.mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.mainFrame.setLayout(new FlowLayout(FlowLayout.CENTER));
-        this.mainFrame.getContentPane().setBackground(Color.LIGHT_GRAY);
+        this.mainFrame.getContentPane().setBackground(new Color(240, 234, 214));
         this.mainFrame.setSize(600, 800);
         this.mainFrame.setLocationRelativeTo(null);
         this.mainFrame.setResizable(false);
 
         // MENU NAME PANEL
         this.mainPanel = new JPanel(new GridLayout(6, 1));
-        this.mainPanel.setBackground(Color.LIGHT_GRAY);
+        this.mainPanel.setBackground(new Color(240, 234, 214));
         this.mainPanel.setSize(600, 800);
 
         // MENU NAME LABEL
@@ -52,7 +59,7 @@ public class MenuGui {
         // BUTTONS PANEL
         JPanel buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonsPanel.setPreferredSize(new Dimension(250, 100));
-        buttonsPanel.setBackground(Color.LIGHT_GRAY);
+        buttonsPanel.setBackground(new Color(240, 234, 214));
         buttonsPanel.add(regularVending);
         this.mainPanel.add(buttonsPanel);
 
@@ -67,7 +74,7 @@ public class MenuGui {
         // BUTTONS PANEL
         buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonsPanel.setPreferredSize(new Dimension(250, 100));
-        buttonsPanel.setBackground(Color.LIGHT_GRAY);
+        buttonsPanel.setBackground(new Color(240, 234, 214));
         buttonsPanel.add(specialVending);
         this.mainPanel.add(buttonsPanel);
 
@@ -81,7 +88,7 @@ public class MenuGui {
 
         buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonsPanel.setPreferredSize(new Dimension(250, 100));
-        buttonsPanel.setBackground(Color.LIGHT_GRAY);
+        buttonsPanel.setBackground(new Color(240, 234, 214));
         buttonsPanel.add(testVending);
         this.mainPanel.add(buttonsPanel);
 
@@ -95,7 +102,7 @@ public class MenuGui {
 
         buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonsPanel.setPreferredSize(new Dimension(250, 100));
-        buttonsPanel.setBackground(Color.LIGHT_GRAY);
+        buttonsPanel.setBackground(new Color(240, 234, 214));
         buttonsPanel.add(exitBtn);
         this.mainPanel.add(buttonsPanel);
 
@@ -104,25 +111,58 @@ public class MenuGui {
         this.mainFrame.setVisible(true);
     }
 
+    /**
+     * Adds functionality to the CreateRegularButton in response to
+     * the user's interactions
+     * 
+     * @param action listens to the event(button click) and performs
+     *               action/s when that event occurs
+     */
     public void setCreateRegularButtonListener(ActionListener action) {
         this.regularVending.addActionListener(action);
     }
 
+    /**
+     * Adds functionality to the CreateSpecialButton in response to
+     * the user's interactions
+     * 
+     * @param action listens to the event(button click) and performs
+     *               action/s when that event occurs
+     */
     public void setCreateSpecialButtonListener(ActionListener action) {
         this.specialVending.addActionListener(action);
     }
 
+    /**
+     * Adds functionality to the TestButton in response to
+     * the user's interactions
+     * 
+     * @param action listens to the event(button click) and performs
+     *               action/s when that event occurs
+     */
     public void setTestButtonListener(ActionListener action) {
         this.testVending.addActionListener(action);
     }
 
+    /**
+     * Adds functionality to the ExitButton in response to
+     * the user's interactions
+     * 
+     * @param action listens to the event(button click) and performs
+     *               action/s when that event occurs
+     */
     public void setExitButtonListener(ActionListener action) {
         this.exitBtn.addActionListener(action);
     }
 
+    /**
+     * Returns the values stored in the mainFrame variable
+     * 
+     * @return this.mainFrame represents the mainFrame stored with the datatype
+     *         JFrame
+     */
     public JFrame getMainFrame() {
         return this.mainFrame;
     }
-    
 
 }

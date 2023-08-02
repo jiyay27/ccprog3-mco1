@@ -50,6 +50,15 @@ public class MoneyBox {
     }
 
     /**
+     * Adds the inputted value (nInput) to this.nMoney
+     * 
+     * @param nInput represents the value to be added
+     */
+    public void negateMoney(int nInput) {
+        this.nMoney -= nInput;
+    }
+
+    /**
      * Adds the inputted value (nInput) to this.nEarnings
      * 
      * @param nInput represents the value to be added

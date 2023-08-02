@@ -17,7 +17,7 @@ import com.vendingview.menugui.MenuGui;
 
 /**
  * This is <code>RegularController</code> class which represents the regular
- * vedning machine controller object of the machine
+ * vending machine controller object of the machine
  */
 public class RegularController {
     private RegularVendingMachine regularModel;
@@ -38,13 +38,43 @@ public class RegularController {
 
         this.regularGui.setConfirmButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                int nItemIndex = Integer.parseInt(regularGui.getItemIndexTextInput());
+                int nItemQuantity = Integer.parseInt(regularGui.getItemQtyTextInput());
 
+                regularGui.setStatusItemText(regularModel.displayToPurchase(nItemIndex - 1, nItemQuantity));
+            }
+        });
+
+        this.regularGui.setPayButtonListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int nItemIndex = Integer.parseInt(regularGui.getItemIndexTextInput());
+                int nItemQuantity = Integer.parseInt(regularGui.getItemQtyTextInput());
+                int nPayment = Integer.parseInt(regularGui.getPayment());
+
+                if (regularModel.insertPayment(nPayment) == true) {
+                    if (nPayment >= regularModel.getVendingSlot().get(nItemIndex - 1).getItem().getItemPrice()
+                            * nItemQuantity) {
+                        // regularGui.setStatusItemText(regularModel.calculateChange(nPayment,
+                        // nItemIndex, nItemQuantity));
+                        regularGui.setStatusItemText(regularModel.displayStatusAfterPurchase(
+                                regularModel.purchaseItem(nItemIndex - 1, nItemQuantity),
+                                regularModel.calculateChange(nPayment, nItemIndex, nItemQuantity)));
+
+                        regularGui.setDisplayItemText(regularModel.listSlotInfo());
+
+                        regularGui.clearTextFiedls();
+                    } else {
+                        regularGui.setStatusItemText("\n\n          NOT ENOUGH PAYMENT");
+                    }
+                } else {
+                    regularGui.setStatusItemText("INVALID BILL.");
+                }
             }
         });
 
         this.regularGui.setCancelButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                regularGui.clearTextFiedls();
             }
         });
 
@@ -52,6 +82,10 @@ public class RegularController {
             public void actionPerformed(ActionEvent e) {
                 regularGui.getRegularFrame().setVisible(false);
                 regularGui.getRegularMaintenanceFrame().setVisible(true);
+
+                regularGui.setMaintenanceDisplayText(regularModel.listSlotInfo());
+
+                regularGui.setMaintenanceStatusText(regularModel.displayTransactions());
             }
         });
 

@@ -17,7 +17,7 @@ import com.vendingview.menugui.MenuGui;
 
 /**
  * This is <code>SpecialController</code> class which represents the special
- * vedning machine controller object of the machine
+ * vending machine controller object of the machine
  */
 public class SpecialController {
     private SpecialVendingMachine specialModel;
@@ -27,8 +27,8 @@ public class SpecialController {
     /**
      * This is the SpecialController constructor
      * 
-     * @param regularGui   regular machine gui
-     * @param regularModel regular machine model
+     * @param specialGui   special machine gui
+     * @param specialModel special machine model
      * @param menu         main menu
      */
     public SpecialController(SpecialGui specialGui, SpecialVendingMachine specialModel, MenuGui menu) {

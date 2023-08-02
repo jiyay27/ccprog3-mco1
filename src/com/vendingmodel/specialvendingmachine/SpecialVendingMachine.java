@@ -2,24 +2,31 @@ package com.vendingmodel.specialvendingmachine;
 
 import java.util.*;
 
-import com.vendingmodel.product.Product;
 import com.vendingmodel.item.Item;
 import com.vendingmodel.item.Item.ItemType;
 import com.vendingmodel.itemslot.ItemSlot;
 import com.vendingmodel.moneybox.MoneyBox;
 import com.vendingmodel.vendingmachine.VendingMachine;
-import java.util.HashMap;
 
+/**
+ * This is <code>SpecialVendingMachine</code> class which represents the special
+ * vending machine object of the machine
+ */
 public class SpecialVendingMachine extends VendingMachine {
-        private ArrayList<Product> vendingOptions;
         private ArrayList<Item> vendingIngredients;
 
+        /**
+         * This is the SpecialVendingMachine constructor
+         */
         public SpecialVendingMachine() {
                 super();
-                this.vendingOptions = new ArrayList<Product>();
                 this.vendingIngredients = new ArrayList<Item>();
         }
 
+        /**
+         * Used to initialize the vending machine by adding items as well as
+         * additional products to their corresponding slots
+         */
         public void setupSpecialVendingStock() {
                 CVendingSlot
                                 .add(new ItemSlot(1, new Item("Garlic Fried Rice", 25, 366, 15, ItemType.INGREDIENT)));
@@ -45,6 +52,14 @@ public class SpecialVendingMachine extends VendingMachine {
                                 .add(new ItemSlot(11, new Item("Atchara", 10, 28, 13, ItemType.ADDON)));
         }
 
+        /**
+         * Initializes the available options for a particular silog in the menu
+         * 
+         * @param strProductName represents the name of the product that is inputted by
+         *                       the user
+         * @return productOptions represents the hashmap of the options available for
+         *         that product along with its quantities
+         */
         private HashMap<String, Integer> setupProduct(String strProductName) {
                 HashMap<String, Integer> productOptions = new HashMap<String, Integer>();
                 switch (strProductName.toLowerCase()) {
@@ -88,13 +103,57 @@ public class SpecialVendingMachine extends VendingMachine {
                 return productOptions;
         }
 
+        /**
+         * Allows the user to purchase products from the vending machine.
+         * Aside from purchasing, this also checks if there are enough
+         * ingredients in the vending machine. If there is, it will display
+         * the cooking process of the item selected
+         * 
+         * @param strProductName represents the name of the product that the
+         *                       user wants to purchase
+         */
         public void purchaseProduct(String strProductName) {
                 HashMap<String, Integer> product = this.setupProduct(strProductName);
 
-                for (String name : product.keySet()) {
-                        this.CVendingSlot.get(this.findItemSlotIndex(name)).getItem().buyItem(1);
+                try {
+                        for (String name : product.keySet()) {
+                                if (this.CVendingSlot.get(this.findItemSlotIndex(name)).getItem().getItemName()
+                                                .equalsIgnoreCase(name))
+                                        this.CVendingSlot.get(this.findItemSlotIndex(name)).getItem()
+                                                        .buyItem(product.get(name));
+                        }
+                } catch (Exception e) {
+                        throw new ArrayIndexOutOfBoundsException(
+                                        "Ingredients not enough.");
+                } finally {
+                        for (String name : product.keySet())
+                                switch (name) {
+                                        case "Garlic Fried Rice":
+                                                System.out.println("Frying rice...");
+                                                break;
+                                        case "Fried Egg":
+                                                System.out.println("Frying egg...");
+                                                break;
+                                        case "Beef Tapa":
+                                                System.out.println("Cooking beef...");
+                                                break;
+                                        case "Longganisa":
+                                                System.out.println("Cooking longganisa...");
+                                                break;
+                                        case "Tocino":
+                                                System.out.println("Cooking tocino...");
+                                                break;
+                                        case "Hotdog":
+                                                System.out.println("Cooking hotdog...");
+                                                break;
+                                        case "Lumpiang Shanghai":
+                                                System.out.println("Cooking shanghai...");
+                                                break;
+                                        case "Bangus":
+                                                System.out.println("Frying bangus...");
+                                                break;
+                                }
                 }
-
         }
 
         /**
@@ -104,7 +163,9 @@ public class SpecialVendingMachine extends VendingMachine {
          * @param nItemIndex    represents the index of an item
          * @param nItemQuantity represents the quantity of an item
          */
-        public void displayToPurchase(int nItemIndex, int nItemQuantity) {
+        public String displayToPurchase(int nItemIndex, int nItemQuantity) {
+                StringBuilder display = new StringBuilder();
+
                 System.out.println("\n--------------------------");
                 System.out.println("Item Name: \t" + this.CVendingSlot.get(nItemIndex).getItem().getItemName());
                 System.out
@@ -113,8 +174,18 @@ public class SpecialVendingMachine extends VendingMachine {
                                                                 * nItemQuantity);
                 System.out.println("Total Quantity: " + nItemQuantity);
                 System.out.println("--------------------------");
+
+                return display.toString();
         }
 
+        /**
+         * Calculates the change to be returned to the user after a purchase
+         * and provides a breakdown of the change into different denominations.
+         * 
+         * @param nPayment represents the amount paid by the user
+         * @param nIndex   represents the index of an item
+         * @return nFullChange represents the amount of money left of the user
+         */
         public int calculateChange(int nPayment, int nIndex) {
                 int nChange = nPayment - (this.vendingOptions.get(nIndex).getProductPrice());
                 int nFullChange = nPayment
@@ -137,6 +208,12 @@ public class SpecialVendingMachine extends VendingMachine {
                 return nFullChange;
         }
 
+        /**
+         * Searches an item and return the index of the slot where the item is located
+         * 
+         * @param strItemName represents the name of the item to be searched
+         * @return index if the found and -1 otherwise
+         */
         public int findItemSlotIndex(String strItemName) {
                 int index;
                 for (ItemSlot slot : this.CVendingSlot) {
@@ -148,108 +225,17 @@ public class SpecialVendingMachine extends VendingMachine {
                 return -1;
         }
 
+        /**
+         * This method handles the vending machine's inventory and peforms ingredient
+         * tracking wherein it will add an item to the list of ingredients inside the
+         * vending machine.
+         * 
+         * @param strItemName represents the name of the item to be added in the
+         *                    ingredients' list
+         */
         public void addItemToIngredients(String strItemName) {
                 this.vendingIngredients.add(this.CVendingSlot.get(this.findItemSlotIndex(strItemName)).getItem());
                 this.CVendingSlot.get(this.findItemSlotIndex(strItemName)).getItem().buyItem(1);
-        }
-
-        public void cookSilog() {
-                int i;
-                for (i = 0; i <= this.vendingIngredients.size(); i++)
-                        switch (this.vendingIngredients.get(i).getItemName()) {
-                                case "Garlic Fried Rice":
-                                        System.out.println("Frying rice...");
-                                        try {
-                                                Thread.sleep(500);
-                                        } catch (InterruptedException e) {
-                                                System.out.println(e);
-                                        }
-                                        break;
-                                case "Fried Egg":
-                                        System.out.println("Frying egg...");
-                                        try {
-                                                Thread.sleep(500);
-                                        } catch (InterruptedException e) {
-                                                System.out.println(e);
-                                        }
-                                        break;
-                                case "Beef Tapa":
-                                        System.out.println("Cooking tapa...");
-                                        try {
-                                                Thread.sleep(500);
-                                        } catch (InterruptedException e) {
-                                                System.out.println(e);
-                                        }
-                                        break;
-                                case "Longganisa":
-                                        System.out.println("Cooking longganisa...");
-                                        try {
-                                                Thread.sleep(500);
-                                        } catch (InterruptedException e) {
-                                                System.out.println(e);
-                                        }
-                                        break;
-                                case "Tocino":
-                                        System.out.println("Cooking tocino...");
-                                        try {
-                                                Thread.sleep(500);
-                                        } catch (InterruptedException e) {
-                                                System.out.println(e);
-                                        }
-                                        break;
-                                case "Hotdog":
-                                        System.out.println("Cooking hotdog...");
-                                        try {
-                                                Thread.sleep(500);
-                                        } catch (InterruptedException e) {
-                                                System.out.println(e);
-                                        }
-                                        break;
-                                case "Lumpiang Shanghai":
-                                        System.out.println("Cooking lumpia...");
-                                        try {
-                                                Thread.sleep(500);
-                                        } catch (InterruptedException e) {
-                                                System.out.println(e);
-                                        }
-                                        break;
-                                case "Bangus":
-                                        System.out.println("Frying bangus...");
-                                        try {
-                                                Thread.sleep(500);
-                                        } catch (InterruptedException e) {
-                                                System.out.println(e);
-                                        }
-                                        break;
-                                case "Sliced Tomatoes":
-                                        System.out.println("Slicing some tomatoes...");
-                                        try {
-                                                Thread.sleep(500);
-                                        } catch (InterruptedException e) {
-                                                System.out.println(e);
-                                        }
-                                        break;
-                                case "Sliced Cucumber":
-                                        System.out.println("Slicing some cucumber...");
-                                        try {
-                                                Thread.sleep(500);
-                                        } catch (InterruptedException e) {
-                                                System.out.println(e);
-                                        }
-                                        break;
-                                case "Atchara":
-                                        System.out.println("Adding some cucumber...");
-                                        try {
-                                                Thread.sleep(500);
-                                        } catch (InterruptedException e) {
-                                                System.out.println(e);
-                                        }
-                                        break;
-                                default:
-                                        break;
-                        }
-                if (i == this.vendingIngredients.size())
-                        System.out.println("Silog meal is done!");
         }
 
 }
