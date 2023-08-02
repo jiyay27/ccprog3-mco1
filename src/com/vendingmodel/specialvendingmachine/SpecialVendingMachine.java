@@ -3,7 +3,6 @@ package com.vendingmodel.specialvendingmachine;
 import java.util.*;
 
 import com.vendingmodel.item.Item;
-import com.vendingmodel.item.Item.ItemType;
 import com.vendingmodel.itemslot.ItemSlot;
 import com.vendingmodel.moneybox.MoneyBox;
 import com.vendingmodel.vendingmachine.VendingMachine;
