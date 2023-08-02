@@ -3,7 +3,6 @@ package com.vendingmodel.specialvendingmachine;
 import java.util.*;
 
 import com.vendingmodel.item.Item;
-import com.vendingmodel.item.Item.ItemType;
 import com.vendingmodel.itemslot.ItemSlot;
 import com.vendingmodel.moneybox.MoneyBox;
 import com.vendingmodel.vendingmachine.VendingMachine;
@@ -176,36 +175,6 @@ public class SpecialVendingMachine extends VendingMachine {
                 System.out.println("--------------------------");
 
                 return display.toString();
-        }
-
-        /**
-         * Calculates the change to be returned to the user after a purchase
-         * and provides a breakdown of the change into different denominations.
-         * 
-         * @param nPayment represents the amount paid by the user
-         * @param nIndex   represents the index of an item
-         * @return nFullChange represents the amount of money left of the user
-         */
-        public int calculateChange(int nPayment, int nIndex) {
-                int nChange = nPayment - (this.vendingOptions.get(nIndex).getProductPrice());
-                int nFullChange = nPayment
-                                - (this.vendingOptions.get(nIndex).getProductPrice());
-                int[] arrDenominations = this.vendingMoney.getDenominations();
-                int[] arrCount = { 0, 0, 0, 0, 0, 0, 0 };
-                for (int i = 0; i < arrDenominations.length; i++) {
-                        while (nChange >= arrDenominations[i]) {
-                                arrCount[i]++;
-                                nChange -= arrDenominations[i];
-                        }
-
-                }
-                System.out.println();
-                System.out.println("Change: " + nFullChange);
-                System.out.println("In these denominations:");
-                for (int i = 0; i < arrDenominations.length; i++)
-                        System.out.println(arrDenominations[i] + " x " + arrCount[i]);
-
-                return nFullChange;
         }
 
         /**
