@@ -37,7 +37,6 @@ public class MenuController {
 
                 JOptionPane.showMessageDialog(null, "Vending machine has been created.", null,
                         JOptionPane.INFORMATION_MESSAGE);
-
             }
         });
 
@@ -49,14 +48,15 @@ public class MenuController {
 
                 JOptionPane.showMessageDialog(null, "Vending machine has been created.", null,
                         JOptionPane.INFORMATION_MESSAGE);
-
             }
         });
+
         this.menu.setTestButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (regularMachine != null) {
                     RegularGui regularMachineGui = new RegularGui();
                     regularMachineGui.initializeFeatures();
+                    RegularController regularController = new RegularController(regularMachineGui, regularMachine, menu);
                     menu.getMainFrame().setVisible(false);
                 } else if (specialMachine != null) {
                     SpecialGui specialMacSpecialGui = new SpecialGui();
@@ -70,9 +70,10 @@ public class MenuController {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Program has succesfully terminated.",
                         null, JOptionPane.INFORMATION_MESSAGE);
+                
                 System.exit(0);
             }
         });
 
-    }
+    } 
 }

@@ -11,8 +11,8 @@ package com.main;
 
 import com.vendingview.menugui.MenuGui;
 import com.vendingcontroller.MenuController;
-import com.vendingview.regulargui.RegularGui;
-import com.vendingcontroller.RegularController;
+// import com.vendingview.regulargui.RegularGui;
+// import com.vendingcontroller.RegularController;
 
 public class Main {
     public static void main(String[] args) {

@@ -29,6 +29,7 @@ public class RegularGui {
     private JButton confirm,
             cancel,
             maintenance,
+            backToMain,
             stock,
             restock,
             setPrice,
@@ -48,15 +49,15 @@ public class RegularGui {
             selectTxtField;
 
     public RegularGui() {
-        this.regularFrame = new JFrame("Regular Vending Machine");
-        this.regularFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.regularFrame = new JFrame("Regular Vending Features");
+        this.regularFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.regularFrame.setLayout(new GridLayout(1, 2));
         this.regularFrame.getContentPane().setBackground(Color.LIGHT_GRAY);
         this.regularFrame.setSize(600, 800);
         this.regularFrame.setLocationRelativeTo(null);
         this.regularFrame.setResizable(false);
 
-        this.regularMaintenanceFrame = new JFrame("Regular Vending Machine");
+        this.regularMaintenanceFrame = new JFrame("Regular Maintenance Features");
         this.regularMaintenanceFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.regularMaintenanceFrame.setLayout(new GridLayout(1, 2));
         this.regularMaintenanceFrame.getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -191,6 +192,19 @@ public class RegularGui {
         buttonsPanel.setPreferredSize(new Dimension(270, 100));
         buttonsPanel.setBackground(Color.LIGHT_GRAY);
         buttonsPanel.add(maintenance);
+        this.fUserPanel.add(buttonsPanel);
+
+        // ! RETURN TO MAIN MENU
+        this.backToMain = new JButton("Return to Main Menu");
+        this.backToMain.setMaximumSize(new Dimension(270, 100));
+        this.backToMain.setMinimumSize(new Dimension(270, 100));
+        this.backToMain.setPreferredSize(new Dimension(270, 100));
+        this.backToMain.setBackground(Color.WHITE);
+
+        buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonsPanel.setPreferredSize(new Dimension(270, 100));
+        buttonsPanel.setBackground(Color.LIGHT_GRAY);
+        buttonsPanel.add(backToMain);
 
         this.fUserPanel.add(buttonsPanel);
 
@@ -372,6 +386,10 @@ public class RegularGui {
 
     public void setMaintenanceButtonListener(ActionListener action) {
         this.maintenance.addActionListener(action);
+    }
+
+    public void setReturnToMainMenuButtonListener(ActionListener action) {
+        this.backToMain.addActionListener(action);
     }
 
     public void setStockButtonListener(ActionListener action) {

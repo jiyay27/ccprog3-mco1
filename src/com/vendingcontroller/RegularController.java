@@ -12,11 +12,18 @@ import java.awt.event.ActionListener;
 import com.vendingmodel.regularvendingmachine.RegularVendingMachine;
 import com.vendingview.regulargui.RegularGui;
 
-public class RegularController {
-    private RegularGui regularGui;
+import com.vendingcontroller.MenuController;
+import com.vendingview.menugui.MenuGui;
 
-    public RegularController(RegularGui regularGui, RegularVendingMachine regularModel) {
+public class RegularController {
+    private RegularVendingMachine regularModel;
+    private RegularGui regularGui;
+    private MenuGui menu; 
+ 
+    public RegularController(RegularGui regularGui, RegularVendingMachine regularModel, MenuGui menu) {
         this.regularGui = regularGui;
+        this.regularModel = regularModel;
+        this.menu = menu;
 
         this.regularGui.setConfirmButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -37,6 +44,13 @@ public class RegularController {
             }
         });
 
+        this.regularGui.setReturnToMainMenuButtonListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                regularGui.getRegularFrame().dispose();
+                menu.getMainFrame().setVisible(true);
+            }
+        });
+
         this.regularGui.setEarningsButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
@@ -51,6 +65,8 @@ public class RegularController {
 
         this.regularGui.setGobackButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                regularGui.getRegularMaintenanceFrame().dispose();
+                regularGui.getRegularFrame().setVisible(true);
             }
         });
     }
