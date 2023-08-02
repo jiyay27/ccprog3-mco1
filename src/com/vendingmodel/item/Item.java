@@ -1,34 +1,43 @@
 package com.vendingmodel.item;
+
 /**
- * This is <code>Item</code> class which represents the item object of the machine
+ * This is <code>Item</code> class which represents the item object of the
+ * machine
  */
 public class Item {
+    public enum ItemType {
+        SILOG_MEAL, INGREDIENT, ADDON
+    }
+
     private String strItemName;
     private int nItemPrice;
     private int nItemCalories;
     private int nItemQuantity;
+    private ItemType itemType;
 
     /**
      * This is the Item constructor
      * 
-     * @param strItemName name
-     * @param nItemPrice price
+     * @param strItemName   name
+     * @param nItemPrice    price
      * @param nItemCalories calories
      * @param nItemQuantity quantity
      */
-    public Item(String strItemName, int nItemPrice, int nItemCalories, int nItemQuantity) {
+    public Item(String strItemName, int nItemPrice, int nItemCalories, int nItemQuantity, ItemType itemType) {
         this.strItemName = strItemName;
         this.nItemPrice = nItemPrice;
         this.nItemCalories = nItemCalories;
         this.nItemQuantity = nItemQuantity;
+        this.itemType = itemType;
     }
 
-    /** 
-        Checks if the item is still available to be sold
-        
-        @param nItemSold number of item/s to be checked
-        @return true if the item sold is less than the quantity provided and otherwise false
-    */
+    /**
+     * Checks if the item is still available to be sold
+     * 
+     * @param nItemSold number of item/s to be checked
+     * @return true if the item sold is less than the quantity provided and
+     *         otherwise false
+     */
     private boolean isAllowSell(int nItemSold) {
         if (nItemSold <= this.nItemQuantity)
             return true;
@@ -37,15 +46,20 @@ public class Item {
     }
 
     /**
-     * Handles item purchases wherein sold quantity will be deducted to the available one
+     * Handles item purchases wherein sold quantity will be deducted to the
+     * available one
      * 
      * @param nItemSold number of item/s to be checked
      * @return the number of item/s sold
      */
     public int buyItem(int nItemSold) {
-        if (isAllowSell(nItemSold))
+        if (isAllowSell(nItemSold)) {
             this.nItemQuantity -= nItemSold;
-        return nItemSold;
+            return nItemSold;
+        } else {
+            return -1;
+        }
+
     }
 
     /**

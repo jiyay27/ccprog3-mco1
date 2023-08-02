@@ -16,6 +16,7 @@ public class RegularGui {
     private JPanel fViewingPanel,
             fUserPanel,
             featuresPanel,
+
             mViewingPanel,
             mUserPanel,
             maintenancePanel;
@@ -241,8 +242,8 @@ public class RegularGui {
         this.maintenanceStatus.setPreferredSize(new Dimension(280, 150));
         this.maintenanceStatus.setFocusable(false);
 
-        this.mViewingPanel.add(displayItems);
-        this.mViewingPanel.add(showStatus);
+        this.mViewingPanel.add(maintenanceDisplay);
+        this.mViewingPanel.add(maintenanceStatus);
 
         // ! USER INPUT PANEl
         this.mUserPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
@@ -261,8 +262,8 @@ public class RegularGui {
         this.selectTxtField.setMinimumSize(new Dimension(270, 30));
         this.selectTxtField.setPreferredSize(new Dimension(270, 30));
 
-        this.mUserPanel.add(itemLabel);
-        this.mUserPanel.add(itemTxtField);
+        this.mUserPanel.add(selectLabel);
+        this.mUserPanel.add(selectTxtField);
 
         // !! BUTTONS
         // ! STOCK
@@ -364,16 +365,6 @@ public class RegularGui {
     public JFrame getRegularMaintenanceFrame() {
         return this.regularMaintenanceFrame;
     }
-
-    // public JPanel getFeaturesPanel() {
-
-    // return this.featuresPanel;
-    // }
-
-    // public JPanel getMaintenancePanel() {
-
-    // return this.maintenancePanel;
-    // }
 
     public void setConfirmButtonListener(ActionListener action) {
         this.confirm.addActionListener(action);

@@ -37,6 +37,107 @@ public class VendingMachine {
     }
 
     /**
+     * Enables the user to purchase availabale items in the vending machine
+     * as well as updates the nec
+     * 
+     * @param nItemIndex    represents the index of an item
+     * @param nItemQuantity represents the quatity of an item
+     */
+    public void purchaseItem(int nItemIndex, int nItemQuantity) {
+        if (this.CVendingSlot.get(nItemIndex).getItemAvailability() == true)
+            if (nItemQuantity <= this.CVendingSlot.get(nItemIndex).getItem().getItemQuantity()) {
+                this.CVendingSlot.get(nItemIndex).getItem().buyItem(nItemQuantity);
+
+                this.transactions.add("Item: \t\t" + this.CVendingSlot.get(nItemIndex).getItem().getItemName()
+                        + "\nQuantity: \t" + nItemQuantity);
+            } else
+                System.out.println("Item amount exceeded.");
+    }
+
+    /**
+     * Finds an item within the CVendingSlot
+     * 
+     * @param name represents the name of a new item
+     * @return true if the item was found and false otherwise
+     */
+    public boolean findItem(String name) {
+        for (ItemSlot item : this.CVendingSlot)
+            if (item.getItem().getItemName().equalsIgnoreCase(name))
+                return true;
+        return false;
+    }
+
+    /**
+     * Finds an item within the CVendingSlot
+     * 
+     * @param name represents the name of a new item
+     * @return true if the item was found and false otherwise
+     */
+    public Item getFoundItem(String name) {
+        for (ItemSlot item : this.CVendingSlot)
+            if (item.getItem().getItemName().equalsIgnoreCase(name))
+                return item.getItem();
+        return CVendingSlot.get(0).getItem();
+    }
+
+    /**
+     * Displays the information of the item to be purchased which includes its
+     * name, price, and quantity
+     * 
+     * @param nItemIndex    represents the index of an item
+     * @param nItemQuantity represents the quantity of an item
+     */
+    public void displayToPurchase(int nItemIndex, int nItemQuantity) {
+        System.out.println("\n--------------------------");
+        System.out.println("Item Name: \t" + this.CVendingSlot.get(nItemIndex).getItem().getItemName());
+        System.out
+                .println("Total Price: \t"
+                        + this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
+        System.out.println("Total Quantity: " + nItemQuantity);
+        System.out.println("--------------------------");
+    }
+
+    /**
+     * Calculates the change to be returned to the user after a purchase,
+     * keeps track of the number of each denomination used, and prints the breakdown
+     * of the change. The method then returns the initial change amount
+     * 
+     * @param nPayment      represents the amount paid by the user
+     * @param nItemIndex    represents the index of an item
+     * @param nItemQuantity represents the quantity of an item
+     * @return nFullChange represents the amount of money left of the user
+     */
+    public int calculateChange(int nPayment, int nItemIndex, int nItemQuantity) {
+        int nChange = nPayment - (this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
+        int nFullChange = nPayment - (this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
+        int[] arrDenominations = this.vendingMoney.getDenominations();
+        int[] arrCount = { 0, 0, 0, 0, 0, 0, 0 };
+        for (int i = 0; i < arrDenominations.length; i++) {
+            while (nChange >= arrDenominations[i]) {
+                arrCount[i]++;
+                nChange -= arrDenominations[i];
+            }
+
+        }
+        System.out.println();
+        System.out.println("Change: " + nFullChange);
+        System.out.println("In these denominations:");
+        for (int i = 0; i < arrDenominations.length; i++)
+            System.out.println(arrDenominations[i] + " x " + arrCount[i]);
+
+        return nFullChange;
+    }
+
+    /**
+     * Returns the values stored in the CVendingSlot variable
+     * 
+     * @return this.CVendingSlot represents the arraylist of the vending slot stored
+     */
+    public ArrayList<ItemSlot> getVendingSlot() {
+        return this.CVendingSlot;
+    }
+
+    /**
      * Shows the transaction/s made by the user which includes
      * the item name and its quantity
      */

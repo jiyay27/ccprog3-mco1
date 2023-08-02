@@ -15,6 +15,10 @@ import com.vendingmodel.specialvendingmachine.SpecialVendingMachine;
 import com.vendingview.specialgui.SpecialGui;
 import com.vendingcontroller.SpecialController;
 
+/**
+ * This is <code>MenuController</code> class which represents the menu
+ * controller object of the machine
+ */
 public class MenuController {
     private MenuGui menu;
 
@@ -26,6 +30,11 @@ public class MenuController {
     private SpecialGui specialMachineGui;
     private SpecialController specialController;
 
+    /**
+     * This is the MenuController constructor
+     * 
+     * @param menu   main menu
+     */ 
     public MenuController(MenuGui menu) {
         this.menu = menu;
 
@@ -56,24 +65,29 @@ public class MenuController {
                 if (regularMachine != null) {
                     RegularGui regularMachineGui = new RegularGui();
                     regularMachineGui.initializeFeatures();
-                    RegularController regularController = new RegularController(regularMachineGui, regularMachine, menu);
+                    regularMachineGui.initializeMaintenance();
+                    regularMachineGui.getRegularMaintenanceFrame().setVisible(false);
+
                     menu.getMainFrame().setVisible(false);
-                } else if (specialMachine != null) {
-                    SpecialGui specialMacSpecialGui = new SpecialGui();
-                    // specialMacSpecialGui
-                    menu.getMainFrame().setVisible(false);
-                }
+
+                    RegularController regularController = new RegularController(regularMachineGui, regularMachine,
+                            menu);
+
+
+                    specialMachineGui.initializeSpecialMaintenance();
+                    specialMachineGui.getSpecialMaintenanceFrame().setVisible(false);
+                    
+
+                    
             }
         });
 
         this.menu.setExitButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Program has succesfully terminated.",
-                        null, JOptionPane.INFORMATION_MESSAGE);
-                
+                JOptionPane.showMessageDialog(null, "Program has succesfully terminated.");
                 System.exit(0);
             }
         });
 
-    } 
+    }
 }

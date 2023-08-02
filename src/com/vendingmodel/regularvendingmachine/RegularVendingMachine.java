@@ -3,6 +3,7 @@ package com.vendingmodel.regularvendingmachine;
 import java.util.*;
 
 import com.vendingmodel.item.Item;
+import com.vendingmodel.item.Item.ItemType;
 import com.vendingmodel.itemslot.ItemSlot;
 import com.vendingmodel.moneybox.MoneyBox;
 import com.vendingmodel.vendingmachine.VendingMachine;
@@ -12,34 +13,30 @@ import com.vendingmodel.vendingmachine.VendingMachine;
  * vending machine object of the machine
  */
 public class RegularVendingMachine extends VendingMachine {
-    protected ArrayList<ItemSlot> CVendingSlot;
-
     /**
      * This is the RegularVendingMachine constructor
      */
     public RegularVendingMachine() {
-        this.CVendingSlot = new ArrayList<ItemSlot>();
-        this.vendingMoney = new MoneyBox();
-        this.transactions = new ArrayList<String>();
+        super();
     }
 
     public void setupVendingMachine() {
         this.CVendingSlot
-                .add(new ItemSlot(1, new Item("Garlic Fried Rice", 25, 366, 15)));
+                .add(new ItemSlot(1, new Item("Garlic Fried Rice", 25, 366, 15, ItemType.INGREDIENT)));
         this.CVendingSlot
-                .add(new ItemSlot(2, new Item("Fried Egg", 15, 92, 15)));
+                .add(new ItemSlot(2, new Item("Fried Egg", 15, 92, 15, ItemType.INGREDIENT)));
         this.CVendingSlot
-                .add(new ItemSlot(3, new Item("Beef Tapa", 40, 120, 10)));
+                .add(new ItemSlot(3, new Item("Beef Tapa", 40, 120, 10, ItemType.INGREDIENT)));
         this.CVendingSlot
-                .add(new ItemSlot(4, new Item("Longganisa", 30, 136, 15)));
+                .add(new ItemSlot(4, new Item("Longganisa", 30, 136, 15, ItemType.INGREDIENT)));
         this.CVendingSlot
-                .add(new ItemSlot(5, new Item("Tocino", 30, 230, 15)));
+                .add(new ItemSlot(5, new Item("Tocino", 30, 230, 15, ItemType.INGREDIENT)));
         this.CVendingSlot
-                .add(new ItemSlot(6, new Item("Hotdog", 20, 247, 15)));
+                .add(new ItemSlot(6, new Item("Hotdog", 20, 247, 15, ItemType.INGREDIENT)));
         this.CVendingSlot
-                .add(new ItemSlot(7, new Item("Lumpiang Shanghai", 35, 215, 15)));
+                .add(new ItemSlot(7, new Item("Lumpiang Shanghai", 35, 215, 15, ItemType.INGREDIENT)));
         this.CVendingSlot
-                .add(new ItemSlot(8, new Item("Bangus", 30, 178, 15)));
+                .add(new ItemSlot(8, new Item("Bangus", 30, 178, 15, ItemType.INGREDIENT)));
     }
 
     /**

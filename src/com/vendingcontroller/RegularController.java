@@ -15,11 +15,22 @@ import com.vendingview.regulargui.RegularGui;
 import com.vendingcontroller.MenuController;
 import com.vendingview.menugui.MenuGui;
 
+/**
+ * This is <code>RegularController</code> class which represents the regular
+ * vedning machine controller object of the machine
+ */
 public class RegularController {
     private RegularVendingMachine regularModel;
     private RegularGui regularGui;
-    private MenuGui menu; 
- 
+    private MenuGui menu;
+
+    /**
+     * This is the RegularController constructor
+     * 
+     * @param regularGui   regular machine gui
+     * @param regularModel regular machine model
+     * @param menu         main menu
+     */
     public RegularController(RegularGui regularGui, RegularVendingMachine regularModel, MenuGui menu) {
         this.regularGui = regularGui;
         this.regularModel = regularModel;
@@ -39,8 +50,8 @@ public class RegularController {
 
         this.regularGui.setMaintenanceButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                regularGui.initializeMaintenance();
                 regularGui.getRegularFrame().setVisible(false);
+                regularGui.getRegularMaintenanceFrame().setVisible(true);
             }
         });
 
@@ -65,8 +76,8 @@ public class RegularController {
 
         this.regularGui.setGobackButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                regularGui.getRegularMaintenanceFrame().setVisible(false);
                 regularGui.getRegularFrame().setVisible(true);
-                regularGui.getRegularMaintenanceFrame().dispose();
             }
         });
     }

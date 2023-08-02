@@ -4,57 +4,97 @@ import java.util.*;
 
 import com.vendingmodel.product.Product;
 import com.vendingmodel.item.Item;
+import com.vendingmodel.item.Item.ItemType;
 import com.vendingmodel.itemslot.ItemSlot;
 import com.vendingmodel.moneybox.MoneyBox;
 import com.vendingmodel.vendingmachine.VendingMachine;
+import java.util.HashMap;
 
 public class SpecialVendingMachine extends VendingMachine {
-        protected ArrayList<Product> vendingOptions;
+        private ArrayList<Product> vendingOptions;
+        private ArrayList<Item> vendingIngredients;
 
         public SpecialVendingMachine() {
                 super();
                 this.vendingOptions = new ArrayList<Product>();
+                this.vendingIngredients = new ArrayList<Item>();
         }
 
-        public void setupVendingStock() {
+        public void setupSpecialVendingStock() {
                 CVendingSlot
-                                .add(new ItemSlot(1, new Item("Garlic Fried Rice", 25, 366, 15)));
+                                .add(new ItemSlot(1, new Item("Garlic Fried Rice", 25, 366, 15, ItemType.INGREDIENT)));
                 CVendingSlot
-                                .add(new ItemSlot(2, new Item("Fried Egg", 15, 92, 15)));
+                                .add(new ItemSlot(2, new Item("Fried Egg", 15, 92, 15, ItemType.INGREDIENT)));
                 CVendingSlot
-                                .add(new ItemSlot(3, new Item("Beef Tapa", 40, 120, 10)));
+                                .add(new ItemSlot(3, new Item("Beef Tapa", 40, 120, 10, ItemType.INGREDIENT)));
                 CVendingSlot
-                                .add(new ItemSlot(4, new Item("Longganisa", 30, 136, 15)));
+                                .add(new ItemSlot(4, new Item("Longganisa", 30, 136, 15, ItemType.INGREDIENT)));
                 CVendingSlot
-                                .add(new ItemSlot(5, new Item("Tocino", 30, 230, 15)));
+                                .add(new ItemSlot(5, new Item("Tocino", 30, 230, 15, ItemType.INGREDIENT)));
                 CVendingSlot
-                                .add(new ItemSlot(6, new Item("Hotdog", 20, 247, 15)));
+                                .add(new ItemSlot(6, new Item("Hotdog", 20, 247, 15, ItemType.INGREDIENT)));
                 CVendingSlot
-                                .add(new ItemSlot(7, new Item("Lumpiang Shanghai", 35, 215, 15)));
+                                .add(new ItemSlot(7, new Item("Lumpiang Shanghai", 35, 215, 15, ItemType.INGREDIENT)));
                 CVendingSlot
-                                .add(new ItemSlot(8, new Item("Bangus", 30, 178, 15)));
+                                .add(new ItemSlot(8, new Item("Bangus", 30, 178, 15, ItemType.INGREDIENT)));
+                CVendingSlot
+                                .add(new ItemSlot(9, new Item("Sliced Tomatoes", 1, 4, 13, ItemType.ADDON)));
+                CVendingSlot
+                                .add(new ItemSlot(10, new Item("Sliced Cucumber", 2, 1, 13, ItemType.ADDON)));
+                CVendingSlot
+                                .add(new ItemSlot(11, new Item("Atchara", 10, 28, 13, ItemType.ADDON)));
         }
 
-        public void setupSpecialVendingMachine() {
-                ArrayList<Item> tapsilogIngredients = new ArrayList<Item>();
-                tapsilogIngredients.add(1, new Item("Beef Tapa", 0, 0, 1));
-                tapsilogIngredients.add(2, new Item("GarlicFriedRice", 0, 0, 1));
-                tapsilogIngredients.add(3, new Item("Fried Egg", 0, 0, 1));
-                tapsilogIngredients.add(4, new Item("Sliced Tomatoes", 0, 0, 2));
-                tapsilogIngredients.add(5, new Item("Sliced Cucumber", 0, 0, 2));
-                tapsilogIngredients.add(6, new Item("Atchara", 0, 0, 1));
-
-                vendingOptions.add(1, new Product("Tapsilog", 0, 0, tapsilogIngredients));
-
-                ArrayList<Item> longsilogIngredients = new ArrayList<Item>();
-                longsilogIngredients.add(1, new Item("Longganisa", 0, 0, 1));
-                longsilogIngredients.add(2, new Item("GarlicFriedRice", 0, 0, 1));
-                longsilogIngredients.add(3, new Item("Fried Egg", 0, 0, 1));
-                longsilogIngredients.add(4, new Item("Sliced Tomatoes", 0, 0, 3));
+        private HashMap<String, Integer> setupProduct(String strProductName) {
+                HashMap<String, Integer> productOptions = new HashMap<String, Integer>();
+                switch (strProductName.toLowerCase()) {
+                        case "tapsilog":
+                                productOptions.put("Beef Tapa", 1);
+                                productOptions.put("Garlic Fried Rice", 1);
+                                productOptions.put("Fried Egg", 1);
+                                productOptions.put("Sliced Tomatoes", 2);
+                                productOptions.put("Sliced Cucumber", 2);
+                                productOptions.put("Atchara", 1);
+                                break;
+                        case "longsilog":
+                                productOptions.put("Longganisa", 1);
+                                productOptions.put("Garlic Fried Rice", 1);
+                                productOptions.put("Fried Egg", 1);
+                                productOptions.put("Sliced Tomatoes", 3);
+                                break;
+                        case "tocilog":
+                                productOptions.put("Tocino", 1);
+                                productOptions.put("Garlic Fried Rice", 1);
+                                productOptions.put("Fried Egg", 1);
+                                break;
+                        case "hotsilog":
+                                productOptions.put("Hotdog", 1);
+                                productOptions.put("Garlic Fried Rice", 1);
+                                productOptions.put("Fried Egg", 1);
+                                break;
+                        case "bangsilog":
+                                productOptions.put("Bangus", 1);
+                                productOptions.put("Garlic Fried Rice", 1);
+                                productOptions.put("Fried Egg", 1);
+                                productOptions.put("Sliced Tomatoes", 2);
+                                break;
+                        case "shangsilog":
+                                productOptions.put("Lumpiang Shanghai", 1);
+                                productOptions.put("Garlic Fried Rice", 1);
+                                productOptions.put("Fried Egg", 1);
+                                productOptions.put("Sliced Tomatoes", 3);
+                                break;
+                }
+                return productOptions;
         }
 
-        public void purchaseProduct(int nIndex) {
-                this.vendingOptions.get(nIndex).getIngredients();
+        public void purchaseProduct(String strProductName) {
+                HashMap<String, Integer> product = this.setupProduct(strProductName);
+
+                for (String name : product.keySet()) {
+                        this.CVendingSlot.get(this.findItemSlotIndex(name)).getItem().buyItem(1);
+                }
+
         }
 
         /**
@@ -96,4 +136,120 @@ public class SpecialVendingMachine extends VendingMachine {
 
                 return nFullChange;
         }
+
+        public int findItemSlotIndex(String strItemName) {
+                int index;
+                for (ItemSlot slot : this.CVendingSlot) {
+                        if (slot.getItem().getItemName().equalsIgnoreCase(strItemName)) {
+                                index = slot.getSlotIndex();
+                                return index;
+                        }
+                }
+                return -1;
+        }
+
+        public void addItemToIngredients(String strItemName) {
+                this.vendingIngredients.add(this.CVendingSlot.get(this.findItemSlotIndex(strItemName)).getItem());
+                this.CVendingSlot.get(this.findItemSlotIndex(strItemName)).getItem().buyItem(1);
+        }
+
+        public void cookSilog() {
+                int i;
+                for (i = 0; i <= this.vendingIngredients.size(); i++)
+                        switch (this.vendingIngredients.get(i).getItemName()) {
+                                case "Garlic Fried Rice":
+                                        System.out.println("Frying rice...");
+                                        try {
+                                                Thread.sleep(500);
+                                        } catch (InterruptedException e) {
+                                                System.out.println(e);
+                                        }
+                                        break;
+                                case "Fried Egg":
+                                        System.out.println("Frying egg...");
+                                        try {
+                                                Thread.sleep(500);
+                                        } catch (InterruptedException e) {
+                                                System.out.println(e);
+                                        }
+                                        break;
+                                case "Beef Tapa":
+                                        System.out.println("Cooking tapa...");
+                                        try {
+                                                Thread.sleep(500);
+                                        } catch (InterruptedException e) {
+                                                System.out.println(e);
+                                        }
+                                        break;
+                                case "Longganisa":
+                                        System.out.println("Cooking longganisa...");
+                                        try {
+                                                Thread.sleep(500);
+                                        } catch (InterruptedException e) {
+                                                System.out.println(e);
+                                        }
+                                        break;
+                                case "Tocino":
+                                        System.out.println("Cooking tocino...");
+                                        try {
+                                                Thread.sleep(500);
+                                        } catch (InterruptedException e) {
+                                                System.out.println(e);
+                                        }
+                                        break;
+                                case "Hotdog":
+                                        System.out.println("Cooking hotdog...");
+                                        try {
+                                                Thread.sleep(500);
+                                        } catch (InterruptedException e) {
+                                                System.out.println(e);
+                                        }
+                                        break;
+                                case "Lumpiang Shanghai":
+                                        System.out.println("Cooking lumpia...");
+                                        try {
+                                                Thread.sleep(500);
+                                        } catch (InterruptedException e) {
+                                                System.out.println(e);
+                                        }
+                                        break;
+                                case "Bangus":
+                                        System.out.println("Frying bangus...");
+                                        try {
+                                                Thread.sleep(500);
+                                        } catch (InterruptedException e) {
+                                                System.out.println(e);
+                                        }
+                                        break;
+                                case "Sliced Tomatoes":
+                                        System.out.println("Slicing some tomatoes...");
+                                        try {
+                                                Thread.sleep(500);
+                                        } catch (InterruptedException e) {
+                                                System.out.println(e);
+                                        }
+                                        break;
+                                case "Sliced Cucumber":
+                                        System.out.println("Slicing some cucumber...");
+                                        try {
+                                                Thread.sleep(500);
+                                        } catch (InterruptedException e) {
+                                                System.out.println(e);
+                                        }
+                                        break;
+                                case "Atchara":
+                                        System.out.println("Adding some cucumber...");
+                                        try {
+                                                Thread.sleep(500);
+                                        } catch (InterruptedException e) {
+                                                System.out.println(e);
+                                        }
+                                        break;
+                                default:
+                                        break;
+                        }
+                if (i == this.vendingIngredients.size())
+                        System.out.println("Silog meal is done!");
+        }
+
 }
