@@ -19,11 +19,11 @@ public class SpecialGui {
 
     private JPanel fSpecialViewingPanel,
             fSpecialUserPanel,
-            specialfeaturesPanel,
+            specialFeaturesPanel,
 
             mSpecialViewingPanel,
             mSpecialUserPanel,
-            specialmaintenancePanel;
+            specialMaintenancePanel;
 
     private JLabel sProductLabel,
             sTotalLabel,
@@ -74,7 +74,6 @@ public class SpecialGui {
         this.specialMaintenanceFrame.setLocationRelativeTo(null);
         this.specialMaintenanceFrame.setResizable(false);
 
-        // TODO:
     }
 
     /**
@@ -83,9 +82,9 @@ public class SpecialGui {
      */
     public void initializeSpecialFeatures() {
         // ! FEATURES PANEL
-        this.specialfeaturesPanel = new JPanel(new GridLayout(0, 2));
-        this.specialfeaturesPanel.setBackground(Color.RED);
-        this.specialfeaturesPanel.setSize(590, 790);
+        this.specialFeaturesPanel = new JPanel(new GridLayout(0, 2));
+        this.specialFeaturesPanel.setBackground(Color.RED);
+        this.specialFeaturesPanel.setSize(590, 790);
 
         // ! VIEWING PANEL
         this.fSpecialViewingPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
@@ -209,10 +208,10 @@ public class SpecialGui {
 
         this.fSpecialUserPanel.add(buttonsPanel);
 
-        this.specialfeaturesPanel.add(fSpecialViewingPanel);
-        this.specialfeaturesPanel.add(fSpecialUserPanel);
+        this.specialFeaturesPanel.add(fSpecialViewingPanel);
+        this.specialFeaturesPanel.add(fSpecialUserPanel);
 
-        this.specialFrame.add(specialfeaturesPanel);
+        this.specialFrame.add(specialFeaturesPanel);
         // this.regularFrame.setVisible(true);
         this.specialFrame.setVisible(true);
         this.specialMaintenanceFrame.setVisible(false);
@@ -224,9 +223,9 @@ public class SpecialGui {
      */
     public void initializeSpecialMaintenance() {
         // ! MAINTENANCE PANEL
-        this.specialmaintenancePanel = new JPanel(new GridLayout(0, 2));
-        this.specialmaintenancePanel.setBackground(Color.RED);
-        this.specialmaintenancePanel.setSize(590, 790);
+        this.specialMaintenancePanel = new JPanel(new GridLayout(0, 2));
+        this.specialMaintenancePanel.setBackground(Color.RED);
+        this.specialMaintenancePanel.setSize(590, 790);
 
         // ! VIEWING PANEL
         this.mSpecialViewingPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
@@ -354,10 +353,10 @@ public class SpecialGui {
         buttonsPanel2.add(sGoback);
         this.mSpecialUserPanel.add(buttonsPanel2);
 
-        this.specialmaintenancePanel.add(mSpecialViewingPanel);
-        this.specialmaintenancePanel.add(mSpecialUserPanel);
+        this.specialMaintenancePanel.add(mSpecialViewingPanel);
+        this.specialMaintenancePanel.add(mSpecialUserPanel);
 
-        this.specialMaintenanceFrame.add(specialmaintenancePanel);
+        this.specialMaintenanceFrame.add(specialMaintenancePanel);
         // this.regularMaintenanceFrame.setVisible(false);
         this.specialMaintenanceFrame.setVisible(true);
     }

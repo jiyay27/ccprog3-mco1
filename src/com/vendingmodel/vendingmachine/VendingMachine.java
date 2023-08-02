@@ -59,7 +59,7 @@ public class VendingMachine {
      * Finds an item within the CVendingSlot
      * 
      * @param strName represents the name of a new item
-     * @return true if the item was found and false otherwise
+     * @return the index of the item with the same item name, return 0 otherwise
      */
     public int getFoundItem(String strName) {
         for (ItemSlot item : this.CVendingSlot)
@@ -100,9 +100,9 @@ public class VendingMachine {
             if (nItemQuantity <= this.CVendingSlot.get(nItemIndex).getItem().getItemQuantity()) {
                 this.CVendingSlot.get(nItemIndex).getItem().buyItem(nItemQuantity);
 
-                this.transactions.add("Item: \t\t" +
+                this.transactions.add("Item: " +
                         this.CVendingSlot.get(nItemIndex).getItem().getItemName()
-                        + "\nQuantity: \t" + nItemQuantity);
+                        + "\nQuantity: " + nItemQuantity);
                 display.append("Item bought.");
                 return display.toString();
             } else

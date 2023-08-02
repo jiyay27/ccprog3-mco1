@@ -399,6 +399,10 @@ public class RegularGui {
         this.regularMaintenanceFrame.setVisible(true);
     }
 
+    /**
+     * Initializes the contents included in the stock panel of the
+     * regular vending machine interface
+     */
     public JPanel initializeStockPanel() {
         this.stockPanel = new JPanel(new GridLayout(5, 1, 0, 0));
         this.stockPanel.setPreferredSize(new Dimension(420, 150));
@@ -455,28 +459,60 @@ public class RegularGui {
         return stockPanel;
     }
 
+    /**
+     * Gets the name inputted by the user in the nameTextField
+     * 
+     * @return nameTextField.getText() represents the nameTextField stored with the
+     *         datatype String
+     */
     public String getNameTextField() {
         return this.nameTextField.getText();
     }
 
+    /**
+     * Gets the price inputted by the user in the priceTextField
+     * 
+     * @return priceTextField.getText() represents the priceTextField stored with
+     *         the datatype String
+     */
     public String getPriceTextField() {
         return this.priceTextField.getText();
     }
 
+    /**
+     * Gets the calories inputted by the user in the caloriesTextField
+     * 
+     * @return caloriesTextField.getText() represents the caloriesTextField stored
+     *         with the datatype String
+     */
     public String getCaloriesTextField() {
         return this.caloriesTextField.getText();
     }
 
+    /**
+     * Gets the quantity inputted by the user in the qtyTextField
+     * 
+     * @return qtyTextField.getText() represents the qtyTextField stored with
+     *         the datatype String
+     */
     public String getQtyTextField() {
         return this.qtyTextField.getText();
     }
 
+    /**
+     * Initializes the contents included in the restock panel of the
+     * regular vending machine interface
+     */
     public JPanel initializeRestockPanel() {
         this.restockPanel = new JPanel();
 
         return restockPanel;
     }
 
+    /**
+     * Initializes the contents included in the price panel of the
+     * regular vending machine interface
+     */
     public JPanel initializePricePanel() {
         this.pricePanel = new JPanel(new GridLayout(3, 1, 0, 0));
         this.pricePanel.setPreferredSize(new Dimension(420, 150));
@@ -509,12 +545,20 @@ public class RegularGui {
         return pricePanel;
     }
 
+    /**
+     * Initializes the contents included in the earnings panel of the
+     * regular vending machine interface
+     */
     public JPanel initializeEarnignsPanel() {
         this.earningsPanel = new JPanel();
 
         return earningsPanel;
     }
 
+    /**
+     * Initializes the contents included in the change panel of the
+     * regular vending machine interface
+     */
     public JPanel initializeChangePanel() {
         this.changePanel = new JPanel();
 
@@ -547,8 +591,8 @@ public class RegularGui {
      * @param text represents the text content that the
      *             user wants to display
      */
-    public void setDisplayItemText(String text) {
-        this.displayItems.setText(text);
+    public void setDisplayItemText(String strText) {
+        this.displayItems.setText(strText);
     }
 
     /**
@@ -556,8 +600,8 @@ public class RegularGui {
      * 
      * @param text represents the status that will be displayed
      */
-    public void setStatusItemText(String text) {
-        this.showStatus.setText(text);
+    public void setStatusItemText(String strText) {
+        this.showStatus.setText(strText);
     }
 
     /**
@@ -566,8 +610,8 @@ public class RegularGui {
      * @param text represents the text content that the
      *             user wants to display
      */
-    public void setMaintenanceDisplayText(String text) {
-        this.maintenanceDisplay.setText(text);
+    public void setMaintenanceDisplayText(String strText) {
+        this.maintenanceDisplay.setText(strText);
     }
 
     /**
