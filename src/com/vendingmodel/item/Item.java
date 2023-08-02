@@ -5,15 +5,10 @@ package com.vendingmodel.item;
  * machine
  */
 public class Item {
-    public enum ItemType {
-        SILOG_MEAL, INGREDIENT, ADDON
-    }
-
     private String strItemName;
     private int nItemPrice;
     private int nItemCalories;
     private int nItemQuantity;
-    private ItemType itemType;
 
     /**
      * This is the Item constructor
@@ -23,12 +18,11 @@ public class Item {
      * @param nItemCalories calories
      * @param nItemQuantity quantity
      */
-    public Item(String strItemName, int nItemPrice, int nItemCalories, int nItemQuantity, ItemType itemType) {
+    public Item(String strItemName, int nItemPrice, int nItemCalories, int nItemQuantity) {
         this.strItemName = strItemName;
         this.nItemPrice = nItemPrice;
         this.nItemCalories = nItemCalories;
         this.nItemQuantity = nItemQuantity;
-        this.itemType = itemType;
     }
 
     /**

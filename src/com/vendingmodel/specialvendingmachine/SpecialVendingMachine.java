@@ -13,14 +13,14 @@ import com.vendingmodel.vendingmachine.VendingMachine;
  * vending machine object of the machine
  */
 public class SpecialVendingMachine extends VendingMachine {
-        private ArrayList<Item> vendingIngredients;
+        private ArrayList<Item> CVendingIngredients;
 
         /**
          * This is the SpecialVendingMachine constructor
          */
         public SpecialVendingMachine() {
                 super();
-                this.vendingIngredients = new ArrayList<Item>();
+                this.CVendingIngredients = new ArrayList<Item>();
         }
 
         /**
@@ -29,27 +29,27 @@ public class SpecialVendingMachine extends VendingMachine {
          */
         public void setupSpecialVendingStock() {
                 CVendingSlot
-                                .add(new ItemSlot(1, new Item("Garlic Fried Rice", 25, 366, 15, ItemType.INGREDIENT)));
+                                .add(new ItemSlot(1, new Item("Garlic Fried Rice", 25, 366, 15)));
                 CVendingSlot
-                                .add(new ItemSlot(2, new Item("Fried Egg", 15, 92, 15, ItemType.INGREDIENT)));
+                                .add(new ItemSlot(2, new Item("Fried Egg", 15, 92, 15)));
                 CVendingSlot
-                                .add(new ItemSlot(3, new Item("Beef Tapa", 40, 120, 10, ItemType.INGREDIENT)));
+                                .add(new ItemSlot(3, new Item("Beef Tapa", 40, 120, 10)));
                 CVendingSlot
-                                .add(new ItemSlot(4, new Item("Longganisa", 30, 136, 15, ItemType.INGREDIENT)));
+                                .add(new ItemSlot(4, new Item("Longganisa", 30, 136, 15)));
                 CVendingSlot
-                                .add(new ItemSlot(5, new Item("Tocino", 30, 230, 15, ItemType.INGREDIENT)));
+                                .add(new ItemSlot(5, new Item("Tocino", 30, 230, 15)));
                 CVendingSlot
-                                .add(new ItemSlot(6, new Item("Hotdog", 20, 247, 15, ItemType.INGREDIENT)));
+                                .add(new ItemSlot(6, new Item("Hotdog", 20, 247, 15)));
                 CVendingSlot
-                                .add(new ItemSlot(7, new Item("Lumpiang Shanghai", 35, 215, 15, ItemType.INGREDIENT)));
+                                .add(new ItemSlot(7, new Item("Lumpiang Shanghai", 35, 215, 15)));
                 CVendingSlot
-                                .add(new ItemSlot(8, new Item("Bangus", 30, 178, 15, ItemType.INGREDIENT)));
+                                .add(new ItemSlot(8, new Item("Bangus", 30, 178, 15)));
                 CVendingSlot
-                                .add(new ItemSlot(9, new Item("Sliced Tomatoes", 1, 4, 13, ItemType.ADDON)));
+                                .add(new ItemSlot(9, new Item("Sliced Tomatoes", 1, 4, 13)));
                 CVendingSlot
-                                .add(new ItemSlot(10, new Item("Sliced Cucumber", 2, 1, 13, ItemType.ADDON)));
+                                .add(new ItemSlot(10, new Item("Sliced Cucumber", 2, 1, 13)));
                 CVendingSlot
-                                .add(new ItemSlot(11, new Item("Atchara", 10, 28, 13, ItemType.ADDON)));
+                                .add(new ItemSlot(11, new Item("Atchara", 10, 28, 13)));
         }
 
         /**
@@ -234,7 +234,7 @@ public class SpecialVendingMachine extends VendingMachine {
          *                    ingredients' list
          */
         public void addItemToIngredients(String strItemName) {
-                this.vendingIngredients.add(this.CVendingSlot.get(this.findItemSlotIndex(strItemName)).getItem());
+                this.CVendingIngredients.add(this.CVendingSlot.get(this.findItemSlotIndex(strItemName)).getItem());
                 this.CVendingSlot.get(this.findItemSlotIndex(strItemName)).getItem().buyItem(1);
         }
 

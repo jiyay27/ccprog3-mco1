@@ -3,7 +3,6 @@ package com.vendingmodel.regularvendingmachine;
 import java.util.*;
 
 import com.vendingmodel.item.Item;
-import com.vendingmodel.item.Item.ItemType;
 import com.vendingmodel.itemslot.ItemSlot;
 import com.vendingmodel.moneybox.MoneyBox;
 import com.vendingmodel.vendingmachine.VendingMachine;
@@ -13,6 +12,7 @@ import com.vendingmodel.vendingmachine.VendingMachine;
  * vending machine object of the machine
  */
 public class RegularVendingMachine extends VendingMachine {
+
     /**
      * This is the RegularVendingMachine constructor
      */
@@ -26,32 +26,32 @@ public class RegularVendingMachine extends VendingMachine {
      */
     public void setupVendingMachine() {
         this.CVendingSlot
-                .add(new ItemSlot(1, new Item("Garlic Fried Rice", 25, 366, 15, ItemType.INGREDIENT)));
+                .add(new ItemSlot(1, new Item("Garlic Fried Rice", 25, 366, 15)));
         this.CVendingSlot
-                .add(new ItemSlot(2, new Item("Fried Egg", 15, 92, 15, ItemType.INGREDIENT)));
+                .add(new ItemSlot(2, new Item("Fried Egg", 15, 92, 15)));
         this.CVendingSlot
-                .add(new ItemSlot(3, new Item("Beef Tapa", 40, 120, 10, ItemType.INGREDIENT)));
+                .add(new ItemSlot(3, new Item("Beef Tapa", 40, 120, 10)));
         this.CVendingSlot
-                .add(new ItemSlot(4, new Item("Longganisa", 30, 136, 15, ItemType.INGREDIENT)));
+                .add(new ItemSlot(4, new Item("Longganisa", 30, 136, 15)));
         this.CVendingSlot
-                .add(new ItemSlot(5, new Item("Tocino", 30, 230, 15, ItemType.INGREDIENT)));
+                .add(new ItemSlot(5, new Item("Tocino", 30, 230, 15)));
         this.CVendingSlot
-                .add(new ItemSlot(6, new Item("Hotdog", 20, 247, 15, ItemType.INGREDIENT)));
+                .add(new ItemSlot(6, new Item("Hotdog", 20, 247, 15)));
         this.CVendingSlot
-                .add(new ItemSlot(7, new Item("Lumpiang Shanghai", 35, 215, 15, ItemType.INGREDIENT)));
+                .add(new ItemSlot(7, new Item("Lumpiang Shanghai", 35, 215, 15)));
         this.CVendingSlot
-                .add(new ItemSlot(8, new Item("Bangus", 30, 178, 15, ItemType.INGREDIENT)));
+                .add(new ItemSlot(8, new Item("Bangus", 30, 178, 15)));
     }
 
     /**
      * Finds an item within the CVendingSlot
-     * 
-     * @param name represents the name of a new item
+     *
+     * @param strName represents the name of a new item
      * @return true if the item was found and false otherwise
      */
-    public boolean findItem(String name) {
+    public boolean findItem(String strName) {
         for (ItemSlot item : this.CVendingSlot)
-            if (item.getItem().getItemName().equalsIgnoreCase(name))
+            if (item.getItem().getItemName().equalsIgnoreCase(strName))
                 return true;
         return false;
     }
@@ -59,19 +59,21 @@ public class RegularVendingMachine extends VendingMachine {
     /**
      * Displays the information of the item to be purchased which includes its
      * name, price, and quantity
-     * 
+     *
      * @param nItemIndex    represents the index of an item
      * @param nItemQuantity represents the quantity of an item
      */
     public String displayToPurchase(int nItemIndex, int nItemQuantity) {
         StringBuilder display = new StringBuilder();
 
-        display.append("\n     ------------------------------------------------\n");
-        display.append("      Item Name: " + this.CVendingSlot.get(nItemIndex).getItem().getItemName() + "\n");
-        display.append("      Total Price: "
-                + this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity + "\n");
-        display.append("      Total Qty: " + nItemQuantity + "\n");
-        display.append("     --------------------------------------------------\n");
+        display.append("\n ------------------------------------------------\n");
+        display.append(" Item Name: " +
+                this.CVendingSlot.get(nItemIndex).getItem().getItemName() + "\n");
+        display.append(" Total Price: "
+                + this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity
+                + "\n");
+        display.append(" Total Qty: " + nItemQuantity + "\n");
+        display.append(" --------------------------------------------------\n");
 
         return display.toString();
     }
@@ -102,10 +104,10 @@ public class RegularVendingMachine extends VendingMachine {
      * @param confirmation represents the confirmation message
      * @return display.toString() represents the formatted string made
      */
-    public String displayStatusAfterPurchase(String change, String confirmation) {
+    public String displayStatusAfterPurchase(String strChange, String strConfirmation) {
         StringBuilder display = new StringBuilder();
-        display.append(confirmation + "\n");
-        display.append(change);
+        display.append(strConfirmation + "\n");
+        display.append(strChange);
 
         return display.toString();
     }

@@ -43,37 +43,14 @@ public class VendingMachine {
     }
 
     /**
-     * Enables the user to purchase availabale items in the vending machine
-     * as well as updates the nec
-     * 
-     * @param nItemIndex    represents the index of an item
-     * @param nItemQuantity represents the quatity of an item
-     */
-    public String purchaseItem(int nItemIndex, int nItemQuantity) {
-        StringBuilder display = new StringBuilder();
-        if (this.CVendingSlot.get(nItemIndex).getItemAvailability() == true)
-            if (nItemQuantity <= this.CVendingSlot.get(nItemIndex).getItem().getItemQuantity()) {
-                this.CVendingSlot.get(nItemIndex).getItem().buyItem(nItemQuantity);
-
-                this.transactions.add("Item: \t\t" + this.CVendingSlot.get(nItemIndex).getItem().getItemName()
-                        + "\nQuantity: \t" + nItemQuantity);
-                display.append("Item bought.");
-                return display.toString();
-            } else
-                display.append("Item amount exceeded.");
-
-        return display.toString();
-    }
-
-    /**
      * Finds an item within the CVendingSlot
      * 
-     * @param name represents the name of a new item
+     * @param strName represents the name of a new item
      * @return true if the item was found and false otherwise
      */
-    public boolean findItem(String name) {
+    public boolean findItem(String strName) {
         for (ItemSlot item : this.CVendingSlot)
-            if (item.getItem().getItemName().equalsIgnoreCase(name))
+            if (item.getItem().getItemName().equalsIgnoreCase(strName))
                 return true;
         return false;
     }
@@ -81,14 +58,14 @@ public class VendingMachine {
     /**
      * Finds an item within the CVendingSlot
      * 
-     * @param name represents the name of a new item
+     * @param strName represents the name of a new item
      * @return true if the item was found and false otherwise
      */
-    public Item getFoundItem(String name) {
+    public int getFoundItem(String strName) {
         for (ItemSlot item : this.CVendingSlot)
-            if (item.getItem().getItemName().equalsIgnoreCase(name))
-                return item.getItem();
-        return CVendingSlot.get(0).getItem();
+            if (item.getItem().getItemName().equalsIgnoreCase(strName))
+                return item.getSlotIndex();
+        return 0;
     }
 
     /**
@@ -111,10 +88,35 @@ public class VendingMachine {
     }
 
     /**
+     * Enables the user to purchase availabale items in the vending machine
+     * as well as updates the nec
+     *
+     * @param nItemIndex    represents the index of an item
+     * @param nItemQuantity represents the quatity of an item
+     */
+    public String purchaseItem(int nItemIndex, int nItemQuantity) {
+        StringBuilder display = new StringBuilder();
+        if (this.CVendingSlot.get(nItemIndex).getItemAvailability() == true)
+            if (nItemQuantity <= this.CVendingSlot.get(nItemIndex).getItem().getItemQuantity()) {
+                this.CVendingSlot.get(nItemIndex).getItem().buyItem(nItemQuantity);
+
+                this.transactions.add("Item: \t\t" +
+                        this.CVendingSlot.get(nItemIndex).getItem().getItemName()
+                        + "\nQuantity: \t" + nItemQuantity);
+                display.append("Item bought.");
+                return display.toString();
+            } else
+                display.append("Item amount exceeded. \n Transaction cancelled.");
+
+        return display.toString();
+    }
+
+    /**
      * Calculates the change to be returned to the user after a purchase,
-     * keeps track of the number of each denomination used, and prints the breakdown
+     * keeps track of the number of each denomination used, and prints the
+     * breakdown
      * of the change. The method then returns the initial change amount
-     * 
+     *
      * @param nPayment      represents the amount paid by the user
      * @param nItemIndex    represents the index of an item
      * @param nItemQuantity represents the quantity of an item
@@ -122,8 +124,10 @@ public class VendingMachine {
      */
     public String calculateChange(int nPayment, int nItemIndex, int nItemQuantity) {
         StringBuilder display = new StringBuilder();
-        int nChange = nPayment - (this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
-        int nFullChange = nPayment - (this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
+        int nChange = nPayment -
+                (this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
+        int nFullChange = nPayment -
+                (this.CVendingSlot.get(nItemIndex).getItem().getItemPrice() * nItemQuantity);
         int[] arrDenominations = this.vendingMoney.getDenominations();
         int[] arrCount = { 0, 0, 0, 0, 0, 0, 0 };
         for (int i = 0; i < arrDenominations.length; i++) {
@@ -132,13 +136,18 @@ public class VendingMachine {
                 nChange -= arrDenominations[i];
             }
         }
+
         this.getMoneyBox().negateMoney(nFullChange);
 
         display.append("\n");
-        display.append("       Change: " + nFullChange + "\n");
-        display.append("       In these denominations: \n");
-        for (int i = 0; i < arrDenominations.length; i++)
-            display.append("       " + arrDenominations[i] + " x " + arrCount[i] + "\n");
+        display.append(" Change: " + nFullChange + "\n");
+        if (nFullChange == 0) {
+
+        } else {
+            display.append(" In these denominations: \n");
+            for (int i = 0; i < arrDenominations.length; i++)
+                display.append(" " + arrDenominations[i] + " x " + arrCount[i] + "\n");
+        }
 
         return display.toString();
     }

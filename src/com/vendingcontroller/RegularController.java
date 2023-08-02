@@ -5,10 +5,13 @@ import java.io.File;
 import java.util.concurrent.Flow;
 
 import javax.swing.Action;
+import javax.swing.JOptionPane;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import com.vendingmodel.item.*;
+import com.vendingmodel.itemslot.*;
 import com.vendingmodel.regularvendingmachine.RegularVendingMachine;
 import com.vendingview.regulargui.RegularGui;
 
@@ -38,33 +41,32 @@ public class RegularController {
 
         this.regularGui.setConfirmButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                int nItemIndex = Integer.parseInt(regularGui.getItemIndexTextInput());
+                int nItemIndex = Integer.parseInt(regularGui.getItemIndexTextInput()) - 1;
                 int nItemQuantity = Integer.parseInt(regularGui.getItemQtyTextInput());
 
-                regularGui.setStatusItemText(regularModel.displayToPurchase(nItemIndex - 1, nItemQuantity));
+                regularGui.setStatusItemText(regularModel.displayToPurchase(nItemIndex, nItemQuantity));
             }
         });
 
         this.regularGui.setPayButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                int nItemIndex = Integer.parseInt(regularGui.getItemIndexTextInput());
+                int nItemIndex = Integer.parseInt(regularGui.getItemIndexTextInput()) - 1;
                 int nItemQuantity = Integer.parseInt(regularGui.getItemQtyTextInput());
                 int nPayment = Integer.parseInt(regularGui.getPayment());
 
                 if (regularModel.insertPayment(nPayment) == true) {
-                    if (nPayment >= regularModel.getVendingSlot().get(nItemIndex - 1).getItem().getItemPrice()
+                    if (nPayment >= regularModel.getVendingSlot().get(nItemIndex).getItem().getItemPrice()
                             * nItemQuantity) {
-                        // regularGui.setStatusItemText(regularModel.calculateChange(nPayment,
-                        // nItemIndex, nItemQuantity));
                         regularGui.setStatusItemText(regularModel.displayStatusAfterPurchase(
-                                regularModel.purchaseItem(nItemIndex - 1, nItemQuantity),
+                                regularModel.purchaseItem(nItemIndex, nItemQuantity),
                                 regularModel.calculateChange(nPayment, nItemIndex, nItemQuantity)));
 
                         regularGui.setDisplayItemText(regularModel.listSlotInfo());
 
                         regularGui.clearTextFiedls();
+
                     } else {
-                        regularGui.setStatusItemText("\n\n          NOT ENOUGH PAYMENT");
+                        regularGui.setStatusItemText("NOT ENOUGH PAYMENT");
                     }
                 } else {
                     regularGui.setStatusItemText("INVALID BILL.");
@@ -74,6 +76,7 @@ public class RegularController {
 
         this.regularGui.setCancelButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                regularGui.setStatusItemText(null);
                 regularGui.clearTextFiedls();
             }
         });
@@ -93,6 +96,65 @@ public class RegularController {
             public void actionPerformed(ActionEvent e) {
                 regularGui.getRegularFrame().dispose();
                 menu.getMainFrame().setVisible(true);
+            }
+        });
+
+        this.regularGui.setStockButtonListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, regularGui.initializeStockPanel(),
+                        "STOCK NEW ITEM", JOptionPane.OK_CANCEL_OPTION);
+
+                if (result == JOptionPane.OK_OPTION) {
+                    String name = regularGui.getNameTextField();
+                    int price = Integer.parseInt(regularGui.getPriceTextField());
+                    int calories = Integer.parseInt(regularGui.getCaloriesTextField());
+                    int qty = Integer.parseInt(regularGui.getQtyTextField());
+
+                    if (regularModel.findItem(name) == false && qty <= 15) {
+                        regularModel.getVendingSlot().add(new ItemSlot(regularModel.getVendingSlot().size() + 1,
+                                new Item(name, price, calories, qty)));
+                    } else {
+                        regularGui.setStatusItemText("Item already exists.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Transaction Cancelled.");
+                }
+            }
+        });
+
+        this.regularGui.setRestockButtonListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, regularGui.initializeRestockPanel(),
+                        "RESTOCK ITEM", JOptionPane.OK_CANCEL_OPTION);
+
+                if (result == JOptionPane.OK_OPTION) {
+                    String name = regularGui.getNameTextField();
+                    int qty = Integer.parseInt(regularGui.getQtyTextField());
+
+                    if (regularModel.getVendingSlot().get(regularModel.getFoundItem(name)).getItem().canRestock(qty)) {
+                        regularModel.getVendingSlot().get(regularModel.getFoundItem(name)).getItem()
+                                .restockItem(qty);
+                        regularGui.setDisplayItemText(regularModel.listSlotInfo());
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Item limit exceeded.");
+                    }
+                }
+            }
+        });
+
+        this.regularGui.setItemPriceButtonListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int result = JOptionPane.showConfirmDialog(regularGui.getRegularMaintenanceFrame(),
+                        regularGui.initializePricePanel(),
+                        "SET PRICE", JOptionPane.OK_CANCEL_OPTION);
+
+                if (result == JOptionPane.OK_OPTION) {
+                    String name = regularGui.getNameTextField();
+                    int price = Integer.parseInt(regularGui.getPriceTextField());
+
+                    regularModel.getVendingSlot().get(regularModel.getFoundItem(name)).getItem().setItemPrice(price);
+                    regularGui.setDisplayItemText(regularModel.listSlotInfo());
+                }
             }
         });
 

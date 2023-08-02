@@ -23,11 +23,11 @@ public class MenuController {
     private MenuGui menu;
 
     private RegularVendingMachine regularMachine;
-    private RegularGui regularMachineGui;
+    private RegularGui regularGui;
     private RegularController regularController;
 
     private SpecialVendingMachine specialMachine;
-    private SpecialGui specialMachineGui;
+    private SpecialGui specialGui;
     private SpecialController specialController;
 
     /**
@@ -102,7 +102,7 @@ public class MenuController {
                     RegularController regularController = new RegularController(regularMachineGui, regularMachine,
                             menu);
 
-                    specialMachineGui.getSpecialMaintenanceFrame().setVisible(false);
+                    specialGui.getSpecialMaintenanceFrame().setVisible(false);
 
                 } else if (specialMachine != null) {
                     SpecialGui specialMachineGui = new SpecialGui();

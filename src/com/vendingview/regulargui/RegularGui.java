@@ -23,12 +23,17 @@ public class RegularGui {
 
             mViewingPanel,
             mUserPanel,
-            maintenancePanel;
+            maintenancePanel,
+
+            stockPanel,
+            restockPanel,
+            pricePanel,
+            earningsPanel,
+            changePanel;
 
     private JLabel itemLabel,
             qtyLabel,
-            paymentLabel,
-            selectLabel;
+            paymentLabel;
 
     private JButton confirm,
             pay,
@@ -55,8 +60,11 @@ public class RegularGui {
     private JTextField itemTxtField,
             qtyTxtField,
             paymentTxtField,
-            totalTxtField,
-            selectTxtField;
+
+            nameTextField,
+            priceTextField,
+            caloriesTextField,
+            qtyTextField;
 
     /**
      * This is the RegularGui constructor
@@ -298,21 +306,6 @@ public class RegularGui {
         this.mUserPanel.setBackground(new Color(240, 234, 214));
         this.mUserPanel.setSize(280, 700);
 
-        // ! LABEL
-        // ! ITEM SLOT NUMBER
-        this.selectLabel = new JLabel("Input Item Name: ", SwingConstants.LEFT);
-        // this.menuNameLabel.setFont(new Font("Nirmala", Font.BOLD, 30));
-        this.selectLabel.setForeground(Color.BLACK);
-
-        // ! TEXT FIELD
-        this.selectTxtField = new JTextField();
-        this.selectTxtField.setMaximumSize(new Dimension(270, 30));
-        this.selectTxtField.setMinimumSize(new Dimension(270, 30));
-        this.selectTxtField.setPreferredSize(new Dimension(270, 30));
-
-        this.mUserPanel.add(selectLabel);
-        this.mUserPanel.add(selectTxtField);
-
         // !! BUTTONS
         // ! STOCK
         this.stock = new JButton("Stock");
@@ -406,6 +399,128 @@ public class RegularGui {
         this.regularMaintenanceFrame.setVisible(true);
     }
 
+    public JPanel initializeStockPanel() {
+        this.stockPanel = new JPanel(new GridLayout(5, 1, 0, 0));
+        this.stockPanel.setPreferredSize(new Dimension(420, 150));
+
+        // ! LABELS
+        JLabel nameLabel = new JLabel("Name:", SwingConstants.LEFT);
+        nameLabel.setForeground(Color.BLACK);
+
+        // ! TEXT FIELDS
+        this.nameTextField = new JTextField();
+        this.nameTextField.setMaximumSize(new Dimension(270, 30));
+        this.nameTextField.setMinimumSize(new Dimension(270, 30));
+        this.nameTextField.setPreferredSize(new Dimension(270, 30));
+
+        // ! LABELS
+        JLabel priceLabel = new JLabel("Price:", SwingConstants.LEFT);
+        priceLabel.setForeground(Color.BLACK);
+
+        // ! TEXT FIELDS
+        this.priceTextField = new JTextField();
+        this.priceTextField.setMaximumSize(new Dimension(270, 30));
+        this.priceTextField.setMinimumSize(new Dimension(270, 30));
+        this.priceTextField.setPreferredSize(new Dimension(270, 30));
+
+        // ! LABELS
+        JLabel caloriesLabel = new JLabel("Calories:", SwingConstants.LEFT);
+        caloriesLabel.setForeground(Color.BLACK);
+
+        // ! TEXT FIELDS
+        this.caloriesTextField = new JTextField();
+        this.caloriesTextField.setMaximumSize(new Dimension(270, 30));
+        this.caloriesTextField.setMinimumSize(new Dimension(270, 30));
+        this.caloriesTextField.setPreferredSize(new Dimension(270, 30));
+
+        // ! LABELS
+        JLabel itemQuantity = new JLabel("Label:", SwingConstants.LEFT);
+        itemQuantity.setForeground(Color.BLACK);
+
+        // ! TEXT FIELDS
+        this.qtyTextField = new JTextField();
+        this.qtyTextField.setMaximumSize(new Dimension(270, 30));
+        this.qtyTextField.setMinimumSize(new Dimension(270, 30));
+        this.qtyTextField.setPreferredSize(new Dimension(270, 30));
+
+        this.stockPanel.add(nameLabel);
+        this.stockPanel.add(nameTextField);
+        this.stockPanel.add(priceLabel);
+        this.stockPanel.add(priceTextField);
+        this.stockPanel.add(caloriesLabel);
+        this.stockPanel.add(caloriesTextField);
+        this.stockPanel.add(qtyLabel);
+        this.stockPanel.add(qtyTextField);
+
+        return stockPanel;
+    }
+
+    public String getNameTextField() {
+        return this.nameTextField.getText();
+    }
+
+    public String getPriceTextField() {
+        return this.priceTextField.getText();
+    }
+
+    public String getCaloriesTextField() {
+        return this.caloriesTextField.getText();
+    }
+
+    public String getQtyTextField() {
+        return this.qtyTextField.getText();
+    }
+
+    public JPanel initializeRestockPanel() {
+        this.restockPanel = new JPanel();
+
+        return restockPanel;
+    }
+
+    public JPanel initializePricePanel() {
+        this.pricePanel = new JPanel(new GridLayout(3, 1, 0, 0));
+        this.pricePanel.setPreferredSize(new Dimension(420, 150));
+
+        // ! LABELS
+        JLabel nameLabel = new JLabel("Name:", SwingConstants.LEFT);
+        nameLabel.setForeground(Color.BLACK);
+
+        // ! TEXT FIELDS
+        this.nameTextField = new JTextField();
+        this.nameTextField.setMaximumSize(new Dimension(270, 30));
+        this.nameTextField.setMinimumSize(new Dimension(270, 30));
+        this.nameTextField.setPreferredSize(new Dimension(270, 30));
+
+        // ! LABELS
+        JLabel priceLabel = new JLabel("Price:", SwingConstants.LEFT);
+        priceLabel.setForeground(Color.BLACK);
+
+        // ! TEXT FIELDS
+        this.priceTextField = new JTextField();
+        this.priceTextField.setMaximumSize(new Dimension(270, 30));
+        this.priceTextField.setMinimumSize(new Dimension(270, 30));
+        this.priceTextField.setPreferredSize(new Dimension(270, 30));
+
+        this.pricePanel.add(nameLabel);
+        this.pricePanel.add(nameTextField);
+        this.pricePanel.add(priceLabel);
+        this.pricePanel.add(priceTextField);
+
+        return pricePanel;
+    }
+
+    public JPanel initializeEarnignsPanel() {
+        this.earningsPanel = new JPanel();
+
+        return earningsPanel;
+    }
+
+    public JPanel initializeChangePanel() {
+        this.changePanel = new JPanel();
+
+        return changePanel;
+    }
+
     /**
      * Returns the values stored in the regularFrame variable
      * 
@@ -472,7 +587,7 @@ public class RegularGui {
      *         datatype String
      */
     public String getItemIndexTextInput() {
-        return itemTxtField.getText();
+        return this.itemTxtField.getText();
     }
 
     /**
@@ -482,7 +597,7 @@ public class RegularGui {
      *         datatype String
      */
     public String getItemQtyTextInput() {
-        return qtyTxtField.getText();
+        return this.qtyTxtField.getText();
     }
 
     /**
@@ -492,7 +607,7 @@ public class RegularGui {
      *         the datatype String
      */
     public String getPayment() {
-        return paymentTxtField.getText();
+        return this.paymentTxtField.getText();
     }
 
     public void clearTextFiedls() {
