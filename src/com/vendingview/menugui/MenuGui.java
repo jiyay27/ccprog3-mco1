@@ -35,7 +35,7 @@ public class MenuGui {
 
         // MENU NAME LABEL
         this.menuNameLabel = new JLabel("Vending Machine Factory", SwingConstants.CENTER);
-        // this.menuNameLabel.setFont(new Font("Nirmala", Font.BOLD, 30));
+        this.menuNameLabel.setFont(new Font("Nirmala", Font.BOLD, 30));
         this.menuNameLabel.setForeground(Color.BLACK);
 
         this.mainPanel.add(menuNameLabel);

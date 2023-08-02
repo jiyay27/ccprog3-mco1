@@ -354,7 +354,6 @@ public class RegularGui {
 
         this.regularMaintenanceFrame.add(maintenancePanel);
         // this.regularMaintenanceFrame.setVisible(false);
-        this.regularFrame.setVisible(false);
         this.regularMaintenanceFrame.setVisible(true);
     }
 

@@ -40,7 +40,7 @@ public class RegularController {
         this.regularGui.setMaintenanceButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 regularGui.initializeMaintenance();
-                regularGui.getRegularMaintenanceFrame();
+                regularGui.getRegularFrame().setVisible(false);
             }
         });
 
@@ -65,8 +65,8 @@ public class RegularController {
 
         this.regularGui.setGobackButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                regularGui.getRegularMaintenanceFrame().dispose();
                 regularGui.getRegularFrame().setVisible(true);
+                regularGui.getRegularMaintenanceFrame().dispose();
             }
         });
     }
