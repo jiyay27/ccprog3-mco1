@@ -33,13 +33,15 @@ public class RegularGui {
 
     private JLabel itemLabel,
             qtyLabel,
-            paymentLabel;
+            paymentLabel,
+            enterDenoLabel;
 
     private JButton confirm,
             pay,
             cancel,
             maintenance,
             backToMain,
+
             stock,
             restock,
             setPrice,
@@ -152,6 +154,10 @@ public class RegularGui {
         // this.menuNameLabel.setFont(new Font("Nirmala", Font.BOLD, 30));
         this.paymentLabel.setForeground(Color.BLACK);
 
+        // TODO
+        this.enterDenoLabel = new JLabel("[Allowed Bills - 10, 20, 50, 100, 200]", SwingConstants.LEFT);
+        this.enterDenoLabel.setForeground(Color.BLACK);
+
         // ! TEXT FIELDS
         this.itemTxtField = new JTextField();
         this.itemTxtField.setMaximumSize(new Dimension(270, 30));
@@ -172,6 +178,9 @@ public class RegularGui {
         this.fUserPanel.add(itemTxtField);
         this.fUserPanel.add(qtyLabel);
         this.fUserPanel.add(qtyTxtField);
+        this.fUserPanel.add(paymentLabel);
+        this.fUserPanel.add(enterDenoLabel);
+        this.fUserPanel.add(paymentTxtField);
 
         // !! BUTTONS
         // ! CONFIRM
@@ -202,8 +211,7 @@ public class RegularGui {
         buttonsPanel.add(cancel);
         this.fUserPanel.add(buttonsPanel);
 
-        this.fUserPanel.add(paymentLabel);
-        this.fUserPanel.add(paymentTxtField);
+
 
         // ! PAY
         this.pay = new JButton("Pay");
