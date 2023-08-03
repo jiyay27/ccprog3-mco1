@@ -66,7 +66,8 @@ public class RegularGui {
             nameTextField,
             priceTextField,
             caloriesTextField,
-            qtyTextField;
+            qtyTextField,
+            changeTextField;
 
     /**
      * This is the RegularGui constructor
@@ -579,6 +580,9 @@ public class RegularGui {
         return pricePanel;
     }
 
+    
+
+    // TODO remove
     /**
      * Initializes the contents included in the earnings panel of the
      * regular vending machine interface
@@ -594,7 +598,21 @@ public class RegularGui {
      * regular vending machine interface
      */
     public JPanel initializeChangePanel() {
-        this.changePanel = new JPanel();
+        this.changePanel = new JPanel(new GridLayout(5, 1, 0, 0));
+        this.changePanel.setPreferredSize(new Dimension(420, 150));
+
+        // ! LABELS
+        JLabel addChangeLabel = new JLabel("Enter amount:", SwingConstants.LEFT);
+        addChangeLabel.setForeground(Color.BLACK);
+
+        // ! TEXT FIELDS
+        this.changeTextField = new JTextField();
+        this.changeTextField.setMaximumSize(new Dimension(270, 30));
+        this.changeTextField.setMinimumSize(new Dimension(270, 30));
+        this.changeTextField.setPreferredSize(new Dimension(270, 30));
+
+        this.changePanel.add(addChangeLabel);
+        this.changePanel.add(changeTextField);
 
         return changePanel;
     }
@@ -688,6 +706,12 @@ public class RegularGui {
         return this.paymentTxtField.getText();
     }
 
+    // TODO 
+    public String getChangeTextField() {
+        return this.changeTextField.getText();
+    }
+
+    // TODO
     public void clearTextFiedls() {
         this.itemTxtField.setText("");
         this.qtyTxtField.setText("");

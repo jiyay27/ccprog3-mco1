@@ -58,8 +58,8 @@ public class RegularController {
                     if (nPayment >= regularModel.getVendingSlot().get(nItemIndex).getItem().getItemPrice()
                             * nItemQuantity) {
                         regularGui.setStatusItemText(regularModel.displayStatusAfterPurchase(
-                                regularModel.purchaseItem(nItemIndex, nItemQuantity),
-                                regularModel.calculateChange(nPayment, nItemIndex, nItemQuantity)));
+                        regularModel.purchaseItem(nItemIndex, nItemQuantity),
+                        regularModel.calculateChange(nPayment, nItemIndex, nItemQuantity)));
 
                         regularGui.setDisplayItemText(regularModel.listSlotInfo());
 
@@ -161,13 +161,26 @@ public class RegularController {
 
         this.regularGui.setEarningsButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                    regularModel.getEarnings();
+                    regularGui.setMaintenanceStatusText(regularModel.displayTransactions());
+                    JOptionPane.showMessageDialog(null, "Earnings collected.");
             }
         });
 
         this.regularGui.setChangeButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, regularGui.initializeChangePanel(),
+                        "REPLENISH CHANGE", JOptionPane.OK_CANCEL_OPTION);
 
+                if (result == JOptionPane.OK_OPTION) {
+                    int change = Integer.parseInt(regularGui.getChangeTextField());
+                        
+                    regularModel.getMoneyBox().addMoney(change);
+                    regularGui.setMaintenanceStatusText(regularModel.displayTransactions());
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Transaction Cancelled.");
+                }
             }
         });
 

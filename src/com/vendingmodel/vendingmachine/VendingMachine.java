@@ -144,9 +144,11 @@ public class VendingMachine {
         if (nFullChange == 0) {
 
         } else {
+            this.getMoneyBox().addEarnings(nFullChange);
             display.append(" In these denominations: \n");
             for (int i = 0; i < arrDenominations.length; i++)
                 display.append(" " + arrDenominations[i] + " x " + arrCount[i] + "\n");
+            
         }
 
         return display.toString();
