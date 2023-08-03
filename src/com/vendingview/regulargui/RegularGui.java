@@ -155,7 +155,7 @@ public class RegularGui {
         this.paymentLabel.setForeground(Color.BLACK);
 
         // TODO
-        this.enterDenoLabel = new JLabel("[Allowed Bills - 10, 20, 50, 100, 200]", SwingConstants.LEFT);
+        this.enterDenoLabel = new JLabel("[Allowed Bills - 20, 50, 100, 200]", SwingConstants.LEFT);
         this.enterDenoLabel.setForeground(Color.BLACK);
 
         // ! TEXT FIELDS
@@ -282,13 +282,13 @@ public class RegularGui {
         this.maintenanceDisplay = new JTextArea();
         this.maintenanceDisplay.setBackground(Color.WHITE);
         this.maintenanceDisplay.setBorder(BorderFactory.createLineBorder(Color.getColor("BLACK")));
-        this.maintenanceDisplay.setPreferredSize(new Dimension(280, 590));
+        // this.maintenanceDisplay.setPreferredSize(new Dimension(280, 590));
         this.maintenanceDisplay.setFocusable(false);
 
         this.maintenanceStatus = new JTextArea();
         this.maintenanceStatus.setBackground(Color.WHITE);
         this.maintenanceStatus.setBorder(BorderFactory.createLineBorder(Color.getColor("BLACK")));
-        this.maintenanceStatus.setPreferredSize(new Dimension(280, 150));
+        // this.maintenanceStatus.setPreferredSize(new Dimension(280, 150));
         this.maintenanceStatus.setFocusable(false);
 
         // ! SCROLL PANES

@@ -113,8 +113,9 @@ public class RegularController {
                     if (regularModel.findItem(name) == false && qty <= 15) {
                         regularModel.getVendingSlot().add(new ItemSlot(regularModel.getVendingSlot().size() + 1,
                                 new Item(name, price, calories, qty)));
+                                regularGui.setMaintenanceDisplayText(regularModel.listSlotInfo());
                     } else {
-                        regularGui.setStatusItemText("Item already exists.");
+                        regularGui.setMaintenanceStatusText("Item already exists.");
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Transaction Cancelled.");
