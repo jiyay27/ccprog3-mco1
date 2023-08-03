@@ -83,12 +83,12 @@ public class SpecialGui {
     public void initializeSpecialFeatures() {
         // ! FEATURES PANEL
         this.specialFeaturesPanel = new JPanel(new GridLayout(0, 2));
-        this.specialFeaturesPanel.setBackground(Color.RED);
+        this.specialFeaturesPanel.setBackground(new Color(220, 209, 170));
         this.specialFeaturesPanel.setSize(590, 790);
 
         // ! VIEWING PANEL
         this.fSpecialViewingPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
-        this.fSpecialViewingPanel.setBackground(Color.BLUE);
+        this.fSpecialViewingPanel.setBackground(new Color(220, 209, 170));
         this.fSpecialViewingPanel.setPreferredSize(new Dimension(280, 700));
 
         // ! TEXT AREA
@@ -109,7 +109,7 @@ public class SpecialGui {
 
         // ! USER INPUT PANEl
         this.fSpecialUserPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
-        this.fSpecialUserPanel.setBackground(Color.GREEN);
+        this.fSpecialUserPanel.setBackground(new Color(220, 209, 170));
         this.fSpecialUserPanel.setSize(280, 700);
 
         // ! LABEL
@@ -224,12 +224,12 @@ public class SpecialGui {
     public void initializeSpecialMaintenance() {
         // ! MAINTENANCE PANEL
         this.specialMaintenancePanel = new JPanel(new GridLayout(0, 2));
-        this.specialMaintenancePanel.setBackground(Color.RED);
+        this.specialMaintenancePanel.setBackground(new Color(220, 209, 170));
         this.specialMaintenancePanel.setSize(590, 790);
 
         // ! VIEWING PANEL
         this.mSpecialViewingPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
-        this.mSpecialViewingPanel.setBackground(Color.BLUE);
+        this.mSpecialViewingPanel.setBackground(new Color(220, 209, 170));
         this.mSpecialViewingPanel.setPreferredSize(new Dimension(280, 700));
 
         // ! TEXT AREA
@@ -250,7 +250,7 @@ public class SpecialGui {
 
         // ! USER INPUT PANEl
         this.mSpecialUserPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
-        this.mSpecialUserPanel.setBackground(Color.GREEN);
+        this.mSpecialUserPanel.setBackground(new Color(220, 209, 170));
         this.mSpecialUserPanel.setSize(280, 700);
 
         // ! LABEL
