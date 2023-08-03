@@ -49,7 +49,7 @@ public class ItemSlot {
      * @return this.nSlotIndex represents the item name stored
      */
     public int getSlotIndex() {
-        return this.nSlotIndex;
+        return this.nSlotIndex - 1;
     }
 
     /**

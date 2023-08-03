@@ -512,7 +512,33 @@ public class RegularGui {
      * regular vending machine interface
      */
     public JPanel initializeRestockPanel() {
-        this.restockPanel = new JPanel();
+        this.restockPanel = new JPanel(new GridLayout(5, 1, 0, 0));
+        this.restockPanel.setPreferredSize(new Dimension(420, 150));
+
+        // ! LABELS
+        JLabel restockNameLabel = new JLabel("Name:", SwingConstants.LEFT);
+        restockNameLabel.setForeground(Color.BLACK);
+
+        // ! TEXT FIELDS
+        this.nameTextField = new JTextField();
+        this.nameTextField.setMaximumSize(new Dimension(270, 30));
+        this.nameTextField.setMinimumSize(new Dimension(270, 30));
+        this.nameTextField.setPreferredSize(new Dimension(270, 30));
+
+        // ! QUANTITY
+        JLabel restockItemQuantity = new JLabel("Quantity:", SwingConstants.LEFT);
+        restockItemQuantity.setForeground(Color.BLACK);
+
+        // ! TEXT FIELDS
+        this.qtyTextField = new JTextField();
+        this.qtyTextField.setMaximumSize(new Dimension(270, 30));
+        this.qtyTextField.setMinimumSize(new Dimension(270, 30));
+        this.qtyTextField.setPreferredSize(new Dimension(270, 30));
+
+        this.restockPanel.add(restockNameLabel);
+        this.restockPanel.add(nameTextField);
+        this.restockPanel.add(restockItemQuantity);
+        this.restockPanel.add(qtyTextField);
 
         return restockPanel;
     }
@@ -522,7 +548,7 @@ public class RegularGui {
      * regular vending machine interface
      */
     public JPanel initializePricePanel() {
-        this.pricePanel = new JPanel(new GridLayout(3, 1, 0, 0));
+        this.pricePanel = new JPanel(new GridLayout(5, 1, 0, 0));
         this.pricePanel.setPreferredSize(new Dimension(420, 150));
 
         // ! LABELS

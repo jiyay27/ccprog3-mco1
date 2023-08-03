@@ -115,7 +115,7 @@ public class RegularController {
                                 new Item(name, price, calories, qty)));
                                 regularGui.setMaintenanceDisplayText(regularModel.listSlotInfo());
                     } else {
-                        regularGui.setMaintenanceStatusText("Item already exists.");
+                        regularGui.setStatusItemText("Item already exists.");
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Transaction Cancelled.");
@@ -135,7 +135,7 @@ public class RegularController {
                     if (regularModel.getVendingSlot().get(regularModel.getFoundItem(name)).getItem().canRestock(qty)) {
                         regularModel.getVendingSlot().get(regularModel.getFoundItem(name)).getItem()
                                 .restockItem(qty);
-                        regularGui.setDisplayItemText(regularModel.listSlotInfo());
+                        regularGui.setMaintenanceDisplayText(regularModel.listSlotInfo());
                     } else {
                         JOptionPane.showMessageDialog(null, "Item limit exceeded.");
                     }
@@ -154,7 +154,7 @@ public class RegularController {
                     int price = Integer.parseInt(regularGui.getPriceTextField());
 
                     regularModel.getVendingSlot().get(regularModel.getFoundItem(name)).getItem().setItemPrice(price);
-                    regularGui.setDisplayItemText(regularModel.listSlotInfo());
+                    regularGui.setMaintenanceDisplayText(regularModel.listSlotInfo());
                 }
             }
         });
