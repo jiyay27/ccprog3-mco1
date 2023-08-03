@@ -63,7 +63,7 @@ public class RegularController {
 
                         regularGui.setDisplayItemText(regularModel.listSlotInfo());
 
-                        regularGui.clearTextFiedls();
+                        regularGui.clearTextFields();
 
                     } else {
                         regularGui.setStatusItemText("NOT ENOUGH PAYMENT");
@@ -77,7 +77,7 @@ public class RegularController {
         this.regularGui.setCancelButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 regularGui.setStatusItemText(null);
-                regularGui.clearTextFiedls();
+                regularGui.clearTextFields();
             }
         });
 

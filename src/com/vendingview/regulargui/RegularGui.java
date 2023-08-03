@@ -712,7 +712,7 @@ public class RegularGui {
     }
 
     // TODO
-    public void clearTextFiedls() {
+    public void clearTextFields() {
         this.itemTxtField.setText("");
         this.qtyTxtField.setText("");
         this.paymentTxtField.setText("");
