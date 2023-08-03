@@ -84,12 +84,12 @@ public class RegularVendingMachine extends VendingMachine {
      */
     public String listSlotInfo() {
         StringBuilder display = new StringBuilder();
-        for (int i = 1; i < this.CVendingSlot.size(); i++) {
-            display.append("    ------------------------- " + i + " -------------------------\n");
-            display.append("        Item: \t" + this.CVendingSlot.get(i - 1).getItem().getItemName() + "\n");
-            display.append("        Price: \t" + this.CVendingSlot.get(i - 1).getItem().getItemPrice() + "\n");
-            display.append("        Calories: \t" + this.CVendingSlot.get(i - 1).getItem().getItemCalories() + "\n");
-            display.append("        Quantity: \t" + this.CVendingSlot.get(i - 1).getItem().getItemQuantity() + "\n");
+        for (int i = 0; i < this.CVendingSlot.size(); i++) {
+            display.append("    ------------------------- " + (i + 1) + " -------------------------\n");
+            display.append("        Item: \t" + this.CVendingSlot.get(i).getItem().getItemName() + "\n");
+            display.append("        Price: \t" + this.CVendingSlot.get(i).getItem().getItemPrice() + "\n");
+            display.append("        Calories: \t" + this.CVendingSlot.get(i).getItem().getItemCalories() + "\n");
+            display.append("        Quantity: \t" + this.CVendingSlot.get(i).getItem().getItemQuantity() + "\n");
         }
 
         return display.toString();
