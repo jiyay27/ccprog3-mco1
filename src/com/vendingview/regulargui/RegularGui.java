@@ -706,12 +706,19 @@ public class RegularGui {
         return this.paymentTxtField.getText();
     }
 
-    // TODO 
+    /**
+     * Gets the payment inputted by the user in the changeTextField
+     *
+     * @return this.changeTextField.getText() represents the changeTextField stored with
+     *         the datatype String
+     */
     public String getChangeTextField() {
         return this.changeTextField.getText();
     }
 
-    // TODO
+    /**
+     * Removes the contents within itemTxtField, qtyTxtField, and paymentTxtField
+     */
     public void clearTextFields() {
         this.itemTxtField.setText("");
         this.qtyTxtField.setText("");
