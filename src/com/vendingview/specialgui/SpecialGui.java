@@ -357,7 +357,7 @@ public class SpecialGui {
         this.specialMaintenancePanel.add(mSpecialUserPanel);
 
         this.specialMaintenanceFrame.add(specialMaintenancePanel);
-        // this.regularMaintenanceFrame.setVisible(false);
+        this.specialFrame.setVisible(false);
         this.specialMaintenanceFrame.setVisible(true);
     }
 

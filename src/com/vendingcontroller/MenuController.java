@@ -107,8 +107,9 @@ public class MenuController {
                 } else if (specialMachine != null) {
                     SpecialGui specialMachineGui = new SpecialGui();
                     specialMachineGui.initializeSpecialFeatures();
-                    specialMachineGui.initializeSpecialMaintenance();
-                    specialMachineGui.getSpecialMaintenanceFrame().setVisible(false);
+
+                    // specialMachineGui.initializeSpecialMaintenance();
+                    // specialMachineGui.getSpecialMaintenanceFrame().setVisible(false);
 
                     menu.getMainFrame().setVisible(false);
 
