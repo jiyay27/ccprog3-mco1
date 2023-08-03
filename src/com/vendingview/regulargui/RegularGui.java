@@ -283,13 +283,11 @@ public class RegularGui {
         this.maintenanceDisplay = new JTextArea();
         this.maintenanceDisplay.setBackground(Color.WHITE);
         this.maintenanceDisplay.setBorder(BorderFactory.createLineBorder(Color.getColor("BLACK")));
-        // this.maintenanceDisplay.setPreferredSize(new Dimension(280, 590));
         this.maintenanceDisplay.setFocusable(false);
 
         this.maintenanceStatus = new JTextArea();
         this.maintenanceStatus.setBackground(Color.WHITE);
         this.maintenanceStatus.setBorder(BorderFactory.createLineBorder(Color.getColor("BLACK")));
-        // this.maintenanceStatus.setPreferredSize(new Dimension(280, 150));
         this.maintenanceStatus.setFocusable(false);
 
         // ! SCROLL PANES
@@ -702,7 +700,7 @@ public class RegularGui {
      * @return paymentTxtField.getText() represents the paymentTxtField stored with
      *         the datatype String
      */
-    public String getPayment() {
+    public String getPaymentTextField() {
         return this.paymentTxtField.getText();
     }
 

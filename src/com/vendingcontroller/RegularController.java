@@ -52,7 +52,7 @@ public class RegularController {
             public void actionPerformed(ActionEvent e) {
                 int nItemIndex = Integer.parseInt(regularGui.getItemIndexTextInput()) - 1;
                 int nItemQuantity = Integer.parseInt(regularGui.getItemQtyTextInput());
-                int nPayment = Integer.parseInt(regularGui.getPayment());
+                int nPayment = Integer.parseInt(regularGui.getPaymentTextField());
 
                 if (regularModel.insertPayment(nPayment) == true) {
                     if (nPayment >= regularModel.getVendingSlot().get(nItemIndex).getItem().getItemPrice()
@@ -161,7 +161,7 @@ public class RegularController {
 
         this.regularGui.setEarningsButtonListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                    regularModel.getEarnings();
+                    regularModel.getMoneyBox().collectEarnings();
                     regularGui.setMaintenanceStatusText(regularModel.displayTransactions());
                     JOptionPane.showMessageDialog(null, "Earnings collected.");
             }
